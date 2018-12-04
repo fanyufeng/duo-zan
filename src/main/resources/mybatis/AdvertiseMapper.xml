@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.UserMapper">
+ 
+    <select id="findCard" resultType="com.duode.model.Card">
+      select * from user where card.id=#{id};
+    </select>
+
+    <insert id="addCard">
+    insert into card(
+        product_id,
+        advertiser_id,
+        integration_num,
+        times,
+        comment,
+        create_time,
+        modify_time
+    )
+    values (
+        #{card.product_id},
+        #{card.advertiser_id},
+        #{card.integration_num},
+        #{card.times},
+        #{card.comment},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateCard">
+        UPDATE card
+        SET times = times-1,
+        modify_time = now()
+        WHERE id = #{card.id}
+    </update>
+</mapper>
