@@ -66,7 +66,6 @@ public class UserController {
         resDataModel.setStatusCode("0200");
         resDataModel.setData(userU.toString());
         return resDataModel;
-
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -122,7 +121,7 @@ public class UserController {
                                 resDataModel.setData(employeeVOElem);
                                 resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
                             } else {
-                               resDataModel.setData(ApiStatusCode.DEPARTMENTLIST_NO_EXIST);
+                               resDataModel.setData(ApiStatusCode.EMPLOYEE_USER_NOT_EXIST.value());
                             }
 
                         }else{
@@ -144,7 +143,20 @@ public class UserController {
             e.printStackTrace();
         }
         return resDataModel;
+    }
 
+    @RequestMapping(value = "/getUserDetail", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getUserDetail(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        User userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        if (userU !=null) {
+            resDataModel.setData(userU);
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        }
+        return resDataModel;
     }
 
     public static String loadJson (String url) {

@@ -51,7 +51,7 @@ public enum ApiStatusCode {
 	  * @Fields  CODE_NUMBER_ERROR : 部门不存在
 	  */
 	
-	DEPARTMENTLIST_NO_EXIST("02020006"),
+	CARD_FORBID("02020006"),
 	/**
 	  * @Fields  CODE_COMPARE_ERROR : 验证码匹配错误
 	  */

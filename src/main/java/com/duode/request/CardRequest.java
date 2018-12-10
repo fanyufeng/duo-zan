@@ -1,9 +1,9 @@
-package com.duode.model;
+package com.duode.request;
 
 /**
  * Created by fanyufeng on 2018/11/29
  */
-public class Card {
+public class CardRequest {
     public int id;
     public int product_id;
     public int advertiser_id;
@@ -12,8 +12,8 @@ public class Card {
     public int times;
     public String unique_id;
     public String comment;
-    public String create_time;
-    public String modify_time;
+    public int user_id;
+
 
     public int getId() {
         return id;
@@ -80,25 +80,17 @@ public class Card {
         this.comment = comment;
     }
 
-    public String getCreate_time() {
-        return create_time;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setCreate_time(String create_time) {
-        this.create_time = create_time;
-    }
-
-    public String getModify_time() {
-        return modify_time;
-    }
-
-    public void setModify_time(String modify_time) {
-        this.modify_time = modify_time;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     @Override
     public String toString() {
-        return "Card{" +
+        return "CardRequest{" +
                 "id=" + id +
                 ", product_id=" + product_id +
                 ", advertiser_id=" + advertiser_id +
@@ -107,8 +99,7 @@ public class Card {
                 ", times=" + times +
                 ", unique_id='" + unique_id + '\'' +
                 ", comment='" + comment + '\'' +
-                ", create_time='" + create_time + '\'' +
-                ", modify_time='" + modify_time + '\'' +
+                ", user_id=" + user_id +
                 '}';
     }
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.duode.mapper.UserMapper">
  
     <select id="findUserInfo" resultType="com.duode.model.User">
-      select * from user where user.id=#{id};
+      select * from user where user.id=#{id}
     </select>
 
     <insert id="addUser">
@@ -25,12 +25,12 @@
         #{user.gender},
         #{user.session_key},
         now(),
-        now(),
+        now()
     )
     </insert>
 
     <select id="getByUnionId" resultType="com.duode.model.User">
-        select * from user where unionid=#{unionid};
+        select * from user where unionid=#{unionid}
     </select>
 
     <update id="updateUser">
@@ -39,6 +39,13 @@
         openid=#{user.openid},
         nick_name=#{user.nick_name},
         session_key=#{user.session_key},
+        modify_time = now()
+        WHERE id = #{user.id}
+    </update>
+
+    <update id="updateUserIntegration">
+        UPDATE user
+        SET integration = #{user.integration},
         modify_time = now()
         WHERE id = #{user.id}
     </update>

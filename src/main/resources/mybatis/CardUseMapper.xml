@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.CardUseMapper">
+ 
+    <select id="findCardUser" resultType="com.duode.model.CardUse">
+      select * from card_use where user_id=#{user_id}
+    </select>
+
+    <select id="findCardId" resultType="com.duode.model.CardUse">
+      select * from card_use where card_id=#{card_id}
+    </select>
+
+    <insert id="addCardUse">
+    insert into card_use(
+        card_id,
+        user_id,
+        num,
+        comment,
+        create_time,
+        modify_time
+    )
+    values (
+        #{card_use.card_id},
+        #{card_use.user_id},
+        #{card_use.num},
+        #{card_use.comment},
+        now(),
+        now()
+    )
+    </insert>
+</mapper>

@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by fanyufeng on 2018/11/25
  */
+
 public class RegisterInterceptor extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration ir =registry.addInterceptor(new LoginInterceptor());
-        ir.excludePathPatterns("/hello");
+        ir.excludePathPatterns("/user/hello");
+        ir.excludePathPatterns("/user/register");
         super.addInterceptors(registry);
     }
 }

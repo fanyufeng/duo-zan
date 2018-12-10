@@ -16,6 +16,8 @@ public class User {
     private String openid;
     private String avatar_url;
     private String session_key;
+    private int integration;
+    private int cash;
 
 
 
@@ -116,6 +118,23 @@ public class User {
         this.session_key = session_key;
     }
 
+    public int getIntegration() {
+        return integration;
+    }
+
+    public void setIntegration(int integration) {
+        this.integration = integration;
+    }
+
+    public int getCash() {
+        return cash;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -131,6 +150,8 @@ public class User {
                 ", openid='" + openid + '\'' +
                 ", avatar_url='" + avatar_url + '\'' +
                 ", session_key='" + session_key + '\'' +
+                ", integration=" + integration +
+                ", cash=" + cash +
                 '}';
     }
 }

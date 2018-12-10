@@ -14,6 +14,8 @@ public class UserRegisterRequest {
     public String encryptedData;
     public String iv;
     public String academy;
+    public String user_id;
+
 
     public String getCode() {
         return code;
@@ -95,6 +97,14 @@ public class UserRegisterRequest {
         this.academy = academy;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
         return "UserRegisterRequest{" +
@@ -108,6 +118,7 @@ public class UserRegisterRequest {
                 ", encryptedData='" + encryptedData + '\'' +
                 ", iv='" + iv + '\'' +
                 ", academy='" + academy + '\'' +
+                ", user_id='" + user_id + '\'' +
                 '}';
     }
 }

@@ -5,6 +5,8 @@ import com.duode.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by fanyufeng on 2018/11/25.
  */
@@ -26,12 +28,18 @@ public class UserService {
     }
 
     public User getUserByUnionId(String unionid) {
-        User user = userMapper.getByUnionId(unionid);
-        return user;
+        List<User> user = userMapper.getByUnionId(unionid);
+        User response = user.get(0);
+        return response;
     }
 
     public int updateUser(User user){
         int code = userMapper.updateUser(user);
+        return code;
+    }
+
+    public int updateUserIntegration(User user) {
+        int code = userMapper.updateUserIntegration(user);
         return code;
     }
 

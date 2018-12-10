@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `product`(
    `status` int not null DEFAULT 0,
    `comment` varchar(100),
    `factory_id` int,
-   `create_time` DATE,
-   `modify_time` DATE,
+   `create_time` DATETIME,
+   `modify_time` DATETIME,
    PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

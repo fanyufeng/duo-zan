@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `advertise`(
    `advertiser_id` int,
    `comment` VARCHAR(100),
    `status` int not null DEFAULT 0,
-   `create_time` DATE,
-   `modify_time` DATE,
+   `create_time` DATETIME,
+   `modify_time` DATETIME,
    PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

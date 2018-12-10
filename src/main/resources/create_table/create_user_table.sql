@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `user`(
    `integration` int not null DEFAULT 0,
    `cash` DOUBLE not null DEFAULT 0.0,
    `status` int not null DEFAULT 0,
-   `create_time` DATE,
-   `modify_time` DATE,
+   `create_time` DATETIME,
+   `modify_time` DATETIME,
    PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
