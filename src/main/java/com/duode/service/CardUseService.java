@@ -3,10 +3,12 @@ package com.duode.service;
 import com.duode.mapper.CardUseMapper;
 import com.duode.model.CardUse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by fanyufeng in 18/12/11
  */
+@Service
 public class CardUseService {
 
     @Autowired
