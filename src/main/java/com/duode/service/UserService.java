@@ -35,6 +35,13 @@ public class UserService {
 
     }
 
+    public List<User> getUserListByIntegration() {
+
+        List<User> userList = userMapper.findUserList();
+        return userList;
+
+    }
+
     public int updateUser(User user){
         int code = userMapper.updateUser(user);
         return code;
