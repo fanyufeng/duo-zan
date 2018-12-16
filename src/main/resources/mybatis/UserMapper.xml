@@ -49,9 +49,23 @@
         modify_time = now()
         WHERE id = #{user.id}
     </update>
-    <select id="findUserList" parameterType="com.duode.model.User"  resultType="java.util.List">
+    <select id="findUserList" parameterType="com.duode.model.User" resultMap="userList">
       select * from user order by integration limit 10
     </select>
 
-
+    <resultMap type="com.duode.model.User" id="userList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="unionid"  property="unionid"/>
+        <result column="avatar_url" property="avatar_url"/>
+        <result column="gender" property="gender"/>
+        <result column="telephone"  property="telephone"/>
+        <result column="nick_name" property="nick_name"/>
+        <result column="session_key"  property="session_key"/>
+        <result column="integration"  property="integration"/>
+        <result column="cash"  property="cash"/>
+        <result column="status"  property="status"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
 </mapper>
