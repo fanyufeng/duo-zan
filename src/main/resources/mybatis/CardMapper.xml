@@ -19,7 +19,7 @@
     )
     values (
         #{card.product_id},
-        #{card.advertiser_id},
+        #{card.advertise_id},
         #{card.integration_num},
         #{card.times},
         #{card.comment},
