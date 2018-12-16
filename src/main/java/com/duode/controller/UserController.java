@@ -104,9 +104,12 @@ public class UserController {
                     String unionidx=json.getString("unionId");
 
 
+
                     if(unionidx!=null){
+                        System.out.println("=====unionidx=====: " + unionidx);
+
                         List<User> user=userService.getUserByUnionId(unionidx);
-                        logger.info("user message"+ user);
+                        System.out.print("======user==== :"+ user);
 
                         if(user==null){
                             User  employeeVOModel=new User();
