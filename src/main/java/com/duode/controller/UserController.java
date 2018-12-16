@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,7 +60,8 @@ public class UserController {
         int code = userService.addUserInfo(user);
 
 
-        User userU = userService.getUserByUnionId("gnjfdhdfbxx");
+        List<User> userUx = userService.getUserByUnionId("gnjfdhdfbxx");
+        User userU = userUx.get(0);
 
         userU.setNick_name("litingting");
         userService.updateUser(userU);
@@ -103,7 +105,7 @@ public class UserController {
 
 
                     if(unionidx!=null){
-                        User user=userService.getUserByUnionId(unionidx);
+                        List<User> user=userService.getUserByUnionId(unionidx);
 
                         if(user==null){
                             User  employeeVOModel=new User();
@@ -116,7 +118,7 @@ public class UserController {
                             employeeVOModel.setSession_key(sessionKey);
 
                             int userTY =userService.addUserInfo(employeeVOModel);
-                            User employeeVOElem=userService.getUserByUnionId(unionidx);
+                            List<User> employeeVOElem=userService.getUserByUnionId(unionidx);
                             if (employeeVOElem != null) {
                                 resDataModel.setData(employeeVOElem);
                                 resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
@@ -126,10 +128,11 @@ public class UserController {
 
                         }else{
                             request.getSession().setAttribute(Constants._SESSION_USER_ID_KEYPREFIX,unionidx);
-                            user.setOpenid(openid);
-                            user.setUnionid(unionidx);
-                            user.setSession_key(sessionKey);
-                            userService.updateUser(user);
+                            User userModel= user.get(0);
+                            userModel.setOpenid(openid);
+                            userModel.setUnionid(unionidx);
+                            userModel.setSession_key(sessionKey);
+                            userService.updateUser(userModel);
                             resDataModel.setData(user);
                             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
                         }
@@ -149,7 +152,7 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel getUserDetail(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
-        User userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        List<User> userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
         if (userU !=null) {
             resDataModel.setData(userU);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

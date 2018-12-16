@@ -27,15 +27,10 @@ public class UserService {
         return userReponse;
     }
 
-    public User getUserByUnionId(String unionid) {
+    public List<User> getUserByUnionId(String unionid) {
 
         List<User> user = userMapper.getByUnionId(unionid);
-        if (user != null){
-            User response = user.get(0);
-            return response;
-        } else {
-            return null;
-        }
+        return user;
 
     }
 
