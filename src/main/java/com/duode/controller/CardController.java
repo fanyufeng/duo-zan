@@ -56,7 +56,9 @@ public class CardController {
         ResponseDataModel response = new ResponseDataModel();
         Card re = cardService.findCard(cardRequest.getUnique_id());
         Advertise advertise = advertiseService.findAdvertise(re.getAdvertise_id());
+        System.out.println("advertiser_id: " +advertise.getAdvertiser_id());
         Advertiser advertiser= advertiserService.findAdvertiser(advertise.getAdvertiser_id());
+        System.out.println("advertiser: "+ advertiser);
         if (re !=null){
             List<Card> reList =new ArrayList<>();
             List<Advertise> advertiseListResponse = new ArrayList<>();
