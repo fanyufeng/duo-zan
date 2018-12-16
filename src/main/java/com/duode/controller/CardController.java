@@ -27,7 +27,6 @@ public class CardController {
     public CardUseService cardUseService;
     @Autowired
     public AdvertiseService advertiseService;
-
     @Autowired
     public AdvertiserService advertiserService;
 
