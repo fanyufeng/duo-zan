@@ -2,17 +2,11 @@ package com.duode.controller;
 
 import com.duode.config.IDGeneratorUtils;
 import com.duode.constant.ApiStatusCode;
-import com.duode.model.Advertise;
-import com.duode.model.Card;
-import com.duode.model.CardUse;
-import com.duode.model.User;
+import com.duode.model.*;
 import com.duode.request.CardRequest;
 import com.duode.response.CardAdvertiseResponse;
 import com.duode.response.ResponseDataModel;
-import com.duode.service.AdvertiseService;
-import com.duode.service.CardService;
-import com.duode.service.CardUseService;
-import com.duode.service.UserService;
+import com.duode.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +27,9 @@ public class CardController {
     public CardUseService cardUseService;
     @Autowired
     public AdvertiseService advertiseService;
+
+    @Autowired
+    public AdvertiserService advertiserService;
 
 
 
@@ -60,12 +57,15 @@ public class CardController {
         ResponseDataModel response = new ResponseDataModel();
         Card re = cardService.findCard(cardRequest.getUnique_id());
         Advertise advertise = advertiseService.findAdvertise(re.getAdvertise_id());
+        Advertiser advertiser= advertiserService.findAdvertiser(advertise.getAdvertiser_id());
         if (re !=null){
             List<Card> reList =new ArrayList<>();
             List<Advertise> advertiseListResponse = new ArrayList<>();
+            List<Advertiser> advertiserList = new ArrayList<>();
 
             reList.add(re);
             advertiseListResponse.add(advertise);
+            advertiserList.add(advertiser);
 
             CardAdvertiseResponse cardAdvertiseResponse =new CardAdvertiseResponse();
             cardAdvertiseResponse.setCardList(reList);

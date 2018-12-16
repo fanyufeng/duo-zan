@@ -1,8 +1,10 @@
 package com.duode.response;
 
 import com.duode.model.Advertise;
+import com.duode.model.Advertiser;
 import com.duode.model.Card;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
 public class CardAdvertiseResponse {
     public List<Card> cardList;
     public List<Advertise> advertises;
+    List<Advertiser> advertiserList;
 
 
     public List<Card> getCardList() {
@@ -29,13 +32,20 @@ public class CardAdvertiseResponse {
         this.advertises = advertises;
     }
 
+    public List<Advertiser> getAdvertiserList() {
+        return advertiserList;
+    }
+
+    public void setAdvertiserList(List<Advertiser> advertiserList) {
+        this.advertiserList = advertiserList;
+    }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "CardAdvertiseResponse{" +
                 "cardList=" + cardList +
                 ", advertises=" + advertises +
+                ", advertiserList=" + advertiserList +
                 '}';
     }
 }
