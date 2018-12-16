@@ -69,6 +69,7 @@ public class CardController {
             CardAdvertiseResponse cardAdvertiseResponse =new CardAdvertiseResponse();
             cardAdvertiseResponse.setCardList(reList);
             cardAdvertiseResponse.setAdvertises(advertiseListResponse);
+            cardAdvertiseResponse.setAdvertiserList(advertiserList);
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
             response.setData(cardAdvertiseResponse);
         } else {
