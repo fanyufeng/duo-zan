@@ -25,7 +25,7 @@ public class HttpsConfiguration {
             public void customize(ConfigurableEmbeddedServletContainer container) {
                 Ssl ssl = new Ssl();
                 // Server.jks中包含服务器私钥和证书
-                ssl.setKeyStore("/duode/dituo/dituo/src/main/resources/kuaizan.duodework.com.jks");
+                ssl.setKeyStore("/duode/dituo/duo-zan/src/main/resources/kuaizan.duodework.com.jks");
                 ssl.setKeyStorePassword("duode2018");
                 container.setSsl(ssl);
                 container.setPort(443);
