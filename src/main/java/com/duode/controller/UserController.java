@@ -106,6 +106,7 @@ public class UserController {
 
                     if(unionidx!=null){
                         List<User> user=userService.getUserByUnionId(unionidx);
+                        logger.info("user message"+ user);
 
                         if(user==null){
                             User  employeeVOModel=new User();
