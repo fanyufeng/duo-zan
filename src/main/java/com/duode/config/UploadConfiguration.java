@@ -19,7 +19,7 @@ public class UploadConfiguration extends WebMvcConfigurerAdapter {
         //其中OTA表示访问的前缀。"file:D:/OTA/"是文件真实的存储路径
         //registry.addResourceHandler("/**").addResourceLocations("/duode/dituo/dituo/document/");
         registry.addResourceHandler("/images/**").addResourceLocations("file:/duode/dituo/images/");
-        registry.addResourceHandler("/video/**").addResourceLocations("file:/duode/dituo/video");
+        registry.addResourceHandler("/videos/**").addResourceLocations("file:/duode/dituo/video");
     }
 }
 
