@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/advertiser")
 public class AdvertiserController {
     @Autowired
-    public AdvertiserService advertiseServicer;
+    public AdvertiserService advertiseService;
 
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addCard(@RequestBody Advertiser advertiser) {
         ResponseDataModel response = new ResponseDataModel();
-        int code = advertiseServicer.addAdvertiser(advertiser);
+        int code = advertiseService.addAdvertiser(advertiser);
         if (code==1){
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {
