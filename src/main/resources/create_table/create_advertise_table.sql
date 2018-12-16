@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `advertise`(
    `advertiser_id` int,
    `comment` VARCHAR(100),
    `status` int not null DEFAULT 0,
+   `advertise_url` VARCHAR(100),
    `create_time` DATETIME,
    `modify_time` DATETIME,
    PRIMARY KEY ( `id` )

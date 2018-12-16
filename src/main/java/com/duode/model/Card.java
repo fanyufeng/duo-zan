@@ -6,7 +6,7 @@ package com.duode.model;
 public class Card {
     public int id;
     public int product_id;
-    public int advertiser_id;
+    public int advertise_id;
     public int integration_num;
     public int status;
     public int times;
@@ -31,12 +31,12 @@ public class Card {
         this.product_id = product_id;
     }
 
-    public int getAdvertiser_id() {
-        return advertiser_id;
+    public int getAdvertise_id() {
+        return advertise_id;
     }
 
-    public void setAdvertiser_id(int advertiser_id) {
-        this.advertiser_id = advertiser_id;
+    public void setAdvertise_id(int advertiser_id) {
+        this.advertise_id = advertiser_id;
     }
 
     public int getIntegration_num() {
@@ -101,7 +101,7 @@ public class Card {
         return "Card{" +
                 "id=" + id +
                 ", product_id=" + product_id +
-                ", advertiser_id=" + advertiser_id +
+                ", advertiser_id=" + advertise_id +
                 ", integration_num=" + integration_num +
                 ", status=" + status +
                 ", times=" + times +

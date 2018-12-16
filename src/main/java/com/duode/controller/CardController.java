@@ -2,16 +2,22 @@ package com.duode.controller;
 
 import com.duode.config.IDGeneratorUtils;
 import com.duode.constant.ApiStatusCode;
+import com.duode.model.Advertise;
 import com.duode.model.Card;
 import com.duode.model.CardUse;
 import com.duode.model.User;
 import com.duode.request.CardRequest;
+import com.duode.response.CardAdvertiseResponse;
 import com.duode.response.ResponseDataModel;
+import com.duode.service.AdvertiseService;
 import com.duode.service.CardService;
 import com.duode.service.CardUseService;
 import com.duode.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fanyufeng in 18/12/4
@@ -25,6 +31,9 @@ public class CardController {
     public UserService userService;
     @Autowired
     public CardUseService cardUseService;
+    @Autowired
+    public AdvertiseService advertiseService;
+
 
 
 
@@ -50,9 +59,19 @@ public class CardController {
     public ResponseDataModel getByUnionId(@RequestBody Card cardRequest) {
         ResponseDataModel response = new ResponseDataModel();
         Card re = cardService.findCard(cardRequest.getUnique_id());
+        Advertise advertise = advertiseService.findAdvertise(re.getAdvertise_id());
         if (re !=null){
+            List<Card> reList =new ArrayList<>();
+            List<Advertise> advertiseListResponse = new ArrayList<>();
+
+            reList.add(re);
+            advertiseListResponse.add(advertise);
+
+            CardAdvertiseResponse cardAdvertiseResponse =new CardAdvertiseResponse();
+            cardAdvertiseResponse.setCardList(reList);
+            cardAdvertiseResponse.setAdvertises(advertiseListResponse);
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(re);
+            response.setData(cardAdvertiseResponse);
         } else {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         }

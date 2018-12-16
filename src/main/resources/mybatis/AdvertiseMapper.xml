@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.CardMapper">
+ 
+    <select id="findAdvertise" resultType="com.duode.model.Advertise">
+      select * from advertise where id=#{id}
+    </select>
+
+    <insert id="addAdvertise">
+    insert into advertise(
+        `name`,
+        advertiser_id,
+        comment,
+        status,
+        advertise_url,
+        create_time,
+        modify_time
+    )
+    values (
+        #{advertise.name},
+        #{advertise.advertiser_id},
+        #{advertise.comment},
+        #{advertise.status},
+        #{advertise.advertise_url},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateAadvertise">
+        UPDATE advertise
+        SET times = ${advertise.status},
+        modify_time = now()
+        WHERE id = #{advertise.id}
+    </update>
+</mapper>
