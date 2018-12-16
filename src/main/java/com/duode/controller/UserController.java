@@ -52,7 +52,7 @@ public class UserController {
         user.setName("fanyufeng");
         user.setTelephone("15201315375");
         user.setOpenid("ngj");
-        user.setUnionid("gnjfdhdfbxx");
+        user.setUnionid("gnjfdhdfbxxhdtgu");
         user.setAvatar_url("sjg");
         user.setNick_name("demon");
         user.setGender("shfguhjdf");
@@ -60,8 +60,7 @@ public class UserController {
         int code = userService.addUserInfo(user);
 
 
-        List<User> userUx = userService.getUserByUnionId("gnjfdhdfbxx");
-        User userU = userUx.get(0);
+        User userU = userService.getUserByUnionId("gnjfdhdfbxxhdtgu");
 
         userU.setNick_name("litingting");
         userService.updateUser(userU);
@@ -108,7 +107,7 @@ public class UserController {
                     if(unionidx!=null){
                         System.out.println("=====unionidx=====: " + unionidx);
 
-                        List<User> user=userService.getUserByUnionId(unionidx);
+                        User user=userService.getUserByUnionId(unionidx);
                         System.out.print("======user==== :"+ user);
 
                         if(user==null){
@@ -122,7 +121,7 @@ public class UserController {
                             employeeVOModel.setSession_key(sessionKey);
 
                             int userTY =userService.addUserInfo(employeeVOModel);
-                            List<User> employeeVOElem=userService.getUserByUnionId(unionidx);
+                            User employeeVOElem=userService.getUserByUnionId(unionidx);
                             if (employeeVOElem != null) {
                                 resDataModel.setData(employeeVOElem);
                                 resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
@@ -132,11 +131,10 @@ public class UserController {
 
                         }else{
                             request.getSession().setAttribute(Constants._SESSION_USER_ID_KEYPREFIX,unionidx);
-                            User userModel= user.get(0);
-                            userModel.setOpenid(openid);
-                            userModel.setUnionid(unionidx);
-                            userModel.setSession_key(sessionKey);
-                            userService.updateUser(userModel);
+                            user.setOpenid(openid);
+                            user.setUnionid(unionidx);
+                            user.setSession_key(sessionKey);
+                            userService.updateUser(user);
                             resDataModel.setData(user);
                             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
                         }
@@ -156,7 +154,7 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel getUserDetail(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
-        List<User> userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        User userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
         if (userU !=null) {
             resDataModel.setData(userU);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

@@ -29,7 +29,7 @@
     )
     </insert>
 
-    <select id="getByUnionId">
+    <select id="getByUnionId" resultType="com.duode.model.User">
         select * from user where unionid=#{unionid}
     </select>
 

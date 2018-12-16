@@ -27,9 +27,10 @@ public class UserService {
         return userReponse;
     }
 
-    public List<User> getUserByUnionId(String unionid) {
+    public User getUserByUnionId(String unionid) {
 
-        List<User> user = userMapper.getByUnionId(unionid);
+        User user = userMapper.getByUnionId(unionid);
+
         return user;
 
     }

@@ -15,7 +15,7 @@ public interface UserMapper {
 
     public int addUser(@Param("user") User user);
 
-    public List<User> getByUnionId(@Param("unionid") String unionid);
+    public User getByUnionId(@Param("unionid") String unionid);
     public int updateUser(@Param("user") User user);
     public int updateUserIntegration(@Param("user") User user);
 }
