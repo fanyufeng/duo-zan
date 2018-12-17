@@ -47,25 +47,14 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel addUserX(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
+        User user = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        if(user != null ) {
+            resDataModel.setData(user);
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            resDataModel.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
+        }
 
-        User user = new User();
-        user.setName("fanyufeng");
-        user.setTelephone("15201315375");
-        user.setOpenid("ngj");
-        user.setUnionid("gnjfdhdfbxxhdtgu");
-        user.setAvatar_url("sjg");
-        user.setNick_name("demon");
-        user.setGender("shfguhjdf");
-        user.setSession_key("sdfguj");
-        int code = userService.addUserInfo(user);
-
-
-        User userU = userService.getUserByUnionId("gnjfdhdfbxxhdtgu");
-
-        userU.setNick_name("litingting");
-        userService.updateUser(userU);
-        resDataModel.setStatusCode("0200");
-        resDataModel.setData(userU.toString());
         return resDataModel;
     }
 
