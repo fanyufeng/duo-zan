@@ -18,8 +18,14 @@ public class UserService {
     private UserMapper userMapper;
 
     public User getUserInfo(int id){
-        User user=userMapper.findUserInfo(id);
-        return user;
+        List<User> userList=userMapper.findUserInfo(id);
+        if (userList!=null ){
+            User user = userList.get(0);
+            return user;
+        } else {
+            return null;
+        }
+
     }
 
     public int  addUserInfo(User user){
@@ -29,10 +35,13 @@ public class UserService {
 
     public User getUserByUnionId(String unionid) {
 
-        User user = userMapper.getByUnionId(unionid);
-
-        return user;
-
+        List<User> userList = userMapper.getByUnionId(unionid);
+        if (userList != null) {
+            User user = userList.get(0);
+            return user;
+        } else {
+            return null;
+        }
     }
 
     public List<User> getUserListByIntegration() {
