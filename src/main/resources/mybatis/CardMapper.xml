@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duode.mapper.CardMapper">
  
-    <select id="findCard" resultType="com.duode.model.Card">
+    <select id="findCard" parameterType="com.duode.model.Card" resultMap="cardList">
       select * from card where unique_id=#{unique_id}
     </select>
 
@@ -37,4 +37,16 @@
         modify_time = now()
         WHERE id = #{card.id}
     </update>
+    <resultMap type="com.duode.model.Card" id="cardList">
+        <result column="id" property="id"/>
+        <result column="product_id"  property="product_id"/>
+        <result column="advertise_id"  property="advertise_id"/>
+        <result column="integration_num" property="integration_num"/>
+        <result column="status" property="status"/>
+        <result column="times"  property="times"/>
+        <result column="unique_id" property="unique_id"/>
+        <result column="comment"  property="comment"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
 </mapper>

@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by fanyufeng in 18/12/2
  */
@@ -25,8 +27,13 @@ public class CardService {
     }
 
     public Card findCard(String unique_id) {
-        Card card = cardMapper.findCard(unique_id);
-        return card;
+        List<Card> cardList = cardMapper.findCard(unique_id);
+        if (cardList !=null) {
+            Card card = cardList.get(0);
+            return card;
+        } else {
+            return null;
+        }
     }
 
 
