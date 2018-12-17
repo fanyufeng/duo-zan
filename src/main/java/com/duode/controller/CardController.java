@@ -54,6 +54,7 @@ public class CardController {
     @ResponseBody
     public ResponseDataModel getByUnionId(@RequestBody Card cardRequest) {
         ResponseDataModel response = new ResponseDataModel();
+        System.out.println("unique_id: " + cardRequest.getUnique_id());
         Card re = cardService.findCard(cardRequest.getUnique_id());
         Advertise advertise = advertiseService.findAdvertise(re.getAdvertise_id());
         System.out.println("advertiser_id: " +advertise.getAdvertiser_id());
