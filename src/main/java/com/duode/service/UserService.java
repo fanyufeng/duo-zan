@@ -36,6 +36,7 @@ public class UserService {
     public User getUserByUnionId(String unionid) {
 
         List<User> userList = userMapper.getByUnionId(unionid);
+        System.out.println("userList:" + userList);
         if (userList != null) {
             User user = userList.get(0);
             return user;
