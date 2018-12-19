@@ -47,7 +47,7 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel addUserX(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
-        User user = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        User user = userService.getUserInfo(userRegisterRequest.getUser_id());
         if(user != null ) {
             resDataModel.setData(user);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
@@ -143,7 +143,7 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel getUserDetail(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
-        User userU = userService.getUserByUnionId(userRegisterRequest.getUser_id());
+        User userU = userService.getUserInfo(userRegisterRequest.getUser_id());
         if (userU !=null) {
             resDataModel.setData(userU);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

@@ -28,7 +28,7 @@ public class CardService {
 
     public Card findCard(String unique_id) {
         List<Card> cardList = cardMapper.findCard(unique_id);
-        if (cardList !=null) {
+        if (cardList.size()!=0) {
             Card card = cardList.get(0);
             return card;
         } else {

@@ -14,7 +14,7 @@ public class UserRegisterRequest {
     public String encryptedData;
     public String iv;
     public String academy;
-    public String user_id;
+    public int user_id;
 
 
     public String getCode() {
@@ -97,11 +97,11 @@ public class UserRegisterRequest {
         this.academy = academy;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

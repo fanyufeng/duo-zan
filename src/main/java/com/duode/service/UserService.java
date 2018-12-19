@@ -19,7 +19,7 @@ public class UserService {
 
     public User getUserInfo(int id){
         List<User> userList=userMapper.findUserInfo(id);
-        if (userList!=null ){
+        if (userList.size()!=0 ){
             User user = userList.get(0);
             return user;
         } else {
@@ -37,7 +37,7 @@ public class UserService {
 
         List<User> userList = userMapper.getByUnionId(unionid);
         System.out.println("userList:" + userList);
-        if (userList != null) {
+        if (userList.size() != 0) {
             User user = userList.get(0);
             return user;
         } else {
