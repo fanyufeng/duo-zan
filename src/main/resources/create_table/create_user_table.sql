@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `user`(
    `name` VARCHAR(100),
    `unionid` VARCHAR(100) comment '微信唯一识别标识',
    `openid` VARCHAR(100) comment '微信识别标识',
-   `avatar_url` VARCHAR(100) comment '头像地址',
+   `avatar_url` VARCHAR(255) comment '头像地址',
    `gender` VARCHAR(40),
    `telephone` VARCHAR(40),
    `nick_name` VARCHAR(100),

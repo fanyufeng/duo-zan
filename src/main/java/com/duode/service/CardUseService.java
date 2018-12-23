@@ -27,7 +27,7 @@ public class CardUseService {
 
     public Map getUserListYesterday(){
         Map result = cardUseMapper.getUserListYesterday(GetNowDate());
-        if (result.size()!=0) {
+        if (result !=null) {
             return result;
         } else {
             return null;
