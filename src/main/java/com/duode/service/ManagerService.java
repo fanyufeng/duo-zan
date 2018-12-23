@@ -4,6 +4,7 @@ import com.duode.mapper.ManagerMapper;
 import com.duode.model.Manager;
 import com.duode.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import sun.misc.BASE64Encoder;
 
 import java.io.UnsupportedEncodingException;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Created by fanyufeng in 18/12/23
  */
+@Service
 public class ManagerService {
     @Autowired
     public ManagerMapper managerMapper;
