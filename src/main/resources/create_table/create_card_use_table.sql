@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `card_use`(
    `id` INT UNSIGNED AUTO_INCREMENT,
    `card_id` int not null DEFAULT 0 comment '卡券id',
+   `integration_num` int not null DEFAULT 0 comment '积分金额',
    `num` int not null DEFAULT 0 comment '使用的次数',
    `status` int not null DEFAULT 0 comment '使用标志位',
    `user_id` int not null DEFAULT 0 comment '使用人id',

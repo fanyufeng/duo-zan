@@ -10,6 +10,10 @@
       select * from card_use where card_id=#{card_id}
     </select>
 
+    <select id="getUserListYesterday" resultMap="java.util.Map">
+      select sum(integration_num),user_id from card_use where substring(create_time,1,10)=#{date} group by user_id limit 10
+    </select>
+
     <insert id="addCardUse">
     insert into card_use(
         card_id,

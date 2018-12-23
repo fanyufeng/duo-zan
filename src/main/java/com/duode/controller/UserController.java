@@ -1,5 +1,6 @@
 package com.duode.controller;
 
+import com.duode.service.CardUseService;
 import net.sf.json.JSONObject;
 
 import com.duode.config.AESUtil;
@@ -27,6 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CardUseService cardUseService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     @ResponseBody
@@ -158,6 +163,20 @@ public class UserController {
     public ResponseDataModel getUserListByIntegration(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
         List<User> userU = userService.getUserListByIntegration();
+        if (userU !=null) {
+            resDataModel.setData(userU);
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        }
+        return resDataModel;
+    }
+
+    @RequestMapping(value = "/getUserByIntegrationYesterday", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getUserByIntegrationYesterday(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        Map userU = cardUseService.getUserListYesterday();
         if (userU !=null) {
             resDataModel.setData(userU);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

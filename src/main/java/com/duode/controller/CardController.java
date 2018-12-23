@@ -104,6 +104,7 @@ public class CardController {
             cardUse.setUser_id(cardRequest.getUser_id());
             cardUse.setNum(re.getTimes());
             cardUse.setComment(re.getComment());
+            cardUse.setIntegration_num(re.getIntegration_num());
             cardUseService.addCardUse(cardUse);
 
             User user = userService.getUserInfo(cardRequest.getUser_id());

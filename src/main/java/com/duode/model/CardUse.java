@@ -6,6 +6,10 @@ package com.duode.model;
 public class CardUse {
     public int id;
     public int card_id;
+    public int integration_num;
+
+
+
     public int satus;
     public int num;
     public int user_id;
@@ -19,6 +23,14 @@ public class CardUse {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIntegration_num() {
+        return integration_num;
+    }
+
+    public void setIntegration_num(int integration_num) {
+        this.integration_num = integration_num;
     }
 
     public int getCard_id() {
@@ -82,6 +94,7 @@ public class CardUse {
         return "CardUse{" +
                 "id=" + id +
                 ", card_id=" + card_id +
+                ", integration_num=" + integration_num +
                 ", satus=" + satus +
                 ", num=" + num +
                 ", user_id=" + user_id +
