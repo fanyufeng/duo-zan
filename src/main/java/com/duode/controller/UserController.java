@@ -95,6 +95,9 @@ public class UserController {
                     logger.info("=========json======="+json);
                     System.out.println("json:" + json);
                     String unionidx=json.getString("unionId");
+                    String avatarUrl=json.getString("avatarUrl");
+                    String nickName=json.getString("nickName");
+                    String gender=json.getString("gender");
 
 
 
@@ -109,9 +112,9 @@ public class UserController {
                             employeeVOModel.setOpenid(openid);
                             employeeVOModel.setUnionid(unionidx);
                             request.getSession().setAttribute(Constants._SESSION_USER_ID_KEYPREFIX,unionidx);
-                            employeeVOModel.setAvatar_url(userRegisterRequest.getAvatarUrl());
-                            employeeVOModel.setNick_name(userRegisterRequest.getNickName());
-                            employeeVOModel.setGender(userRegisterRequest.getGender());
+                            employeeVOModel.setAvatar_url(avatarUrl);
+                            employeeVOModel.setNick_name(nickName);
+                            employeeVOModel.setGender(gender);
                             employeeVOModel.setSession_key(sessionKey);
 
                             int userTY =userService.addUserInfo(employeeVOModel);
