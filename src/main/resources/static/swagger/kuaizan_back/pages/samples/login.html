@@ -98,8 +98,8 @@
                 var password = $("#password").val();
                 var password_md5 = hex_md5(password);
                 var info = {
-                    name:userName,
-                    password:password
+                    telephone:userName,
+                    password:password_md5
                 };
                 $.ajax({
                     url:'https://kuaizan.duodework.com/manager/getByTelephone',
