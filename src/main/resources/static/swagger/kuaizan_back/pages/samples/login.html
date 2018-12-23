@@ -97,17 +97,19 @@
                 var userName = $("#user_name").val();
                 var password = $("#password").val();
                 var password_md5 = hex_md5(password);
+                var info = {
+                    name:userName,
+                    password:password_md5
+                }
                 alert(password_md5);
                 $.ajax({
-                    type:'post',
                     url:'manager/getByTelephone',
-                    data:{
-                        name:userName,
-                        password:password_md5
-                    },
+                    type:'post',
+                    data:JSON.stringify(info),
+                    contentType:'application/json',
                     dataType:'json',
                     success:function (res) {
-                        alert(json.stringify(res));
+                        alert(JSON.stringify(res));
                     }
                 })
 
