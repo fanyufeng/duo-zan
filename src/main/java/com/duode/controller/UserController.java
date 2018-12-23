@@ -147,6 +147,96 @@ public class UserController {
         return resDataModel;
     }
 
+    @RequestMapping(value = "/getTelephone", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getTelephone(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        try {
+            String JSCODE=userRegisterRequest.getCode();
+            String jsonString="https://api.weixin.qq.com/sns/jscode2session?appid="+ Constants.APPID+"&secret="+Constants.SECRET+"&js_code="+JSCODE+"&grant_type=authorization_code";
+            String jsonFan = loadJson(jsonString);
+            //检测jsonFan字符串
+            String res=".*errmsg.*";
+
+            Boolean matchResult= jsonFan.matches(res);
+            if(matchResult){
+                resDataModel.setStatusCode(ApiStatusCode.EMPLOYEE_OPENID_ERROR.value());
+            }else{
+
+
+                JSONObject jsonObject = JSONObject.fromObject(jsonFan);
+                System.out.println(jsonFan);
+                String openid = jsonObject.getString("openid");
+                String sessionKey=jsonObject.getString("session_key");
+
+                byte[] resultByte = AESUtil.instance.decrypt(Base64.decodeBase64(userRegisterRequest.getEncryptedData()), Base64.decodeBase64(sessionKey), Base64.decodeBase64(userRegisterRequest.getIv()));
+
+
+                logger.info("=========resultByte======="+resultByte);
+                if(null != resultByte && resultByte.length > 0){
+                    String userInfo = new String(resultByte, "UTF-8");
+                    JSONObject json = JSONObject.fromObject(userInfo); //将字符串{“id”：1}
+                    logger.info("=========json======="+json);
+                    System.out.println("json:" + json);
+                    String unionidx=json.getString("unionId");
+                    String avatarUrl=json.getString("avatarUrl");
+                    String nickName=json.getString("nickName");
+                    String gender=json.getString("gender");
+
+
+
+                    String telephone = json.getString("phoneNumber");
+
+
+
+                    if(unionidx!=null){
+                        System.out.println("=====unionidx=====: " + unionidx);
+
+                        User user=userService.getUserByUnionId(unionidx);
+                        System.out.print("======user==== :"+ user);
+
+                        if(user==null){
+                            User  employeeVOModel=new User();
+                            employeeVOModel.setOpenid(openid);
+                            employeeVOModel.setUnionid(unionidx);
+                            request.getSession().setAttribute(Constants._SESSION_USER_ID_KEYPREFIX,unionidx);
+                            employeeVOModel.setAvatar_url(avatarUrl);
+                            employeeVOModel.setNick_name(nickName);
+                            employeeVOModel.setGender(gender);
+                            employeeVOModel.setSession_key(sessionKey);
+                            employeeVOModel.setTelephone(telephone);
+
+                            int userTY =userService.addUserInfo(employeeVOModel);
+                            User employeeVOElem=userService.getUserByUnionId(unionidx);
+                            if (employeeVOElem != null) {
+                                resDataModel.setData(employeeVOElem);
+                                resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+                            } else {
+                                resDataModel.setData(ApiStatusCode.EMPLOYEE_USER_NOT_EXIST.value());
+                            }
+
+                        }else{
+                            request.getSession().setAttribute(Constants._SESSION_USER_ID_KEYPREFIX,unionidx);
+                            user.setOpenid(openid);
+                            user.setUnionid(unionidx);
+                            user.setSession_key(sessionKey);
+                            user.setTelephone(telephone);
+                            userService.updateUser(user);
+                            resDataModel.setData(user);
+                            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+                        }
+                    }else{
+                        resDataModel.setStatusCode(ApiStatusCode.EMPLOYEE_OPENID_ERROR.value());
+                    }
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resDataModel;
+    }
+
     @RequestMapping(value = "/getUserDetail", method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel getUserDetail(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
