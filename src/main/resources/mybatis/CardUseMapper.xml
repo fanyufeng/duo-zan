@@ -10,7 +10,7 @@
       select * from card_use where card_id=#{card_id}
     </select>
 
-    <select id="getUserListYesterday" resultMap="map">
+    <select id="getUserListYesterday" resultMap="getUserMap">
       select sum(integration_num),user_id from card_use where substring(create_time,1,10)=#{date} group by user_id limit 10
     </select>
 
@@ -32,4 +32,11 @@
         now()
     )
     </insert>
+
+    <resultMap id="getUserMap" type="java.util.Map">
+        <constructor>
+            <idArg column="integration" javaType="_int"/>
+            <arg column="user_id" javaType="_int"/>
+        </constructor>
+    </resultMap>
 </mapper>
