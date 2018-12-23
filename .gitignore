@@ -86,8 +86,6 @@ Temporary Items
 
 
 ### Commitizen ###
-node_modules/
-package.json
 
 .classpath
 .project
