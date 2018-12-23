@@ -82,7 +82,7 @@
   <!-- body wrapper -->
   <!-- plugins:js -->
   <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
-  <script src="../../js/jquery-3.3.1.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -100,16 +100,16 @@
                 var info = {
                     name:userName,
                     password:password_md5
-                }
-                alert(password_md5);
+                };
                 $.ajax({
-                    url:'manager/getByTelephone',
-                    type:'post',
+                    url:'https://kuaizan.duodework.com/manager/getByTelephone',
+                    type:'POST',
                     data:JSON.stringify(info),
                     contentType:'application/json',
                     dataType:'json',
                     success:function (res) {
-                        alert(JSON.stringify(res));
+                        alert("ajax");
+                        alert(res.data.statusCode);
                     }
                 })
 
