@@ -97,6 +97,7 @@
                 var userName = $("#user_name").val();
                 var password = $("#password").val();
                 var password_md5 = hex_md5(password);
+                alert(password_md5);
                 $.ajax({
                     type:'post',
                     url:'manager/getByTelephone',
