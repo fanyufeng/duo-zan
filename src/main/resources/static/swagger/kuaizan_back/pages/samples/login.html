@@ -13,12 +13,18 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/login.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 
 <body>
   <div class="body-wrapper">
+      <div class="loginFrame">
+          <input id="user_name" class="userName" placeholder="用户名">
+          <input id="password" class="password" placeholder="密码" type="password">
+          <button id="login" class="loginButton">登录</button>
+      </div>
+      <!---
     <div class="page-wrapper">
       <main class="content-wrapper auth-screen">
         <div class="mdc-layout-grid">
@@ -78,26 +84,24 @@
 				</div>
       </main>
     </div>
+    --->
   </div>
   <!-- body wrapper -->
   <!-- plugins:js -->
-  <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
   <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-	<script src="../../js/misc.js"></script>
-	<script src="../../js/material.js"></script>
     <script src="../../js/md5.js"></script>
-    <script src="../../js/control.js"></script>
+
     <script>
         $(document).ready(function () {
             $("#login").click(function () {
-                var userName = $("#user_name").val();
-                var password = $("#password").val();
-                var password_md5 = hex_md5(password);
-                var info = {
+                let userName = $("#user_name").val();
+                let password = $("#password").val();
+                let password_md5 = hex_md5(password);
+                let info = {
                     telephone:userName,
                     password:password_md5
                 };
@@ -107,9 +111,9 @@
                     data:JSON.stringify(info),
                     contentType:'application/json',
                     dataType:'json',
-                    success:function (res) {
+                    success:function (data) {
                         alert("ajax");
-                        alert(res.data.statusCode);
+                        alert(data.data.statusCode);
                     }
                 })
 
