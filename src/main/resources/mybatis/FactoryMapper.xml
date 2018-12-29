@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.FactoryMapper">
+    <insert id="addFactory">
+    insert into factory(
+        `name`,
+        status,
+        telephone,
+        address,
+        comment,
+        create_time,
+        modify_time
+    )
+    values (
+        #{factory.name},
+        #{factory.status},
+        #{factory.telephone},
+        #{factory.address},
+        #{factory.comment},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateFactory">
+        UPDATE factory
+        SET telephone = ${factory.telephone},
+        status=#{factory.status},
+        address=${factory.address},
+        `name`=${factory.name},
+        modify_time = now()
+        WHERE id = #{factory.id}
+    </update>
+
+    <select id="findFactory" parameterType="com.duode.model.Factory" resultMap="factoryList">
+      select * from factory
+    </select>
+
+    <resultMap type="com.duode.model.Factory" id="factoryList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="telephone" property="telephone"/>
+        <result column="address"  property="address"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>

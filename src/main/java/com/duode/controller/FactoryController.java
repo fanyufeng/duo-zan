@@ -1,32 +1,29 @@
 package com.duode.controller;
 
 import com.duode.constant.ApiStatusCode;
-import com.duode.model.Advertise;
 import com.duode.model.Advertiser;
-import com.duode.model.Product;
+import com.duode.model.Factory;
 import com.duode.response.ResponseDataModel;
-import com.duode.service.AdvertiseService;
-import com.duode.service.AdvertiserService;
+import com.duode.service.FactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * Created by fanyufeng in 18/12/16
+ * Created by fanyufeng in 18/12/25
  */
-
 @RestController
-@RequestMapping("/advertiser")
-public class AdvertiserController {
+@RequestMapping("/factory")
+public class FactoryController {
     @Autowired
-    public AdvertiserService advertiserService;
+    public FactoryService factoryService;
 
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel addAdvertiser(@RequestBody Advertiser advertiser) {
+    public ResponseDataModel addFactory(@RequestBody Factory factory) {
         ResponseDataModel response = new ResponseDataModel();
-        int code = advertiserService.addAdvertiser(advertiser);
+        int code = factoryService.addFactory(factory);
         if (code==1){
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {
@@ -37,9 +34,9 @@ public class AdvertiserController {
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel updateAdvertiser(@RequestBody Advertiser advertiser){
+    public ResponseDataModel updateFactory(@RequestBody Factory factory){
         ResponseDataModel response = new ResponseDataModel();
-        int code = advertiserService.updateAdvertiser(advertiser);
+        int code = factoryService.updateFactory(factory);
         if (code ==1) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {
@@ -49,18 +46,17 @@ public class AdvertiserController {
     }
 
 
-    @RequestMapping(value="/getAdvertiserList", method = RequestMethod.POST)
+    @RequestMapping(value="/getFactoryList", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel getAdvertiserList(@RequestBody Advertiser advertiser){
+    public ResponseDataModel getFactoryList(@RequestBody Factory factory){
         ResponseDataModel response = new ResponseDataModel();
-        List<Advertiser> advertiserList = advertiserService.getAdvertiserList();
-        if (advertiserList !=null) {
+        List<Factory> factoryList = factoryService.getfactoryList();
+        if (factoryList !=null) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(advertiserList);
+            response.setData(factoryList);
         } else {
             response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
         }
         return response;
     }
-
 }

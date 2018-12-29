@@ -20,4 +20,7 @@ public interface UserMapper {
     public List<User> findUserList();
     public int updateUser(@Param("user") User user);
     public int updateUserIntegration(@Param("user") User user);
+
+    public List<User> getUserList();
+
 }

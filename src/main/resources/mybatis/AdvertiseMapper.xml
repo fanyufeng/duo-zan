@@ -27,10 +27,27 @@
     )
     </insert>
 
-    <update id="updateAadvertise">
+    <update id="updateAdvertise">
         UPDATE advertise
-        SET times = ${advertise.status},
+        SET status = ${advertise.status},
+        `name` = ${advertise.name},
+        advertise_url = ${advertise.advertise_url},
         modify_time = now()
         WHERE id = #{advertise.id}
     </update>
+
+    <select id="findAdvertise" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
+      select * from advertise
+    </select>
+
+    <resultMap type="com.duode.model.Advertiser" id="advertiserList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="advertiser_id" property="advertiser_id"/>
+        <result column="advertiser_url" property="advertiser_url"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
 </mapper>

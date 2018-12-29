@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.ProductMapper">
+    <insert id="addProduct">
+    insert into product(
+        `name`,
+        status,
+        comment,
+        factory_id,
+        create_time,
+        modify_time
+    )
+    values (
+        #{product.name},
+        #{product.status},
+        #{product.comment},
+        #{product.factory_id},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateProduct">
+        UPDATE product
+        SET `name`=${product.name},
+        #{product.status},
+        #{product.comment},
+        #{product.factory_id},
+        modify_time = now()
+        WHERE id = #{product.id}
+    </update>
+
+    <select id="findProduct" parameterType="com.duode.model.Product" resultMap="productList">
+      select * from product
+    </select>
+
+    <resultMap type="com.duode.model.Product" id="productList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="factory_id" property="factory_id"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>
