@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duode.mapper.AdvertiserMapper">
- 
-    <select id="findAdvertiser" resultType="com.duode.model.Advertiser">
-      select * from advertiser where id=#{id}
-    </select>
-
     <insert id="addAdvertiser">
     insert into advertiser(
         `name`,
