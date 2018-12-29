@@ -40,7 +40,7 @@
       select * from advertise
     </select>
 
-    <resultMap type="com.duode.model.Advertiser" id="advertiserList">
+    <resultMap type="com.duode.model.Advertise" id="advertiseList">
         <result column="id" property="id"/>
         <result column="name"  property="name"/>
         <result column="status"  property="status"/>
