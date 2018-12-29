@@ -21,7 +21,11 @@ public class AdvertiserService {
         int advertiseResponse = advertiserMapper.addAdvertiser(advertiser);
         return advertiseResponse;
     }
-    
+
+    public Advertiser findAdvertiser(int id) {
+        Advertiser advertiser =  advertiserMapper.findAdvertiserElem(id);
+        return advertiser;
+    }
 
     public int updateAdvertiser(Advertiser advertiser){
         int code = advertiserMapper.updateAdvertiser(advertiser);
