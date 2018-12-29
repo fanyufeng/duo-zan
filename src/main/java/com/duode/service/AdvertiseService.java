@@ -35,7 +35,7 @@ public class AdvertiseService {
     }
 
     public List<Advertise> getAdvertiseList(){
-        List<Advertise> advertiseList= advertiseMapper.findAdvertise();
+        List<Advertise> advertiseList= advertiseMapper.findAdvertiseList();
         if ( advertiseList.size() !=0) {
             return advertiseList;
         } else {

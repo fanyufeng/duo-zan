@@ -13,5 +13,5 @@ public interface AdvertiseMapper {
     public Advertise findAdvertise(@Param("id") int id);
     public int addAdvertise(@Param("advertise") Advertise advertise);
     public int updateAdvertise(@Param("advertise") Advertise advertise);
-    public List<Advertise> findAdvertise();
+    public List<Advertise> findAdvertiseList();
 }

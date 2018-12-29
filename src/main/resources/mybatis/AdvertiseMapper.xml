@@ -36,7 +36,7 @@
         WHERE id = #{advertise.id}
     </update>
 
-    <select id="findAdvertise" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
+    <select id="findAdvertiseList" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
       select * from advertise
     </select>
 
