@@ -6,6 +6,8 @@ package com.duode.model;
 public class Cash {
     public int id;
     public int user_id;
+    public int integration_elem;
+    public double proportion;
     public double cash_elem;
     public String comment;
     public String create_time;
@@ -59,11 +61,29 @@ public class Cash {
         this.modify_time = modify_time;
     }
 
+    public int getIntegration_elem() {
+        return integration_elem;
+    }
+
+    public void setIntegration_elem(int integration_elem) {
+        this.integration_elem = integration_elem;
+    }
+
+    public double getProportion() {
+        return proportion;
+    }
+
+    public void setProportion(double proportion) {
+        this.proportion = proportion;
+    }
+
     @Override
     public String toString() {
         return "Cash{" +
                 "id=" + id +
                 ", user_id=" + user_id +
+                ", integration_elem=" + integration_elem +
+                ", proportion=" + proportion +
                 ", cash_elem=" + cash_elem +
                 ", comment='" + comment + '\'' +
                 ", create_time='" + create_time + '\'' +

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.CashMapper">
+    <insert id="addCash">
+    insert into cash(
+        user_id,
+        integration_elem,
+        proportion,
+        cash_elem,
+        comment,
+        create_time,
+        modify_time
+    )
+    values (
+        #{cash.user_id},
+        #{cash.integration_elem},
+        #{cash.proportion},
+        #{cash.cash_elem},
+        #{cash.comment},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateCash">
+        UPDATE cash
+        SET `name`=${cash.name},
+        #{cash.status},
+        #{cash.comment},
+        #{cash.factory_id},
+        modify_time = now()
+        WHERE id = #{cash.id}
+    </update>
+
+    <select id="findCash" parameterType="com.duode.model.Cash" resultMap="cashList">
+      select * from cash
+    </select>
+
+    <resultMap type="com.duode.model.Cash" id="cashList">
+        <result column="id" property="id"/>
+        <result column="user_id"  property="user_id"/>
+        <result column="integration_elem"  property="integration_elem"/>
+        <result column="proportion" property="proportion"/>
+        <result column="cash_elem" property="cash_elem"/>
+        <result column="comment" property="comment"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>

@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `card`(
    `product_id` INT comment '产品id',
    `advertise_id` int comment '广告商id',
    `integration_num` int not null DEFAULT 0 comment '积分金额',
+   `video_url` varchar(100),
    `times` int not null DEFAULT 0 comment '卡券使用次数',
    `unique_id` varchar(100),
    `status` int default 0 comment '0 表示正常，1表示禁用',

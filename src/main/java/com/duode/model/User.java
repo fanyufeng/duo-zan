@@ -17,7 +17,7 @@ public class User {
     private String avatar_url;
     private String session_key;
     private int integration;
-    private int cash;
+    private double cash;
 
 
 
@@ -126,17 +126,17 @@ public class User {
         this.integration = integration;
     }
 
-    public int getCash() {
+    public double getCash() {
         return cash;
     }
 
-    public void setCash(int cash) {
+    public void setCash(double cash) {
         this.cash = cash;
     }
 
-
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
