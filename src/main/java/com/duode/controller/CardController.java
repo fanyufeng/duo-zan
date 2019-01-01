@@ -5,6 +5,7 @@ import com.duode.constant.ApiStatusCode;
 import com.duode.model.*;
 import com.duode.request.CardRequest;
 import com.duode.response.CardAdvertiseResponse;
+import com.duode.response.CardScanResponse;
 import com.duode.response.ResponseDataModel;
 import com.duode.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class CardController {
     public AdvertiseService advertiseService;
     @Autowired
     public AdvertiserService advertiserService;
+    @Autowired
+    public ProductService productService;
+
 
 
 
@@ -85,6 +89,8 @@ public class CardController {
     @ResponseBody
     public ResponseDataModel updateCard(@RequestBody CardRequest cardRequest) {
         ResponseDataModel response = new ResponseDataModel();
+
+        CardScanResponse cardScanResponse = new CardScanResponse();
         Card re = cardService.findCard(cardRequest.getUnique_id());
 
         if (re.getTimes()==0) {
@@ -111,9 +117,21 @@ public class CardController {
             user.setIntegration(user.getIntegration() + re.getIntegration_num());
             userService.updateUserIntegration(user);
 
+            List<Product> productList = productService.getProduct(re.getProduct_id());
+            Advertise advertise = advertiseService.findAdvertise(re.getAdvertise_id());
+            List<Advertise> advertises = new ArrayList<>();
+            advertises.add(advertise);
+
+            List<Card> cards = new ArrayList<>();
+            cards.add(re);
+
+            cardScanResponse.setProductList(productList);
+            cardScanResponse.setCardList(cards);
+            cardScanResponse.setAdvertiseList(advertises);
+
             if (re !=null){
                 response.setStatusCode(ApiStatusCode.SUCCESS.value());
-                response.setData(re);
+                response.setData(cardScanResponse);
             } else {
                 response.setStatusCode(ApiStatusCode.SUCCESS.value());
             }

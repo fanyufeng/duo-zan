@@ -10,6 +10,7 @@ import java.util.List;
  * Created by fanyufeng in 18/12/23
  */
 public interface ProductMapper {
+    public List<Product> findProductInfo(@Param("id") int id);
     public int addProduct(@Param("product") Product product);
     public int updateProduct(@Param("product") Product product);
     public List<Product> findProduct();

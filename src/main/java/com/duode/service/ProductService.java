@@ -18,6 +18,18 @@ public class ProductService {
     @Autowired
     public ProductMapper productMapper;
 
+    public List<Product>  getProduct(int product_id){
+        List<Product>  productReponse = productMapper.findProductInfo(product_id);
+
+        if(productReponse.size()==0) {
+            return null;
+        } else {
+
+            return productReponse;
+        }
+
+    }
+
     public int  addProduct(Product product){
         int  productReponse = productMapper.addProduct(product);
         return productReponse;
