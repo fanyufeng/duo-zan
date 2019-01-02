@@ -417,16 +417,18 @@
         var userId = getUrlParam("id");
         var info = {
             id:userId
-        }
+        };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/advertiser/getAdvertiserList',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data);
+                if(data.data.statusCode == "02000000"){
+
+                }
             }
         })
 

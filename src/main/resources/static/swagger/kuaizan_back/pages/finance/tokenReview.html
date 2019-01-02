@@ -423,14 +423,13 @@
             id:userId
         }
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/user/getUserList',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data)
             }
         })
 

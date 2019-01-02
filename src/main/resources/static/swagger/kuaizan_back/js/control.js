@@ -1,27 +1,32 @@
 $(document).ready(function () {
     //添加广告客户
-    $("#commit_adsCustomer").onclick(function () {
+    $("#commit_adsCustomer").click(function () {
         var adClient_name = $("#tf-box-name").val();
         var adClient_address = $("#tf-box-address").val();
         var adClientContact_name = $("#tf-box-poc").val();
         var adClient_contact = $("#tf-box-contact").val();
         var info = {
-
+            name:adClient_name,
+            comment:adClientContact_name,
+            address:adClient_address,
+            telephone: adClient_contact
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/advertiser/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data);
+                if(data.data.statusCode == "02000000"){
+                    console.log(data.data)
+                }
             }
         })
     });
     //添加广告项目
-    $("#commit_adProject").onclick(function () {
+    $("#commit_adProject").click(function () {
         var adProject_name = $("#tf-box-name").val();
         var adProject_url = $("#tf-box-upload").val();
         var adProject_client = $("#selected_client").data("client");
@@ -29,43 +34,50 @@ $(document).ready(function () {
         var adProjectContact_name = $("#tf-box-poc").val();
         var adProject_contact = $("#tf-box-contact").val();
         var info = {
-
+            name:adProject_name,
+            advertiser_id:1,
+            comment:adProject_address,
+            advertise_url:adProject_url
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/advertise/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data);
             }
         })
     });
     //添加项目客户
-    $("#commit_projectClient").onclick(function () {
+    $("#commit_projectClient").click(function () {
         var projectClient_name = $("#tf-box-name").val();
         var projectClient_address = $("#tf-box-address").val();
         var projectClientContact_name = $("#tf-box-poc").val();
         var projectClient_contact = $("#tf-box-contact").val();
         var info = {
-
+            name:projectClient_name,
+            comment:projectClientContact_name,
+            telephone:projectClient_contact,
+            address:projectClient_address
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/factory/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data);
+                if(data.data.statusCode == "02000000"){
+                    console.log(data.data);
+                }
             }
         })
     });
     //添加项目
-    $("#commit_project").onclick(function () {
+    $("#commit_project").click(function () {
         var projectClient_name = $("#tf-box-name").val();
         var Project_client = $("#selected_client").data("client");
         var project_address = $("#tf-box-address").val();
@@ -74,22 +86,26 @@ $(document).ready(function () {
         var QR_total = $("#tf-box-qr").val();
         var prohect_price = $("#tf-box-price").val();
         var info = {
-
+            name:projectClient_name,
+            comment:project_address,
+            factory_id:1
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/product/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                console.log(data);
+                if(data.data.statusCode == "02000000"){
+                    console.log(data.data)
+                }
             }
         })
     });
     //设置现金分配
-    $("#commit_dividend").onclick(function () {
+    $("#commit_dividend").click(function () {
         var cash_total = $("#tf-box-name").val();
         var info = {
 
@@ -107,7 +123,7 @@ $(document).ready(function () {
         })
     });
     //设置Token系数
-    $("#commit_coefficient").onclick(function () {
+    $("#commit_coefficient").click(function () {
         var token_coefficient = $("#tf-box-name").val();
         var info = {
 
