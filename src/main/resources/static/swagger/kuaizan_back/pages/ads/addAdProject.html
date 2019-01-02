@@ -267,7 +267,7 @@
                                                 <div class="template-demo">
                                                     <div id="hero-js-select" class="mdc-select" role="listbox">
                                                         <div class="mdc-select__surface" tabindex="0">
-                                                            <div class="mdc-select__label">Pick a Food Group</div>
+                                                            <div data-client="1" id="selected_client" class="mdc-select__label">Pick a Food Group</div>
                                                             <div class="mdc-select__selected-text"></div>
                                                             <div class="mdc-select__bottom-line"></div>
                                                         </div>
@@ -303,8 +303,8 @@
                                             <div id="demo-tf-box-upload-wrapper">
                                                 <div id="tf-box-upload-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
                                                     <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="file" id="tf-box-upload" class="mdc-text-field__input">
-                                                    <button class="mdc-button" data-mdc-auto-init="MDCRipple" style="margin: auto">
+                                                    <input type="file" id="upload001" class="mdc-text-field__input">
+                                                    <button id="upload" class="mdc-button" data-mdc-auto-init="MDCRipple" style="margin: auto">
                                                         上传
                                                     </button>
                                                     <div class="mdc-text-field__bottom-line"></div>
@@ -350,7 +350,7 @@
                                     </div>
                                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                         <div class="template-demo">
-                                            <button class="mdc-button" data-mdc-auto-init="MDCRipple">
+                                            <button id="commit_adProject" class="mdc-button" data-mdc-auto-init="MDCRipple">
                                                 提交
                                             </button>
                                         </div>
@@ -388,6 +388,43 @@
 <!-- inject:js -->
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
+<script src="../../js/control.js"></script>
+<script src="../../js/ajaxfileupload.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#upload").click(function () {
+            $.ajaxFileUpload({
+                url:"https://kuaizan.duodework.com/annexLibrary/fileSave",//需要链接到服务器地址
+                secureuri:false,
+                fileElementId:"upload001",//文件选择框的id属性
+                type:"POST",
+                dataType: 'json',   //json
+                success: function (data) {
+                    console.log(data);
+                    if(data.statusCode == "02000000"){
+
+                    }
+
+                }
+            })
+        })
+        $("#hero-js-select").click(function () {
+            $.ajax({
+                url:'https://kuaizan.duodework.com/advertiser/add',
+                type:'POST',
+                data:JSON.stringify(info),
+                contentType:'application/json',
+                dataType:'json',
+                success:function (data) {
+                    console.log(data);
+                    if(data.data.statusCode == "02000000"){
+                        console.log(data.data)
+                    }
+                }
+            })
+        })
+    })
+</script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <!-- End custom js for this page-->
