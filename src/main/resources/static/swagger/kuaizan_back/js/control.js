@@ -140,4 +140,75 @@ $(document).ready(function () {
             }
         })
     });
+    //页面跳转控制
+    $("#toIndex").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/index.html?id="+id;
+    });
+    $("#toAdCustomList").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/ads/adCustomList.html?id="+id;
+    });
+    $("#toAddAdCustom").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/ads/addAdCustomList.html?id="+id;
+    });
+    $("#toAddAdProject").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/ads/addAdProject.html?id="+id;
+    });
+    $("#toAdProjectList").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/ads/adProjectList.html?id="+id;
+    });
+    $("#toAddProjectCustom").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/project/addProjectCustom.html?id="+id;
+    });
+    $("#toAddProject").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/project/addProject.html?id="+id;
+    });
+    $("#toProjectCustomList").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/project/projectCustomList.html?id="+id;
+    });
+    $("#toProjectList").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/project/projectList.html?id="+id;
+    });
+    $("#toSetTokenCount").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/finance/setTokenCount.html?id="+id;
+    });
+    $("#toSetTokenCoefficient").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/finance/setTokenCoefficient.html?id="+id;
+    });
+    $("#toSetCashDividend").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/finance/setCashDividend.html?id="+id;
+    });
+    $("#toTokenReview").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/finance/tokenReview.html?id="+id;
+    });
+    $("#toCashReview").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/finance/cashReview.html?id="+id;
+    });
+    $("#toUserList").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/user/userList.html?id="+id;
+    });
+    $("#toSetPurview").click(function () {
+        var id = getUrlParam("id");
+        window.location.href = "/duo-zan/src/main/resources/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
+    });
+    //获取参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
 })
