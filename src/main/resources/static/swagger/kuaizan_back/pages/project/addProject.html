@@ -265,14 +265,15 @@
                                             </section>
                                             <section class="mdc-card__supporting-text">
                                                 <div class="template-demo">
-                                                    <div id="hero-js-select" class="mdc-select" role="listbox">
+                                                    <div id="hero-js-select" style="width: 300px" class="mdc-select" role="listbox">
                                                         <div class="mdc-select__surface" tabindex="0">
                                                             <div class="mdc-select__label">Pick a Food Group</div>
                                                             <div class="mdc-select__selected-text"></div>
                                                             <div class="mdc-select__bottom-line"></div>
                                                         </div>
                                                         <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul class="mdc-list mdc-simple-menu__items">
+                                                            <ul id="custom_list" class="mdc-list mdc-simple-menu__items">
+                                                                <!--
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Bread, Cereal, Rice, and Pasta
                                                                 </li>
@@ -291,6 +292,7 @@
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Fats, Oils, and Sweets
                                                                 </li>
+                                                                -->
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -305,14 +307,15 @@
                                             </section>
                                             <section class="mdc-card__supporting-text">
                                                 <div class="template-demo">
-                                                    <div id="adProject-js-select" data-client="1" class="mdc-select" role="listbox">
+                                                    <div id="adProject-js-select" style="width: 300px" data-client="1" class="mdc-select" role="listbox">
                                                         <div data-client="1" id="selected_client" class="mdc-select__surface" tabindex="0">
                                                             <div class="mdc-select__label">Pick a Food Group</div>
                                                             <div class="mdc-select__selected-text"></div>
                                                             <div class="mdc-select__bottom-line"></div>
                                                         </div>
                                                         <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul class="mdc-list mdc-simple-menu__items">
+                                                            <ul id="adProject_list" class="mdc-list mdc-simple-menu__items">
+                                                                <!--
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Bread, Cereal, Rice, and Pasta
                                                                 </li>
@@ -331,6 +334,7 @@
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Fats, Oils, and Sweets
                                                                 </li>
+                                                                -->
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -439,6 +443,59 @@
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
+<script>
+    $(document).ready(function () {
+        var id = getUrlParam("id");
+        var info = {
+            id:id
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertise/getAdvertiseList',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    for(var i=0,j=data.data.length;i<j;i++){
+                        var str =
+                            '<li class="mdc-list-item adProject_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            data.data[i].name +
+                            '</li>';
+                        $("#adProject_list").append(str);
+                    }
+                }
+            }
+        })
+        $.ajax({
+            url:'https://kuaizan.duodework.com/factory/getFactoryList',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    for(var i=0,j=data.data.length;i<j;i++){
+                        var str =
+                            '<li class="mdc-list-item custom_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            data.data[i].name +
+                            '</li>';
+                        $("#custom_list").append(str);
+                    }
+                }
+            }
+        })
+    })
+
+    //获取参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+</script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <!-- End custom js for this page-->
