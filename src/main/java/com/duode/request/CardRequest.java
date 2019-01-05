@@ -10,6 +10,8 @@ public class CardRequest {
     public int integration_num;
     public int status;
     public int times;
+    public String video_url;
+    public int card_num;
     public String unique_id;
     public String comment;
     public int user_id;
@@ -88,6 +90,22 @@ public class CardRequest {
         this.user_id = user_id;
     }
 
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
+    public int getCard_num() {
+        return card_num;
+    }
+
+    public void setCard_num(int card_num) {
+        this.card_num = card_num;
+    }
+
     @Override
     public String toString() {
         return "CardRequest{" +
@@ -97,6 +115,8 @@ public class CardRequest {
                 ", integration_num=" + integration_num +
                 ", status=" + status +
                 ", times=" + times +
+                ", video_url='" + video_url + '\'' +
+                ", card_num=" + card_num +
                 ", unique_id='" + unique_id + '\'' +
                 ", comment='" + comment + '\'' +
                 ", user_id=" + user_id +
