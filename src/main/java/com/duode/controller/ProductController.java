@@ -31,13 +31,7 @@ public class ProductController {
         int code = productService.addProduct(product);
 
 
-        for (int i=0;i<product.getCard_num();i++) {
-            Card cardRequest = new Card();
-            cardRequest.setUnique_id(IDGeneratorUtils.uuid32());
-            cardRequest.setTimes(5);
-            cardRequest.setProduct_id();
-            int code = cardService.addCard(cardRequest);
-        }
+
 
 
 
