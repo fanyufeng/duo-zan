@@ -140,6 +140,7 @@ public class AnnexLibraryController {
         }catch(Exception e){
             logger.error("文件上传失败,原因{}");
         }
+        System.out.println(resDataModel.toString());
         return resDataModel;
     }
 
