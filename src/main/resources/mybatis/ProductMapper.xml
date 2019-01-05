@@ -49,6 +49,8 @@
         <result column="status"  property="status"/>
         <result column="comment" property="comment"/>
         <result column="factory_id" property="factory_id"/>
+        <result column="card_num" property="card_num"/>
+        <result column="integration_num" property="integration_num"/>
         <result column="create_time"  property="create_time"/>
         <result column="modify_time"  property="modify_time"/>
     </resultMap>

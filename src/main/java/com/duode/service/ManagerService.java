@@ -2,14 +2,8 @@ package com.duode.service;
 
 import com.duode.mapper.ManagerMapper;
 import com.duode.model.Manager;
-import com.duode.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.misc.BASE64Encoder;
-
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
