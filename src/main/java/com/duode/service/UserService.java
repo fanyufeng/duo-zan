@@ -48,7 +48,21 @@ public class UserService {
     public List<User> getUserListByIntegration() {
 
         List<User> userList = userMapper.findUserList();
-        return userList;
+        if (userList.size() != 0) {
+            return userList;
+        } else {
+            return null;
+        }
+
+    }
+
+    public List<User> getUserList() {
+        List<User> userList = userMapper.getUserList();
+        if (userList.size() != 0) {
+            return userList;
+        } else {
+            return null;
+        }
 
     }
 

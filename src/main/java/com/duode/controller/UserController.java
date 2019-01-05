@@ -251,6 +251,20 @@ public class UserController {
         return resDataModel;
     }
 
+    @RequestMapping(value = "/getUserList", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getUserList(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        List<User> userU = userService.getUserList();
+        if (userU !=null) {
+            resDataModel.setData(userU);
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        }
+        return resDataModel;
+    }
+
     @RequestMapping(value = "/getUserListByIntegration", method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel getUserListByIntegration(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {

@@ -7,9 +7,6 @@ public class CardUse {
     public int id;
     public int card_id;
     public int integration_num;
-
-
-
     public int satus;
     public int num;
     public int user_id;

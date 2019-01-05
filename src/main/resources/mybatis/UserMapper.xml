@@ -53,6 +53,10 @@
       select * from user order by integration limit 10
     </select>
 
+    <select id="getUserList" parameterType="com.duode.model.User" resultMap="userList">
+      select * from user order by integration
+    </select>
+
     <resultMap type="com.duode.model.User" id="userList">
         <result column="id" property="id"/>
         <result column="name"  property="name"/>

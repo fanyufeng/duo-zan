@@ -1,15 +1,15 @@
 package com.duode.model;
 
 /**
- * Created by fanyufeng on 2018/11/29
+ * Created by fanyufeng in 18/12/25
  */
-public class Cash {
+public class Factory {
     public int id;
-    public int user_id;
-    public int integration_elem;
-    public double proportion;
-    public double cash_elem;
+    public String name;
+    public int status;
     public String comment;
+    public String telephone;
+    public String address;
     public String create_time;
     public String modify_time;
 
@@ -21,20 +21,20 @@ public class Cash {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public String getName() {
+        return name;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getCash_elem() {
-        return cash_elem;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCash_elem(double cash_elem) {
-        this.cash_elem = cash_elem;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getComment() {
@@ -43,6 +43,22 @@ public class Cash {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCreate_time() {
@@ -61,31 +77,16 @@ public class Cash {
         this.modify_time = modify_time;
     }
 
-    public int getIntegration_elem() {
-        return integration_elem;
-    }
-
-    public void setIntegration_elem(int integration_elem) {
-        this.integration_elem = integration_elem;
-    }
-
-    public double getProportion() {
-        return proportion;
-    }
-
-    public void setProportion(double proportion) {
-        this.proportion = proportion;
-    }
 
     @Override
     public String toString() {
-        return "Cash{" +
+        return "Factory{" +
                 "id=" + id +
-                ", user_id=" + user_id +
-                ", integration_elem=" + integration_elem +
-                ", proportion=" + proportion +
-                ", cash_elem=" + cash_elem +
+                ", name='" + name + '\'' +
+                ", status=" + status +
                 ", comment='" + comment + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +
                 '}';

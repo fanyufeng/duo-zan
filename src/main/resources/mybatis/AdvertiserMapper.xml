@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duode.mapper.AdvertiserMapper">
- 
-    <select id="findAdvertiser" resultType="com.duode.model.Advertiser">
+
+    <select id="findAdvertiserElem" resultType="com.duode.model.Advertiser">
       select * from advertiser where id=#{id}
     </select>
 
@@ -26,4 +26,30 @@
         now()
     )
     </insert>
+
+
+    <select id="findAdvertiser" parameterType="com.duode.model.Advertiser" resultMap="advertiserList">
+      select * from advertiser
+    </select>
+
+    <update id="updateAdvertiser">
+        UPDATE advertiser
+        SET telephone = ${advertiser.telephone},
+        status=#{advertiser.status},
+        address=${advertiser.address},
+        `name`=${advertiser.name},
+        modify_time = now()
+        WHERE id = #{advertiser.id}
+    </update>
+
+    <resultMap type="com.duode.model.Advertiser" id="advertiserList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="telephone" property="telephone"/>
+        <result column="address" property="address"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
 </mapper>

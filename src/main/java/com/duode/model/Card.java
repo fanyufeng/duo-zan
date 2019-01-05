@@ -10,6 +10,7 @@ public class Card {
     public int integration_num;
     public int status;
     public int times;
+    public String video_url;
     public String unique_id;
     public String comment;
     public String create_time;
@@ -96,15 +97,24 @@ public class Card {
         this.modify_time = modify_time;
     }
 
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
                 "id=" + id +
                 ", product_id=" + product_id +
-                ", advertiser_id=" + advertise_id +
+                ", advertise_id=" + advertise_id +
                 ", integration_num=" + integration_num +
                 ", status=" + status +
                 ", times=" + times +
+                ", video_url='" + video_url + '\'' +
                 ", unique_id='" + unique_id + '\'' +
                 ", comment='" + comment + '\'' +
                 ", create_time='" + create_time + '\'' +

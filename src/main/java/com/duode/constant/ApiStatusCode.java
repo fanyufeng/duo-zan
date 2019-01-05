@@ -188,6 +188,12 @@ public enum ApiStatusCode {
 	  */
 	OUT_DATE("02020032"),
 	/**
+	 *@Fields  EMPLOYEE_SIGN_UP: 用户已报名
+	 *
+	 */
+	OUT_OF_INTEGRATION("02020033"),
+
+	/**
 	  * @Fields  过滤器 
 	  */
 	ACCESS_DENY("02020007");

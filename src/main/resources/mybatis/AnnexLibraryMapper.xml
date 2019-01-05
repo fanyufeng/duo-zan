@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.AnnexLibraryMapper">
+    <insert id="addAnnexLibrary">
+    insert into annexLibrary(
+        manager_id,
+        manager_name,
+        file_name,
+        file_path,
+        card_id,
+        url,
+        create_time,
+        modify_time
+    )
+    values (
+        #{annexLibrary.manager_id},
+        #{annexLibrary.manager_name},
+        #{annexLibrary.file_name},
+        #{annexLibrary.file_path},
+        #{annexLibrary.card_id},
+        #{annexLibrary.url},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateAnnexLibrary">
+        UPDATE annexLibrary
+        SET file_name=${annexLibrary.file_name},
+        file_path=#{annexLibrary.status},
+        modify_time = now()
+        WHERE id = #{annexLibrary.id}
+    </update>
+
+    <select id="findAnnexLibrary" parameterType="com.duode.model.AnnexLibrary" resultMap="annexLibraryList">
+      select * from annexLibrary
+    </select>
+
+    <resultMap type="com.duode.model.AnnexLibrary" id="annexLibraryList">
+        <result column="id" property="id"/>
+        <result column="manager_id"  property="manager_id"/>
+        <result column="manager_name"  property="manager_name"/>
+        <result column="file_name" property="file_name"/>
+        <result column="file_path" property="file_path"/>
+        <result column="status" property="status"/>
+        <result column="card_id" property="card_id"/>
+        <result column="url" property="url"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>
