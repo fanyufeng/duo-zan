@@ -81,7 +81,7 @@ public class AnnexLibraryController {
      *  文件上传
      * @return
      */
-    @RequestMapping(value="/fileSave",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/fileSave",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public ResponseDataModel fileUpload(HttpServletRequest request) throws Exception{
         ResponseDataModel resDataModel = new ResponseDataModel();
