@@ -6,7 +6,7 @@
       select * from product where product.id=#{id}
     </select>
 
-    <insert id="addProduct" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addProduct" parameterType="com.duode.model.Product" useGeneratedKeys="true" keyProperty="id">
     insert into product(
         `name`,
         status,

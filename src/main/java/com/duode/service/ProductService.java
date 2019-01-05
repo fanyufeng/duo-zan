@@ -32,6 +32,7 @@ public class ProductService {
 
     public int  addProduct(Product product){
         int  productReponse = productMapper.addProduct(product);
+        System.out.println("sbfhvs"+product.getId());
         return productReponse;
     }
 
