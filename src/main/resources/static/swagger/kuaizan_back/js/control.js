@@ -105,19 +105,27 @@ $(document).ready(function () {
             }
         })
     });
+    //选择项目客户
+    var selected_ClientId = "";
+    $("#custom_list").on('click','.custom_selected',function () {
+        selected_ClientId = $(this).data("id")
+    });
+    //选择广告
+    var selected_AdProjectId = "";
+    $("#adProject_list").on('click','.adProject_selected',function () {
+        selected_AdProjectId = $(this).data("id")
+    });
     //添加项目
     $("#commit_project").click(function () {
         var projectClient_name = $("#tf-box-name").val();
-        var Project_client = $("#selected_client").data("client");
         var project_address = $("#tf-box-address").val();
-        var projectClientContact_name = $("#tf-box-poc").val();
-        var projectClient_contact = $("#tf-box-contact").val();
         var QR_total = $("#tf-box-qr").val();
-        var prohect_price = $("#tf-box-price").val();
         var info = {
             name:projectClient_name,
             comment:project_address,
-            factory_id:1
+            integration_num:parseInt(QR_total),
+            factory_id:parseInt(selected_ClientId),
+            advertise_id:parseInt(selected_AdProjectId)
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/product/add',
