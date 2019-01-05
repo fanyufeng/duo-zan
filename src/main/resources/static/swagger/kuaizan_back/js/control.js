@@ -28,19 +28,39 @@ $(document).ready(function () {
             }
         })
     });
+    //上传文件
+    var vedio_url = "";
+    $("#upload").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    vedio_url = "https://kuaizan.duodework.com/images/" + data.data.url;
+                }
+
+            }
+        })
+    });
+    //添加广告项目中的获取广告客户列表
+    var selected_id = "";
+    $("#section_info").on('click','.selected',function () {
+        selected_id = $(this).data("id");
+    });
     //添加广告项目
     $("#commit_adProject").click(function () {
         var adProject_name = $("#tf-box-name").val();
-        var adProject_url = $("#tf-box-upload").val();
-        var adProject_client = $("#selected_client").data("client");
         var adProject_address = $("#tf-box-address").val();
-        var adProjectContact_name = $("#tf-box-poc").val();
-        var adProject_contact = $("#tf-box-contact").val();
         var info = {
             name:adProject_name,
-            advertiser_id:1,
+            advertiser_id:parseInt(selected_id),
             comment:adProject_address,
-            advertise_url:adProject_url
+            advertise_url:vedio_url
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/advertise/add',
@@ -199,23 +219,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
     });
 
-    //上传文件
-    $("#upload").click(function () {
-        $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
-            secureuri:false,
-            fileElementId:'upload_video',//文件选择框的id属性
-            type:'POST',
-            dataType: 'JSON',   //json
-            success: function (data) {
-                console.log(data);
-                if(data.statusCode == "02000000"){
 
-                }
-
-            }
-        })
-    });
     //选择用户
     /**
     $("#hero-js-select").click(function () {
