@@ -29,12 +29,6 @@ public class ProductController {
     public ResponseDataModel addProduct(@RequestBody Product product) {
         ResponseDataModel response = new ResponseDataModel();
         int code = productService.addProduct(product);
-
-
-
-
-
-
         if (code==1){
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {

@@ -39,18 +39,30 @@ public class CardController {
 
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel addCard(@RequestBody Card cardRequest) {
+    public ResponseDataModel addCard(@RequestBody CardRequest cardRequest) {
         ResponseDataModel response = new ResponseDataModel();
-        cardRequest.setUnique_id(IDGeneratorUtils.uuid32());
-        cardRequest.setTimes(5);
-        int code = cardService.addCard(cardRequest);
-        if (code==1){
-            Card re = cardService.findCard(cardRequest.getUnique_id());
-            response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(re);
-        } else {
-            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+
+        if (cardRequest.getCard_num()!=0) {
+            for (int i=0;i<cardRequest.getCard_num(); i++) {
+
+                Card card =new Card();
+                card.setProduct_id(cardRequest.getProduct_id());
+                card.setAdvertise_id(cardRequest.getAdvertiser_id());
+                card.setVideo_url(cardRequest.getVideo_url());
+                card.setUnique_id(IDGeneratorUtils.uuid32());
+                card.setTimes(5);
+                int code = cardService.addCard(card);
+                if (code==1){
+                    Card re = cardService.findCard(cardRequest.getUnique_id());
+                    response.setStatusCode(ApiStatusCode.SUCCESS.value());
+                    response.setData(re);
+                } else {
+                    response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+                }
+            }
+
         }
+
         return response;
     }
 
