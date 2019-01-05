@@ -119,23 +119,19 @@ public class AnnexLibraryController {
 
                             File localFile = new File(path);
 
+                            file.transferTo(localFile);
                             UploadResponse uploadResponse=new UploadResponse();
                             uploadResponse.setFileName(xpath);
                             uploadResponse.setFilePath(path);
                             uploadResponse.setStatus(1);
                             resDataModel.setData(uploadResponse);
-                            file.transferTo(localFile);
-
-                            File fileImage = new File(path);
-                            img=ImageIO.read(fileImage);
-                            BufferedImage image = new BufferedImage(200, 200,BufferedImage.TYPE_INT_RGB );
-                            image.getGraphics().drawImage(img, 0, 0, 200,200, null); // 绘制缩小后的图
+                            
                         }
 
                     }
                     //记录上传该文件后的时间
                     int finaltime = (int) System.currentTimeMillis();
-                    System.out.println(finaltime - pre);
+                    System.out.println("fanyufeng"+(finaltime - pre));
 
                 }
             }
@@ -146,6 +142,5 @@ public class AnnexLibraryController {
         }
         return resDataModel;
     }
-
 
 }
