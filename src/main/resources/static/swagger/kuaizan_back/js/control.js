@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    //获取参数
+    var id = getUrlParam("id");
     //添加广告客户
     $("#commit_adsCustomer").click(function () {
         var adClient_name = $("#tf-box-name").val();
@@ -19,8 +21,9 @@ $(document).ready(function () {
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
-                    console.log(data.data)
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -47,6 +50,10 @@ $(document).ready(function () {
             dataType:'json',
             success:function (data) {
                 console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
             }
         })
     });
@@ -70,8 +77,9 @@ $(document).ready(function () {
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
-                    console.log(data.data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -98,8 +106,9 @@ $(document).ready(function () {
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
-                    console.log(data.data)
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -136,8 +145,63 @@ $(document).ready(function () {
             dataType:'json',
             success:function (data) {
                 alert("ajax");
-                alert(data.data.statusCode);
+                alert(data.statusCode);
             }
         })
     });
+    //页面跳转控制
+    $("#toIndex").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/index.html?id="+id;
+    });
+    $("#toAdCustomList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/adCustomList.html?id="+id;
+    });
+    $("#toAddAdCustom").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdCustomList.html?id="+id;
+    });
+    $("#toAddAdProject").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdProject.html?id="+id;
+    });
+    $("#toAdProjectList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/adProjectList.html?id="+id;
+    });
+    $("#toAddProjectCustom").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/project/addProjectCustom.html?id="+id;
+    });
+    $("#toAddProject").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/project/addProject.html?id="+id;
+    });
+    $("#toProjectCustomList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/project/projectCustomList.html?id="+id;
+    });
+    $("#toProjectList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/project/projectList.html?id="+id;
+    });
+    $("#toSetTokenCount").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/setTokenCount.html?id="+id;
+    });
+    $("#toSetTokenCoefficient").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/setTokenCoefficient.html?id="+id;
+    });
+    $("#toSetCashDividend").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/setCashDividend.html?id="+id;
+    });
+    $("#toTokenReview").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/tokenReview.html?id="+id;
+    });
+    $("#toCashReview").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/cashReview.html?id="+id;
+    });
+    $("#toUserList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/user/userList.html?id="+id;
+    });
+    $("#toSetPurview").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
+    });
+    //获取参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
 })
