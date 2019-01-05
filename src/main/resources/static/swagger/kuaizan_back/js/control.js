@@ -36,6 +36,7 @@ $(document).ready(function () {
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
+            contentType:'application/json',
             dataType: 'JSON',   //json
             success: function (data) {
                 console.log(data);

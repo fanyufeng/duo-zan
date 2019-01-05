@@ -273,6 +273,7 @@
                                                         </div>
                                                         <div class="mdc-simple-menu mdc-select__menu">
                                                             <ul id="section_info" class="mdc-list mdc-simple-menu__items">
+                                                                <!--
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Bread, Cereal, Rice, and Pasta
                                                                 </li>
@@ -291,6 +292,7 @@
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Fats, Oils, and Sweets
                                                                 </li>
+                                                                --->
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -409,7 +411,7 @@
                     for(var i=0,j=data.data.length;i<j;i++){
                         var str =
                             '<li class="mdc-list-item selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
-                            '+ data.data[i].name +' +
+                             data.data[i].name +
                             '</li>';
                         $("#section_info").append(str);
                     }
