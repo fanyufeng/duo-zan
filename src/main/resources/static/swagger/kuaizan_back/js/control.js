@@ -36,13 +36,13 @@ $(document).ready(function () {
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
-            contentType:'application/json',
             dataType: 'JSON',   //json
             success: function (data) {
+                alert(data);
                 console.log(data);
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
-                    vedio_url = "https://kuaizan.duodework.com/images/" + data.data.url;
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
