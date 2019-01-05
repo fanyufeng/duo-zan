@@ -30,7 +30,10 @@ public class ProductController {
         ResponseDataModel response = new ResponseDataModel();
         int code = productService.addProduct(product);
         if (code==1){
+            product.setId(code);
+            response.setData(product);
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
+
         } else {
             response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
         }
