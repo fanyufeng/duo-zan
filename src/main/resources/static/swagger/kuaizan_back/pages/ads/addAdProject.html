@@ -266,13 +266,13 @@
                                             <section class="mdc-card__supporting-text">
                                                 <div class="template-demo">
                                                     <div id="hero-js-select" class="mdc-select" role="listbox">
-                                                        <div class="mdc-select__surface" tabindex="0">
+                                                        <div id="choose_client" class="mdc-select__surface" tabindex="0">
                                                             <div data-client="1" id="selected_client" class="mdc-select__label">Pick a Food Group</div>
                                                             <div class="mdc-select__selected-text"></div>
                                                             <div class="mdc-select__bottom-line"></div>
                                                         </div>
                                                         <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul class="mdc-list mdc-simple-menu__items">
+                                                            <ul id="section_info" class="mdc-list mdc-simple-menu__items">
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Bread, Cereal, Rice, and Pasta
                                                                 </li>
@@ -391,6 +391,40 @@
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
 <script src="../../js/ajaxfileupload.js"></script>
+<script>
+    $(document).ready(function () {
+        var id = getUrlParam("id");
+        var info = {
+            id:id
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertiser/getAdvertiserList',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    for(var i=0,j=data.data.length;i<j;i++){
+                        var str =
+                            '<li class="mdc-list-item selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            '+ data.data[i].name +' +
+                            '</li>';
+                        $("#section_info").append(str);
+                    }
+                }
+            }
+        })
+    })
+
+    //获取参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+</script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <!-- End custom js for this page-->
