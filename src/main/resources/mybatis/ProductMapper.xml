@@ -12,6 +12,8 @@
         status,
         comment,
         factory_id,
+        card_num,
+        integration_num,
         create_time,
         modify_time
     )
@@ -20,6 +22,8 @@
         #{product.status},
         #{product.comment},
         #{product.factory_id},
+        #{product.card_num},
+        #{product.integration_num},
         now(),
         now()
     )
@@ -28,9 +32,9 @@
     <update id="updateProduct">
         UPDATE product
         SET `name`=${product.name},
-        #{product.status},
-        #{product.comment},
-        #{product.factory_id},
+        status=#{product.status},
+        comment=#{product.comment},
+        factory_id=#{product.factory_id},
         modify_time = now()
         WHERE id = #{product.id}
     </update>

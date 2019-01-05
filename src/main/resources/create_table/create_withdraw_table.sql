@@ -1,11 +1,9 @@
-CREATE TABLE IF NOT EXISTS `product`(
+CREATE TABLE IF NOT EXISTS `withdraw`(
    `id` INT UNSIGNED AUTO_INCREMENT,
-   `name` VARCHAR(100),
-   `status` int not null DEFAULT 0,
+   `bank_card` VARCHAR(100),
+   `alipay` varchar(100),
    `comment` varchar(100),
-   `factory_id` int,
-   `card_num` int,
-   `integration_num` int,
+   `user_id` int,
    `create_time` DATETIME,
    `modify_time` DATETIME,
    PRIMARY KEY ( `id` )

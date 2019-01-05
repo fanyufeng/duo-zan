@@ -9,6 +9,8 @@ public class Product {
     public int status;
     public String comment;
     public int factory_id;
+    public int card_num;
+    public int integration_num;
     private String create_time;
     private String modify_time;
 
@@ -68,6 +70,22 @@ public class Product {
         this.modify_time = modify_time;
     }
 
+    public int getCard_num() {
+        return card_num;
+    }
+
+    public void setCard_num(int card_num) {
+        this.card_num = card_num;
+    }
+
+    public int getIntegration_num() {
+        return integration_num;
+    }
+
+    public void setIntegration_num(int integration_num) {
+        this.integration_num = integration_num;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -76,6 +94,8 @@ public class Product {
                 ", status=" + status +
                 ", comment='" + comment + '\'' +
                 ", factory_id=" + factory_id +
+                ", card_num=" + card_num +
+                ", integration_num=" + integration_num +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +
                 '}';
