@@ -39,7 +39,9 @@ $(document).ready(function () {
             contentType:'application/json',
             dataType: 'JSON',   //json
             success: function (data) {
-                console.log(data.data.fileName);
+                var newData = JSON.stringify(data);
+                alert(newData);
+                console.log(newData.data.fileName);
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
                     vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
