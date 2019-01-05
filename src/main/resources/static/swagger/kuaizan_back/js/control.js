@@ -198,6 +198,41 @@ $(document).ready(function () {
     $("#toSetPurview").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
     });
+
+    //上传文件
+    $("#upload").click(function () {
+        $.ajaxFileUpload({
+            url:"https://kuaizan.duodework.com/annexLibrary/fileSave",//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:"upload001",//文件选择框的id属性
+            type:"POST",
+            dataType: 'json',   //json
+            success: function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+
+                }
+
+            }
+        })
+    });
+    //选择用户
+    /**
+    $("#hero-js-select").click(function () {
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertiser/add',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                if(data.statusCode == "02000000"){
+                    console.log(data.data)
+                }
+            }
+        })
+    });
+    ***/
     //获取参数
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
