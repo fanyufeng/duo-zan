@@ -6,10 +6,7 @@
       select * from product where product.id=#{id}
     </select>
 
-    <insert id="addProduct" parameterType="com.duode.model.Product">
-    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
-        SELECT LAST_INSERT_ID()
-    </selectKey>
+    <insert id="addProduct" useGeneratedKeys="true" keyProperty="id">
     insert into product(
         `name`,
         status,
