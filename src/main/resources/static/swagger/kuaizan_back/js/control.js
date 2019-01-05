@@ -202,10 +202,11 @@ $(document).ready(function () {
     //上传文件
     $("#upload").click(function () {
         $.ajaxFileUpload({
-            url:"https://kuaizan.duodework.com/annexLibrary/fileSave",//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            data: { id: '123', name: 'ad_video' },
             secureuri:false,
-            fileElementId:"upload001",//文件选择框的id属性
-            type:"POST",
+            fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
             dataType: 'json',   //json
             success: function (data) {
                 console.log(data);
