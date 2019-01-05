@@ -39,10 +39,10 @@ $(document).ready(function () {
             contentType:'application/json',
             dataType: 'JSON',   //json
             success: function (data) {
-                console.log(data);
+                console.log(data.data.fileName);
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
-                    vedio_url = "https://kuaizan.duodework.com/images/" + data.data.url;
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
