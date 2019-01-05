@@ -203,7 +203,6 @@ $(document).ready(function () {
     $("#upload").click(function () {
         $.ajaxFileUpload({
             url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
-            data: { id: '123', name: 'ad_video' },
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
