@@ -416,7 +416,7 @@
     $(document).ready(function () {
         var userId = getUrlParam("id");
         var info = {
-            id:userId
+            id:parseInt(userId)
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/user/getUserList',
