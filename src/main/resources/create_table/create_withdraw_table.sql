@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS `withdraw`(
    `id` INT UNSIGNED AUTO_INCREMENT,
    `bank_card` VARCHAR(100),
    `alipay` varchar(100),
+   `pay` double,
    `comment` varchar(100),
    `user_id` int,
    `create_time` DATETIME,

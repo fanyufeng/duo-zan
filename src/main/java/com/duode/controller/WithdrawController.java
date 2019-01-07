@@ -1,9 +1,11 @@
 package com.duode.controller;
 
 import com.duode.constant.ApiStatusCode;
+import com.duode.model.User;
 import com.duode.model.Withdraw;
 import com.duode.response.ResponseDataModel;
 import com.duode.service.CardService;
+import com.duode.service.UserService;
 import com.duode.service.WithdrawService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +24,21 @@ public class WithdrawController {
     @Autowired
     public CardService cardService;
 
+    @Autowired
+    public UserService userService;
+
+
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addWithdraw(@RequestBody Withdraw withdraw) {
         ResponseDataModel response = new ResponseDataModel();
         int code = withdrawService.addWithdraw(withdraw);
+        User elem = userService.getUserInfo(withdraw.getUser_id());
+        if (elem != null) {
+            elem.setCash(elem.getCash()-withdraw.getPay());
+            userService.updateUser(elem);
+        }
+
         if (code!= 0){
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
 

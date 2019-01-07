@@ -56,7 +56,7 @@ public class CashController {
             }
 
 
-            double proprotion= Double.valueOf(cashtotal1.getCash_total())/sum;
+            double proprotion= cashtotal1.getCash_total()/sum;
             double cash_elem=integration * proprotion;//设置保留位数
 
             cash.setCash_elem(cash_elem);

@@ -7,6 +7,7 @@ public class Withdraw {
     public int id;
     public String bank_card;
     public String alipay;
+    public double pay;
     public String comment;
     public int user_id;
     private String create_time;
@@ -68,12 +69,21 @@ public class Withdraw {
         this.modify_time = modify_time;
     }
 
+    public double getPay() {
+        return pay;
+    }
+
+    public void setPay(double pay) {
+        this.pay = pay;
+    }
+
     @Override
     public String toString() {
         return "Withdraw{" +
                 "id=" + id +
                 ", bank_card='" + bank_card + '\'' +
                 ", alipay='" + alipay + '\'' +
+                ", pay=" + pay +
                 ", comment='" + comment + '\'' +
                 ", user_id=" + user_id +
                 ", create_time='" + create_time + '\'' +

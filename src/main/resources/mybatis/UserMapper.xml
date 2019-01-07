@@ -37,6 +37,7 @@
         UPDATE user
         SET unionid = #{user.unionid},
         openid=#{user.openid},
+        cash=#{user.cash},
         nick_name=#{user.nick_name},
         session_key=#{user.session_key},
         modify_time = now()

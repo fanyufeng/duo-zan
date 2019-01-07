@@ -10,6 +10,7 @@
     insert into withdraw(
         bank_card,
         alipay,
+        pay,
         comment,
         user_id,
         create_time,
@@ -18,6 +19,7 @@
     values (
         #{withdraw.bank_card},
         #{withdraw.alipay},
+        #{withdraw.pay},
         #{withdraw.comment},
         #{withdraw.user_id},
         now(),
