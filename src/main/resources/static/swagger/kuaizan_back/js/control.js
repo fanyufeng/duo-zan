@@ -112,8 +112,10 @@ $(document).ready(function () {
     });
     //选择广告
     var selected_AdProjectId = "";
+    var vedio_url = "";
     $("#adProject_list").on('click','.adProject_selected',function () {
-        selected_AdProjectId = $(this).data("id")
+        selected_AdProjectId = $(this).data("id");
+        vedio_url = $(this).data("url")
     });
     //添加项目
     $("#commit_project").click(function () {
@@ -123,7 +125,6 @@ $(document).ready(function () {
         var info = {
             name:projectClient_name,
             comment:project_address,
-            integration_num:parseInt(QR_total),
             factory_id:parseInt(selected_ClientId),
             advertise_id:parseInt(selected_AdProjectId)
         };
@@ -136,8 +137,29 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
+                    var card_info = {
+                        product_id:data.data.id,
+                        factory_id:parseInt(selected_ClientId),
+                        integration_num:parseInt(QR_total),
+                        advertise_id: parseInt(selected_AdProjectId),
+                        vedio_url:vedio_url,
+                        card_num:QR_total,
+                        comment:project_address
+                    };
+                    $.ajax({
+                        url:'https://kuaizan.duodework.com/card/add',
+                        type:'POST',
+                        data:JSON.stringify(card_info),
+                        contentType:'application/json',
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                            if(data.statusCode == "02000000"){
+                                alert("添加成功")
+                                window.location.href = "../../index.html?id="+id
+                            }
+                        }
+                    });
                 }
             }
         })
@@ -164,8 +186,7 @@ $(document).ready(function () {
     $("#commit_coefficient").click(function () {
         var token_coefficient = $("#tf-box-name").val();
         var info = {
-
-        }
+        };
         $.ajax({
             url:'https://kuaizan.duodework.com/manager/',
             type:'POST',
