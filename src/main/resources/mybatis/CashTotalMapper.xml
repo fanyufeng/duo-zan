@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.CashtotalMapper">
+    <select id="findCashTotalInfo" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
+      select * from cash_total where cash_total.id=#{id}
+    </select>
+    <insert id="addCashtotal">
+    insert into cash_total(
+        cash_total,
+        comment,
+        user_id,
+        create_time,
+        modify_time
+    )
+    values (
+        #{cashTotal.cash_total},
+        #{cashTotal.comment},
+        #{cashTotal.user_id},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateCashtotal">
+        UPDATE cash_total
+        SET `cash_total`=${cashTotal.cash_total},
+        comment=#{cashTotal.comment},
+        user_id=#{cashTotal.user_id},
+        modify_time = now()
+        WHERE id = #{cashTotal.id}
+    </update>
+
+    <select id="findCashtotal" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
+      select * from cash_total
+    </select>
+
+    <resultMap type="com.duode.model.Cashtotal" id="cashTotalList">
+        <result column="id" property="id"/>
+        <result column="cash_total"  property="cash_total"/>
+        <result column="comment"  property="comment"/>
+        <result column="user_id" property="user_id"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>

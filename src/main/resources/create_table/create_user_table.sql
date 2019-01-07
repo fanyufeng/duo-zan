@@ -1,4 +1,3 @@
-drop table user;
 CREATE TABLE IF NOT EXISTS `user`(
    `id` INT UNSIGNED AUTO_INCREMENT,
    `name` VARCHAR(100),

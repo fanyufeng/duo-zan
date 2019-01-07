@@ -25,9 +25,8 @@
     <update id="updateCash">
         UPDATE cash
         SET `name`=${cash.name},
-        #{cash.status},
-        #{cash.comment},
-        #{cash.factory_id},
+        comment=#{cash.comment},
+        factory_id=#{cash.factory_id},
         modify_time = now()
         WHERE id = #{cash.id}
     </update>

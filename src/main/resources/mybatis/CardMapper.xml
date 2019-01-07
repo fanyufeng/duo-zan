@@ -37,6 +37,11 @@
         modify_time = now()
         WHERE id = #{card.id}
     </update>
+
+    <select id="findCardAll" parameterType="com.duode.model.Card" resultMap="cardList">
+      select * from card
+    </select>
+
     <resultMap type="com.duode.model.Card" id="cardList">
         <result column="id" property="id"/>
         <result column="product_id"  property="product_id"/>
