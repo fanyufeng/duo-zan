@@ -168,17 +168,18 @@ $(document).ready(function () {
     $("#commit_dividend").click(function () {
         var cash_total = $("#tf-box-name").val();
         var info = {
-
-        }
+            cash_total:cash_total
+        };
         $.ajax({
-            url:'https://kuaizan.duodework.com/manager/',
+            url:'https://kuaizan.duodework.com/cash/total/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                alert("ajax");
-                alert(data.data.statusCode);
+                if(data.statusCode == "02000000"){
+                    alert("分配成功");
+                }
             }
         })
     });
