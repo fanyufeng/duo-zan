@@ -16,7 +16,6 @@
     values (
         #{telephoneCode.telephone},
         #{telephoneCode.code},
-        #{telephoneCode.pay},
         now(),
         now()
     )
