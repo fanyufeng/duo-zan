@@ -40,13 +40,12 @@ public class TelephoneCodeService {
         return code;
     }
 
-    public List<TelephoneCode> gettelephoneCodeList(){
-        List<TelephoneCode> telephoneCodeList= telephoneCodeMapper.findTelephoneCode();
+    public List<TelephoneCode> gettelephoneCodeList(TelephoneCode telephoneCode){
+        List<TelephoneCode> telephoneCodeList= telephoneCodeMapper.findTelephoneCode(telephoneCode);
         if (((List) telephoneCodeList).size() !=0) {
             return telephoneCodeList;
         } else {
             return null;
-
         }
     }
 }

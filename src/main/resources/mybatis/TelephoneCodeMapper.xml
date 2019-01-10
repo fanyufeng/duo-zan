@@ -31,7 +31,7 @@
     </update>
 
     <select id="findTelephoneCode" parameterType="com.duode.model.TelephoneCode" resultMap="telephoneCodeList">
-      select * from telephoneCode
+      select * from telephoneCode where telephone=#{telephoneCode.telephone}
     </select>
 
     <resultMap type="com.duode.model.TelephoneCode" id="telephoneCodeList">

@@ -1,8 +1,10 @@
 package com.duode.controller;
 
 import com.duode.constant.ApiStatusCode;
+import com.duode.model.TelephoneCode;
 import com.duode.model.User;
 import com.duode.model.Withdraw;
+import com.duode.request.TelephoneMessageRequest;
 import com.duode.response.ResponseDataModel;
 import com.duode.service.TelephoneCodeService;
 import com.duode.service.UserService;
@@ -10,6 +12,8 @@ import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by fanyufeng in 19/1/9
@@ -41,14 +45,27 @@ public class TelephoneController {
 
     @RequestMapping(value="/code/send",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel codeSend(@RequestBody Withdraw withdraw) {
+    public ResponseDataModel codeSend(@RequestBody TelephoneCode telephoneCode) {
         ResponseDataModel response = new ResponseDataModel();
         try {
+            String code = createRandomCode();
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
-            SmsSingleSenderResult result = ssender.send(0, "86", phoneNumbers[0],
-                    "【多得科技】您的验证码为12345", "", "");
-            System.out.println(result);
+            String msg="【多得科技】您的验证码为"+code;
+            telephoneCode.setCode(code);
 
+            List<TelephoneCode> telephoneCodeList = telephoneCodeService.gettelephoneCodeList(telephoneCode);
+            if (telephoneCodeList !=null) {
+                TelephoneCode ty= telephoneCodeList.get(0);
+                ty.setCode(code);
+                telephoneCodeService.updateTelephoneCode(telephoneCode);
+            } else {
+                int result1 = telephoneCodeService.addTelephoneCode(telephoneCode);
+            }
+
+            SmsSingleSenderResult result = ssender.send(0, "86", telephoneCode.getTelephone(),
+                    msg, "", "");
+            System.out.println(result);
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,13 +74,45 @@ public class TelephoneController {
 
     @RequestMapping(value="/code/compare",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel codeCompare(@RequestBody Withdraw withdraw) {
+    public ResponseDataModel codeCompare(@RequestBody TelephoneMessageRequest telephoneMessageRequest) {
         ResponseDataModel response = new ResponseDataModel();
         try {
+            TelephoneCode telephoneCode = new TelephoneCode();
+            telephoneCode.setTelephone(telephoneMessageRequest.getTelephone());
+            telephoneCode.setCode(telephoneMessageRequest.getCode());
+
+
+            List<TelephoneCode> compareList= telephoneCodeService.gettelephoneCodeList(telephoneCode);
+            User user = userService.getUserInfo(telephoneMessageRequest.getUser_id());
+            if (compareList!=null && user!=null) {
+                TelephoneCode compareElem= compareList.get(0);
+                if (compareElem.getCode().equals(telephoneCode.getCode())) {
+                    user.setTelephone(compareElem.getTelephone());
+                    userService.updateUser(user);
+                } else {
+                    response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
+                }
+            } else {
+                response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
+            }
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return response;
+    }
+
+    /**
+     *  注册验证码生成
+     * @return
+     */
+    public static String createRandomCode(){
+        String code="";
+        for(int i=0;i<4;i++){
+            code=code+(int)(Math.random()*9);
+        }
+        return code;
     }
 }
