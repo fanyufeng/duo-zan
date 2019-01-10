@@ -335,6 +335,14 @@
                     }
                 }
             }
+        });
+        $("#table_list").on('click','.check_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'projectCustomDetail.html?id='+id;
+        });
+        $("#table_list").on('click','.alter_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'editProjectCustom.html?id='+id;
         })
 
     });

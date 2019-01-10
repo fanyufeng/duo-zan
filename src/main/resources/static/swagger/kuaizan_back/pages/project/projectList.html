@@ -333,6 +333,14 @@
                     $("#table_list").append(str);
                 }
             }
+        });
+        $("#table_list").on('click','.check_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'projectDetail.html?id='+id;
+        });
+        $("#table_list").on('click','.alter_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'editProject.html?id='+id;
         })
 
     });
