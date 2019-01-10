@@ -46,7 +46,7 @@ public class TelephoneController {
         try {
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
             SmsSingleSenderResult result = ssender.send(0, "86", phoneNumbers[0],
-                    "【多得科技】您的验证码是: 5678", "", "");
+                    "【多得科技】您的验证码为12345", "", "");
             System.out.println(result);
 
         } catch (Exception e) {
