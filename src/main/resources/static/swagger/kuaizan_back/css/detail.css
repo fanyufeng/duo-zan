@@ -1,0 +1,19 @@
+.detail_frame{
+    width: 80vm;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.detail_line{
+    margin: 20px auto 20px 80px;
+    display: flex;
+    flex-direction: row;
+}
+.item_name{
+    width: 200px;
+    text-align: right;
+}
+.item_val{
+    margin-left: 40px;
+}

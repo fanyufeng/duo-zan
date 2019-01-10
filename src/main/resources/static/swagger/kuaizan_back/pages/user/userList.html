@@ -335,6 +335,10 @@
                     }
                 }
             }
+        });
+        $("#table_list").on('click','.check_btn',function () {
+            var id = $(this).data("id");
+            window.location.href='userDetail.html?id='+id;
         })
 
     });
