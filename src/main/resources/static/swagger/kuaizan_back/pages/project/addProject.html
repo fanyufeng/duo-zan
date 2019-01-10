@@ -460,7 +460,7 @@
                 if(data.statusCode == "02000000"){
                     for(var i=0,j=data.data.length;i<j;i++){
                         var str =
-                            '<li class="mdc-list-item adProject_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            '<li class="mdc-list-item adProject_selected" data-url="'+ data.data[i].advertise_url +'" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
                             data.data[i].name +
                             '</li>';
                         $("#adProject_list").append(str);
