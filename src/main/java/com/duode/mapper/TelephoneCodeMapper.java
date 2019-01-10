@@ -12,6 +12,6 @@ public interface TelephoneCodeMapper {
     public List<TelephoneCode> findTelephoneCodeInfo(@Param("id") int id);
     public int addTelephoneCode(@Param("telephoneCode") TelephoneCode telephoneCode);
     public int updateTelephoneCode(@Param("telephoneCode") TelephoneCode telephoneCode);
-    public List<TelephoneCode> findTelephoneCode(@Param("telephone") TelephoneCode telephoneCode);
+    public List<TelephoneCode> findTelephoneCode(@Param("telephoneCode") TelephoneCode telephoneCode);
 
 }
