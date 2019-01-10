@@ -57,7 +57,7 @@ public class TelephoneController {
             if (telephoneCodeList !=null) {
                 TelephoneCode ty= telephoneCodeList.get(0);
                 ty.setCode(code);
-                telephoneCodeService.updateTelephoneCode(telephoneCode);
+                telephoneCodeService.updateTelephoneCode(ty);
             } else {
                 int result1 = telephoneCodeService.addTelephoneCode(telephoneCode);
             }
