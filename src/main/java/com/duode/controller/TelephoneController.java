@@ -89,6 +89,7 @@ public class TelephoneController {
                 if (compareElem.getCode().equals(telephoneCode.getCode())) {
                     user.setTelephone(compareElem.getTelephone());
                     userService.updateUser(user);
+                    response.setStatusCode(ApiStatusCode.SUCCESS.value());
                 } else {
                     response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
                 }
