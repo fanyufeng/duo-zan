@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.TelephoneCodeMapper">
+
+    <select id="findTelephoneCodeInfo" parameterType="com.duode.model.TelephoneCode" resultMap="telephoneCodeList">
+      select * from telephone_code where telephone_code.id=#{id}
+    </select>
+
+    <insert id="addTelephoneCode">
+    insert into telephone_code(
+        telephone,
+        code,
+        create_time,
+        modify_time
+    )
+    values (
+        #{telephoneCode.telephone},
+        #{telephoneCode.code},
+        #{telephoneCode.pay},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateTelephoneCode">
+        UPDATE telephone_code
+        SET telephone=${telephoneCode.telephone},
+        code=${telephoneCode.code},
+        modify_time = now()
+        WHERE id = #{telephoneCode.id}
+    </update>
+
+    <select id="findTelephoneCode" parameterType="com.duode.model.TelephoneCode" resultMap="telephoneCodeList">
+      select * from telephoneCode
+    </select>
+
+    <resultMap type="com.duode.model.TelephoneCode" id="telephoneCodeList">
+        <result column="id" property="id"/>
+        <result column="telephone"  property="telephone"/>
+        <result column="code"  property="code"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>
