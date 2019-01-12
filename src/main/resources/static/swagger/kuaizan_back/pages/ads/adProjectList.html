@@ -329,8 +329,15 @@
                     }
                 }
             }
-        })
-
+        });
+        $("#table_list").on('click','.check_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'adProjectDetail.html?id='+id
+        });
+        $("#table_list").on('click','.alter_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'editAdProject.html?id='+id
+        });
     });
 
     //读取url参数

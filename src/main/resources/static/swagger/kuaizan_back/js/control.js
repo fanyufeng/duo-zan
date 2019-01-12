@@ -28,6 +28,35 @@ $(document).ready(function () {
             }
         })
     });
+    //更新广告客户
+    $("#update_adsCustomer").click(function () {
+        var adClient_name = $("#tf-box-name").val();
+        var adClient_address = $("#tf-box-address").val();
+        var adClientContact_name = $("#tf-box-poc").val();
+        var adClient_contact = $("#tf-box-contact").val();
+        var id = $(this).data('id');
+        var info = {
+            name:adClient_name,
+            comment:adClientContact_name,
+            address:adClient_address,
+            telephone: adClient_contact,
+            id:id
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertiser/update',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
     //上传文件
     var vedio_url = "";
     $("#upload").click(function () {
@@ -78,6 +107,31 @@ $(document).ready(function () {
             }
         })
     });
+    //更新广告项目
+    $("#update_adProject").click(function () {
+        var adProject_name = $("#tf-box-name").val();
+        var adProject_address = $("#tf-box-address").val();
+        var info = {
+            name:adProject_name,
+            advertiser_id:parseInt(selected_id),
+            comment:adProject_address,
+            advertise_url:vedio_url
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertise/update',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
     //添加项目客户
     $("#commit_projectClient").click(function () {
         var projectClient_name = $("#tf-box-name").val();
@@ -92,6 +146,35 @@ $(document).ready(function () {
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/factory/add',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
+    //更新项目客户
+    $("#update_projectClient").click(function () {
+        var projectClient_name = $("#tf-box-name").val();
+        var projectClient_address = $("#tf-box-address").val();
+        var projectClientContact_name = $("#tf-box-poc").val();
+        var projectClient_contact = $("#tf-box-contact").val();
+        var id = $("#update_projectClient").data('id');
+        var info = {
+            name:projectClient_name,
+            comment:projectClientContact_name,
+            telephone:projectClient_contact,
+            address:projectClient_address,
+            id:id
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/factory/update',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -130,6 +213,54 @@ $(document).ready(function () {
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/product/add',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    var card_info = {
+                        product_id:data.data.id,
+                        factory_id:parseInt(selected_ClientId),
+                        integration_num:parseInt(QR_total),
+                        advertise_id: parseInt(selected_AdProjectId),
+                        vedio_url:vedio_url,
+                        card_num:QR_total,
+                        comment:project_address
+                    };
+                    $.ajax({
+                        url:'https://kuaizan.duodework.com/card/add',
+                        type:'POST',
+                        data:JSON.stringify(card_info),
+                        contentType:'application/json',
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                            if(data.statusCode == "02000000"){
+                                alert("添加成功")
+                                window.location.href = "../../index.html?id="+id
+                            }
+                        }
+                    });
+                }
+            }
+        })
+    });
+    $("#update_project").click(function () {
+        var projectClient_name = $("#tf-box-name").val();
+        var project_address = $("#tf-box-address").val();
+        var QR_total = $("#tf-box-qr").val();
+        var id = $("#update_project").data('id');
+        var info = {
+            name:projectClient_name,
+            comment:project_address,
+            factory_id:parseInt(selected_ClientId),
+            advertise_id:parseInt(selected_AdProjectId),
+            id:id
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/product/update',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -208,7 +339,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/adCustomList.html?id="+id;
     });
     $("#toAddAdCustom").click(function () {
-        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdCustomList.html?id="+id;
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdCustom.html?id="+id;
     });
     $("#toAddAdProject").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdProject.html?id="+id;
