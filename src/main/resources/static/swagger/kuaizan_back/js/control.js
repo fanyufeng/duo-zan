@@ -339,7 +339,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/adCustomList.html?id="+id;
     });
     $("#toAddAdCustom").click(function () {
-        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdCustomList.html?id="+id;
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdCustom.html?id="+id;
     });
     $("#toAddAdProject").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/addAdProject.html?id="+id;
