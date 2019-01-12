@@ -64,36 +64,6 @@ public class Application {
         return factory.createMultipartConfig();
      }
 
-
-
-//    public Connector connector(){
-//        Connector connector=new Connector("org.apache.coyote.http11.Http11NioProtocol");
-//        connector.setScheme("http");
-//        connector.setPort(8080);
-//        connector.setSecure(false);
-//        connector.setRedirectPort(443);
-//        return connector;
-//    }
-//
-//    public EmbeddedServletContainerFactory servletContainer() {
-//        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
-//            @Override
-//            protected void postProcessContext(Context context) {
-//                //Due to CONFIDENTIAL and /*, this will cause Tomcat to redirect every request to HTTPS.
-//                //You can configure multiple patterns and multiple constraints if you need more control over what is and is not redirected.
-//
-//                SecurityConstraint constraint = new SecurityConstraint();
-//                constraint.setUserConstraint("CONFIDENTIAL");
-//                SecurityCollection collection = new SecurityCollection();
-//                collection.addPattern("/*");
-//                constraint.addCollection(collection);
-//                context.addConstraint(constraint);
-//            }
-//        };
-//        tomcat.addAdditionalTomcatConnectors(connector());
-//        return tomcat;
-//
-//    }
     /**
      * Start
      */

@@ -109,7 +109,6 @@ public class CardController {
         if (re.getTimes()==0) {
             response.setStatusCode(ApiStatusCode.CARD_FORBID.value());
         } else {
-            re.setIntegration_num(re.getIntegration_num() + 1);
             re.setTimes(re.times - 1);
             if (re.getTimes()==0) {
                 re.setStatus(1);
