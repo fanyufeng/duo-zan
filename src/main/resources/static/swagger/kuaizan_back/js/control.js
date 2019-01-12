@@ -205,6 +205,7 @@ $(document).ready(function () {
         var projectClient_name = $("#tf-box-name").val();
         var project_address = $("#tf-box-address").val();
         var QR_total = $("#tf-box-qr").val();
+        var price = $("#tf-box-price").val();
         var info = {
             name:projectClient_name,
             comment:project_address,
@@ -223,7 +224,7 @@ $(document).ready(function () {
                     var card_info = {
                         product_id:data.data.id,
                         factory_id:parseInt(selected_ClientId),
-                        integration_num:parseInt(QR_total),
+                        integration_num:parseInt(price),
                         advertise_id: parseInt(selected_AdProjectId),
                         vedio_url:vedio_url,
                         card_num:QR_total,
