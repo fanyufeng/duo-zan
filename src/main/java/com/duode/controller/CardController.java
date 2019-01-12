@@ -48,6 +48,7 @@ public class CardController {
                 Card card =new Card();
                 card.setProduct_id(cardRequest.getProduct_id());
                 card.setAdvertise_id(cardRequest.getAdvertise_id());
+                card.setIntegration_num(cardRequest.getIntegration_num());
                 card.setVideo_url(cardRequest.getVideo_url());
                 card.setUnique_id(IDGeneratorUtils.uuid32());
                 card.setTimes(5);
