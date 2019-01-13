@@ -103,7 +103,7 @@ public class CashController {
 
             for (User userL : userList) {
                 double cash_elem = userL.getIntegration() * proprotion;
-                userL.setCash(cash_elem);
+                userL.setCash(cash_elem + userL.getCash());
                 userService.updateUser(userL);
             }
 
