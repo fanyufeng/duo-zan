@@ -41,6 +41,14 @@ public class CashtotalService {
         return code;
     }
 
+    public List<Cashtotal> getCashtotalStatus (int status) {
+        List<Cashtotal> cashtotalList = cashtotalMapper.getCashtotalStatus(status);
+        if (cashtotalList.size()!=0) {
+            return cashtotalList;
+        } else {
+            return null;
+        }
+    }
     public List<Cashtotal> getCashtotalList(){
         List<Cashtotal> withdrawList= cashtotalMapper.findCashtotal();
         if (((List) withdrawList).size() !=0) {

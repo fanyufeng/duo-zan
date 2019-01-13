@@ -62,4 +62,19 @@ public class CashTotalController {
         }
         return response;
     }
+
+
+    @RequestMapping(value="/getCashtotalStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getCashtotalStatus(@RequestBody Cashtotal cashtotal){
+        ResponseDataModel response = new ResponseDataModel();
+        List<Cashtotal> cashtotalList = cashtotalService.getCashtotalStatus(cashtotal.getStatus());
+        if (cashtotalList !=null) {
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setData(cashtotalList);
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
 }

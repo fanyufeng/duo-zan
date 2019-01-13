@@ -8,6 +8,8 @@ public class Cashtotal {
     public double cash_total;
     public String comment;
     public int user_id;
+    public int status;
+
     private String create_time;
     private String modify_time;
 
@@ -59,6 +61,14 @@ public class Cashtotal {
         this.modify_time = modify_time;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Cashtotal{" +
@@ -66,6 +76,7 @@ public class Cashtotal {
                 ", cash_total=" + cash_total +
                 ", comment='" + comment + '\'' +
                 ", user_id=" + user_id +
+                ", status='" + status + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +
                 '}';

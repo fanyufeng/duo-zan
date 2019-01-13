@@ -24,11 +24,16 @@
     <update id="updateCashtotal">
         UPDATE cash_total
         SET `cash_total`=${cashTotal.cash_total},
+        status=${cashTotal.status},
         comment=#{cashTotal.comment},
         user_id=#{cashTotal.user_id},
         modify_time = now()
         WHERE id = #{cashTotal.id}
     </update>
+
+    <select id="getCashtotalStatus" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
+      select * from cash_total where cash_total.status=#{status}
+    </select>
 
     <select id="findCashtotal" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
       select * from cash_total
@@ -38,6 +43,7 @@
         <result column="id" property="id"/>
         <result column="cash_total"  property="cash_total"/>
         <result column="comment"  property="comment"/>
+        <result column="status"  property="status"/>
         <result column="user_id" property="user_id"/>
         <result column="create_time"  property="create_time"/>
         <result column="modify_time"  property="modify_time"/>

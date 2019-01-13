@@ -5,6 +5,7 @@ import com.duode.model.Card;
 import com.duode.model.Cash;
 import com.duode.model.Cashtotal;
 import com.duode.model.User;
+import com.duode.request.CashRequest;
 import com.duode.response.ResponseDataModel;
 import com.duode.service.CardService;
 import com.duode.service.CashService;
@@ -13,7 +14,6 @@ import com.duode.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -36,7 +36,7 @@ public class CashController {
 
 
 
-    @RequestMapping(value="/add",method = RequestMethod.POST)
+    @RequestMapping(value="/show",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addCash(@RequestBody Cash cash) {
         ResponseDataModel response = new ResponseDataModel();
@@ -56,7 +56,7 @@ public class CashController {
             }
 
 
-            double proprotion= cashtotal1.getCash_total()/sum;
+            double proprotion=cashtotal1.getCash_total()/sum;
             double cash_elem=integration * proprotion;//设置保留位数
 
             cash.setCash_elem(cash_elem);
@@ -76,6 +76,47 @@ public class CashController {
 
         return response;
     }
+
+
+    @RequestMapping(value="/distribute",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel distributeCash(@RequestBody CashRequest cashRequest) {
+        ResponseDataModel response = new ResponseDataModel();
+        try {
+            List<User> userList = userService.getUserList();
+
+            List<Cashtotal> cashtotal =cashtotalService.getCashTotal(cashRequest.getCashTotalId());
+
+            Cashtotal cashtotal1=cashtotal.get(0);
+            cashtotal1.setStatus(1);
+
+            cashtotalService.updateCashtotal(cashtotal1);
+
+            List<Card> cardList = cardService.findCardAll();
+            int sum = 0;
+            for (User user : userList) {
+                sum =sum+user.getIntegration();
+            }
+
+
+            double proprotion=cashtotal1.getCash_total()/sum;
+
+            for (User userL : userList) {
+                double cash_elem = userL.getIntegration() * proprotion;
+                userL.setCash(cash_elem);
+                userService.updateUser(userL);
+            }
+
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
     @ResponseBody
