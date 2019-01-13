@@ -50,7 +50,7 @@ public class TelephoneController {
         try {
             String code = createRandomCode();
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
-            String msg="【多得科技】您的验证码为"+code;
+            String msg="【多得科技】快攒验证码为"+code;
             telephoneCode.setCode(code);
 
             List<TelephoneCode> telephoneCodeList = telephoneCodeService.gettelephoneCodeList(telephoneCode);
