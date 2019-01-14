@@ -44,4 +44,11 @@
         <result column="create_time"  property="create_time"/>
         <result column="modify_time"  property="modify_time"/>
     </resultMap>
+
+    <resultMap id="getUserMap" type="java.util.Map">
+        <constructor>
+            <idArg column="integration" javaType="_int"/>
+            <arg column="user_id" javaType="_int"/>
+        </constructor>
+    </resultMap>
 </mapper>
