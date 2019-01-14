@@ -13,7 +13,6 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/detail.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
@@ -240,22 +239,68 @@
     <!-- partial -->
     <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
-            <div class="detail_frame">
-                <div class="detail_line">
-                    <text class="item_name">客户名称</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">地址</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">联系电话</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">备注内容</text>
-                    <text class="item_val">111</text>
+            <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-card">
+                            <section class="mdc-card__primary">
+                                <h1 class="mdc-card__title mdc-card__title--large">选择现金分配计划</h1>
+                            </section>
+                            <section class="mdc-card__supporting-text">
+                                <div class="mdc-layout-grid__inner">
+                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                                        <div class="mdc-card">
+                                            <section class="mdc-card__primary">
+                                                <h1 class="mdc-card__title mdc-card__title--large">选择现金分配计划</h1>
+                                            </section>
+                                            <section class="mdc-card__supporting-text">
+                                                <div class="template-demo">
+                                                    <div id="hero-js-select" class="mdc-select" style="width: 300px" role="listbox">
+                                                        <div id="choose_cash" class="mdc-select__surface" tabindex="0">
+                                                            <div data-client="1" id="selected_cash" class="mdc-select__label">Pick a Food Group</div>
+                                                            <div class="mdc-select__selected-text"></div>
+                                                            <div class="mdc-select__bottom-line"></div>
+                                                        </div>
+                                                        <div class="mdc-simple-menu mdc-select__menu">
+                                                            <ul id="cash_info" class="mdc-list mdc-simple-menu__items" style="width: 60vm">
+                                                                <!--
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Bread, Cereal, Rice, and Pasta
+                                                                </li>
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Vegetables
+                                                                </li>
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Fruit
+                                                                </li>
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Milk, Yogurt, and Cheese
+                                                                </li>
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
+                                                                </li>
+                                                                <li class="mdc-list-item" role="option" tabindex="0">
+                                                                    Fats, Oils, and Sweets
+                                                                </li>
+                                                                --->
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                                        <div class="template-demo">
+                                            <button id="commit_cash" class="mdc-button" data-mdc-auto-init="MDCRipple">
+                                                分配
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -278,7 +323,10 @@
 <!-- body wrapper -->
 <!-- plugins:js -->
 <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
+<!--
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+-->
+<script src="../../js/jquery-3.3.1.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
 <!-- End plugin js for this page-->
@@ -286,26 +334,35 @@
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
+<script src="../../js/ajaxfileupload.js"></script>
 <script>
     $(document).ready(function () {
-        var userId = getUrlParam("id");
+        var id = getUrlParam("id");
         var info = {
-            id:userId
+            status:0
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/product/getProductList',
+            url:'https://kuaizan.duodework.com/cash/total/getCashtotalStatus',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                console.log(data)
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    for(var i=0,j=data.data.length;i<j;i++){
+                        var str =
+                            '<li class="mdc-list-item cash_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            data.data[i].comment +
+                            '</li>';
+                        $("#section_info").append(str);
+                    }
+                }
             }
         })
+    })
 
-    });
-
-    //读取url参数
+    //获取参数
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数
