@@ -249,37 +249,25 @@
                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                         <div class="mdc-card">
                             <section class="mdc-card__primary">
-                                <h1 class="mdc-card__title mdc-card__title--large">创建项目</h1>
+                                <h1 class="mdc-card__title mdc-card__title--large">选择现金分配计划</h1>
                             </section>
                             <section class="mdc-card__supporting-text">
                                 <div class="mdc-layout-grid__inner">
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-name-wrapper">
-                                                <div id="tf-box-name-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-name" class="mdc-text-field__input">
-                                                    <label for="tf-box-name" class="mdc-text-field__label">项目名称</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
                                         <div class="mdc-card">
                                             <section class="mdc-card__primary">
-                                                <h1 class="mdc-card__title mdc-card__title--large">选择客户</h1>
+                                                <h1 class="mdc-card__title mdc-card__title--large">选择现金分配计划</h1>
                                             </section>
                                             <section class="mdc-card__supporting-text">
                                                 <div class="template-demo">
-                                                    <div id="hero-js-select" style="width: 300px" class="mdc-select" role="listbox">
-                                                        <div class="mdc-select__surface" tabindex="0">
-                                                            <div class="mdc-select__label">Pick a Food Group</div>
+                                                    <div id="hero-js-select" class="mdc-select" style="width: 300px" role="listbox">
+                                                        <div id="choose_cash" class="mdc-select__surface" tabindex="0">
+                                                            <div data-client="1" id="selected_cash" class="mdc-select__label">Pick a Food Group</div>
                                                             <div class="mdc-select__selected-text"></div>
                                                             <div class="mdc-select__bottom-line"></div>
                                                         </div>
                                                         <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul id="custom_list" class="mdc-list mdc-simple-menu__items">
+                                                            <ul id="cash_info" class="mdc-list mdc-simple-menu__items" style="width: 60vm">
                                                                 <!--
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Bread, Cereal, Rice, and Pasta
@@ -299,96 +287,18 @@
                                                                 <li class="mdc-list-item" role="option" tabindex="0">
                                                                     Fats, Oils, and Sweets
                                                                 </li>
-                                                                -->
+                                                                --->
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </section>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
-                                        <div class="mdc-card">
-                                            <section class="mdc-card__primary">
-                                                <h1 class="mdc-card__title mdc-card__title--large">选择广告项目</h1>
-                                            </section>
-                                            <section class="mdc-card__supporting-text">
-                                                <div class="template-demo">
-                                                    <div id="adProject-js-select" style="width: 300px" data-client="1" class="mdc-select" role="listbox">
-                                                        <div data-client="1" id="selected_client" class="mdc-select__surface" tabindex="0">
-                                                            <div class="mdc-select__label">Pick a Food Group</div>
-                                                            <div class="mdc-select__selected-text"></div>
-                                                            <div class="mdc-select__bottom-line"></div>
-                                                        </div>
-                                                        <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul id="adProject_list" class="mdc-list mdc-simple-menu__items">
-                                                                <!--
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Bread, Cereal, Rice, and Pasta
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Vegetables
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Fruit
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Milk, Yogurt, and Cheese
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Fats, Oils, and Sweets
-                                                                </li>
-                                                                -->
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-address-wrapper">
-                                                <div id="tf-box-address-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-address" class="mdc-text-field__input">
-                                                    <label for="tf-box-address" class="mdc-text-field__label">备注</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-qr-wrapper">
-                                                <div id="tf-box-qr-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-qr" class="mdc-text-field__input">
-                                                    <label for="tf-box-qr" class="mdc-text-field__label">二维码个数</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-price-wrapper">
-                                                <div id="tf-box-price-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-price" class="mdc-text-field__input">
-                                                    <label for="tf-box-price" class="mdc-text-field__label">单价</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                         <div class="template-demo">
-                                            <button id="update_project" class="mdc-button" data-mdc-auto-init="MDCRipple">
-                                                更新
+                                            <button id="commit_cash" class="mdc-button" data-mdc-auto-init="MDCRipple">
+                                                分配
                                             </button>
                                         </div>
                                     </div>
@@ -418,7 +328,10 @@
 <!-- body wrapper -->
 <!-- plugins:js -->
 <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
+<!--
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+-->
+<script src="../../js/jquery-3.3.1.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
 <!-- End plugin js for this page-->
@@ -426,15 +339,15 @@
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
+<script src="../../js/ajaxfileupload.js"></script>
 <script>
     $(document).ready(function () {
         var id = getUrlParam("id");
-        $("#update_project").data('id',id);
         var info = {
-            id:id
+            status:0
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/advertise/getAdvertiseList',
+            url:'https://kuaizan.duodework.com/cash/total/getCashtotalStatus',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -444,29 +357,10 @@
                 if(data.statusCode == "02000000"){
                     for(var i=0,j=data.data.length;i<j;i++){
                         var str =
-                            '<li class="mdc-list-item adProject_selected" data-url="'+ data.data[i].advertise_url +'" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
-                            data.data[i].name +
+                            '<li class="mdc-list-item cash_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                            data.data[i].comment +
                             '</li>';
-                        $("#adProject_list").append(str);
-                    }
-                }
-            }
-        })
-        $.ajax({
-            url:'https://kuaizan.duodework.com/factory/getFactoryList',
-            type:'POST',
-            data:JSON.stringify(info),
-            contentType:'application/json',
-            dataType:'json',
-            success:function (data) {
-                console.log(data);
-                if(data.statusCode == "02000000"){
-                    for(var i=0,j=data.data.length;i<j;i++){
-                        var str =
-                            '<li class="mdc-list-item custom_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
-                            data.data[i].name +
-                            '</li>';
-                        $("#custom_list").append(str);
+                        $("#section_info").append(str);
                     }
                 }
             }

@@ -105,16 +105,18 @@
                         </a>
                         <div class="mdc-expansion-panel" id="ui-finance-menu">
                             <nav class="mdc-list mdc-drawer-submenu">
+                                <!--
                                 <div id="toSetTokenCount" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分总数
-                                    </a>
+                                  <a class="mdc-drawer-link" href="#">
+                                    设置积分总数
+                                  </a>
                                 </div>
                                 <div id="toSetTokenCoefficient" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分系数
-                                    </a>
+                                  <a class="mdc-drawer-link" href="#">
+                                    设置积分系数
+                                  </a>
                                 </div>
+                                -->
                                 <div id="toSetCashDividend" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         设置现金分红
@@ -123,6 +125,11 @@
                                 <div id="toTokenReview" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         积分查询
+                                    </a>
+                                </div>
+                                <div id="toSetFuture" class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        设置预计收益
                                     </a>
                                 </div>
                                 <div id="toCashReview" class="mdc-list-item mdc-drawer-item">
@@ -242,17 +249,29 @@
                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                         <div class="mdc-card">
                             <section class="mdc-card__primary">
-                                <h1 class="mdc-card__title mdc-card__title--large">设置分红金额</h1>
+                                <h1 class="mdc-card__title mdc-card__title--large">设置分红总金额</h1>
                             </section>
                             <section class="mdc-card__supporting-text">
                                 <div class="mdc-layout-grid__inner">
                                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
                                         <div class="template-demo">
-                                            <div id="demo-tf-box-name-wrapper">
-                                                <div id="tf-box-name-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                            <div id="demo-tf-box-total-wrapper">
+                                                <div id="tf-box-total-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
                                                     <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-name" class="mdc-text-field__input">
-                                                    <label for="tf-box-name" class="mdc-text-field__label">分红总额</label>
+                                                    <input type="text" id="tf-box-total" class="mdc-text-field__input">
+                                                    <label for="tf-box-total" class="mdc-text-field__label">分红总额</label>
+                                                    <div class="mdc-text-field__bottom-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
+                                        <div class="template-demo">
+                                            <div id="demo-tf-box-comment-wrapper">
+                                                <div id="tf-box-comment-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
+                                                    <input type="text" id="tf-box-comment" class="mdc-text-field__input">
+                                                    <label for="tf-box-comment" class="mdc-text-field__label">备注</label>
                                                     <div class="mdc-text-field__bottom-line"></div>
                                                 </div>
                                             </div>

@@ -298,12 +298,41 @@ $(document).ready(function () {
     });
     //设置现金分配
     $("#commit_dividend").click(function () {
-        var cash_total = $("#tf-box-name").val();
+        var id = getUrlParam("id");
+        var cash_total = $("#tf-box-total").val();
+        var comment = $("#tf-box-comment").val();
         var info = {
-            cash_total:cash_total
+            cash_total:cash_total,
+            id:id,
+            comment:comment
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/cash/total/add',
+            url:'https://kuaizan.duodework.com/cash/total/update',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                if(data.statusCode == "02000000"){
+                    alert("总额设置成功");
+                    window.location.href = "cashDividend.html?id="+id
+                }
+            }
+        })
+    });
+    //选择分配批次
+    var cashId = "";
+    $("#cash_info").on('click','.cash_selected',function () {
+       cashId = $(this).data('id');
+    });
+    //进行现金分配
+    $("#commit_cash").click(function () {
+        var id = getUrlParam("id");
+        var info = {
+            cashTotalId:parseInt(cashId)
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/cash/distribute',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -311,6 +340,7 @@ $(document).ready(function () {
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     alert("分配成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -380,6 +410,9 @@ $(document).ready(function () {
     });
     $("#toSetPurview").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
+    });
+    $("#toSetFuture").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/setFuture.html?id="+id;
     });
 
 
