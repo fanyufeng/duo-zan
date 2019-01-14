@@ -13,5 +13,6 @@ import java.util.Map;
 public interface CardUseMapper {
     public int addCardUse(@Param("card_use") CardUse card_use);
 
+    public List<CardUse> findCardUser(@Param("card_use") int userId);
     public Map getUserListYesterday(@Param("date") String date);
 }

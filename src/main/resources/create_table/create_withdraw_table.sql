@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `withdraw`(
    `bank_card` VARCHAR(100),
    `alipay` varchar(100),
    `pay` double,
+   `status` int not null DEFAULT 0 comment '0 表示已申请，1表示已提现',
    `comment` varchar(100),
    `user_id` int,
    `create_time` DATETIME,

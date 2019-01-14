@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +36,14 @@ public class CardUseService {
     }
 
 
+    public List<CardUse> findCardUser(int userId){
+        List<CardUse> cardUseList = cardUseMapper.findCardUser(userId);
+        if (cardUseList.size()!=0) {
+            return cardUseList;
+        } else {
+            return null;
+        }
+    }
     public String GetNowDate(){
         String temp_str="";
         Date dt = new Date();
