@@ -411,6 +411,9 @@ $(document).ready(function () {
     $("#toSetPurview").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/purview/setPurview.html?id="+id;
     });
+    $("#toSetFuture").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/setFuture.html?id="+id;
+    });
 
 
     //选择用户
