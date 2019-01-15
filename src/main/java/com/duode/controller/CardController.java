@@ -73,9 +73,16 @@ public class CardController {
         ResponseDataModel response = new ResponseDataModel();
 
         List<Card> cardList=cardService.findCardIdList(0);
+
+        List<String> idList = new ArrayList<>();
+
         if (cardList !=null) {
+            for (Card elem : cardList) {
+                idList.add(elem.getUnique_id());
+            }
+
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(cardList);
+            response.setData(idList);
         } else {
             response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
         }
