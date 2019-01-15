@@ -39,7 +39,7 @@
     </update>
 
     <select id="findCardAll" parameterType="com.duode.model.Card" resultMap="cardList">
-      select * from card
+      select * from card where status=#{status}
     </select>
 
     <resultMap type="com.duode.model.Card" id="cardList">

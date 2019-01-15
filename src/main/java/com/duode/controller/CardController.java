@@ -67,6 +67,21 @@ public class CardController {
         return response;
     }
 
+    @RequestMapping(value="/findAll",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getStatus(@RequestBody CardRequest cardRequest) {
+        ResponseDataModel response = new ResponseDataModel();
+
+        List<Card> cardList=cardService.findCardAll(0);
+        if (cardList !=null) {
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setData(cardList);
+        } else {
+            response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
+        }
+        return response;
+    }
+
     @RequestMapping(value="/getByUnionId",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel getByUnionId(@RequestBody Card cardRequest) {
@@ -97,6 +112,8 @@ public class CardController {
         }
         return response;
     }
+
+
 
     @RequestMapping(value="/scanCode",method = RequestMethod.POST)
     @ResponseBody
