@@ -36,8 +36,8 @@ public class CardService {
         }
     }
 
-    public List<Card> findCardAll(int status) {
-        List<Card> cardList = cardMapper.findCardAll(status);
+    public List<Card> findCardAll() {
+        List<Card> cardList = cardMapper.findCardAll();
         if (cardList.size()!=0) {
             return cardList;
         } else {
@@ -45,6 +45,16 @@ public class CardService {
         }
     }
 
+
+
+    public List<Card> findCardIdList(int status) {
+        List<Card> cardList = cardMapper.findCardIdList(status);
+        if (cardList.size()!=0) {
+            return cardList;
+        } else {
+            return null;
+        }
+    }
 
 
 }

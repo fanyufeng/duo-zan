@@ -67,12 +67,12 @@ public class CardController {
         return response;
     }
 
-    @RequestMapping(value="/findAll",method = RequestMethod.POST)
+    @RequestMapping(value="/findCardIdList",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel getStatus(@RequestBody CardRequest cardRequest) {
         ResponseDataModel response = new ResponseDataModel();
 
-        List<Card> cardList=cardService.findCardAll(0);
+        List<Card> cardList=cardService.findCardIdList(0);
         if (cardList !=null) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
             response.setData(cardList);

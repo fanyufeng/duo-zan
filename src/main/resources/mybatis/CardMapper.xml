@@ -39,6 +39,10 @@
     </update>
 
     <select id="findCardAll" parameterType="com.duode.model.Card" resultMap="cardList">
+      select * from card
+    </select>
+
+    <select id="findCardIdList" parameterType="com.duode.model.Card" resultMap="cardList">
       select * from card where status=#{status}
     </select>
 
