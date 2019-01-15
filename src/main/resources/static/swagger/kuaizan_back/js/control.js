@@ -307,7 +307,7 @@ $(document).ready(function () {
             comment:comment
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/cash/total/update',
+            url:'https://kuaizan.duodework.com/cash/total/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
