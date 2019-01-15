@@ -17016,10 +17016,10 @@ footer {
     background: #fff;
     padding: 0 0 0 1.75rem; }
   .mdc-persistent-drawer .brand-logo {
-    width: 100%;
+    width: 60px;
     text-align: left; }
     .mdc-persistent-drawer .brand-logo img {
-      width: 160px; }
+      width: 50px; }
   .mdc-persistent-drawer .mdc-drawer-item {
     cursor: pointer;
     display: block;
