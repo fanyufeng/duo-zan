@@ -13,7 +13,6 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/detail.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
@@ -250,22 +249,40 @@
     <!-- partial -->
     <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
-            <div class="detail_frame">
-                <div class="detail_line">
-                    <text class="item_name">项目名称</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">广告客户</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">视频地址</text>
-                    <text class="item_val">111</text>
-                </div>
-                <div class="detail_line">
-                    <text class="item_name">备注内容</text>
-                    <text class="item_val">111</text>
+            <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-card">
+                            <section class="mdc-card__primary">
+                                <h1 class="mdc-card__title mdc-card__title--large">项目列表</h1>
+                            </section>
+                            <div class="template-demo">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-left" style="width: 200px">用户名</th>
+                                        <th>提现金额</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="table_list">
+                                    <!--
+                                    <tr>
+                                        <td class="text-left">Frozen yogurt</td>
+                                        <td>1.59</td>
+                                        <td>
+                                            <div>查看</div>
+                                            <div>修改</div>
+                                            <div>删除</div>
+                                        </td>
+                                    </tr>
+                                    -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -300,16 +317,28 @@
     $(document).ready(function () {
         var userId = getUrlParam("id");
         var info = {
-            id:userId
+            id:parseInt(userId)
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/product/getProductList',
+            url:'https://kuaizan.duodework.com/withdraw/getWithdrawList',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                console.log(data)
+                if(data.statusCode == "02000000"){
+                    for (var i=0,j=data.data.length;i<j;i++){
+                        var str =
+                            '<tr>' +
+                            '  <td class="text-left">'+ data.data[i].nick_name +'</td>' +
+                            '  <td>'+ data.data[i].cash +'</td>' +
+                            '  <td>' +
+                            '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
+                            '  </td>' +
+                            '</tr>';
+                        $("#table_list").append(str)
+                    }
+                }
             }
         })
 
