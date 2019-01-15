@@ -307,7 +307,7 @@ $(document).ready(function () {
             comment:comment
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/cash/total/update',
+            url:'https://kuaizan.duodework.com/cash/total/add',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -341,6 +341,25 @@ $(document).ready(function () {
                 if(data.statusCode == "02000000"){
                     alert("分配成功");
                     window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
+    //提现处理
+    $("#table_list").on('click','.withdrawBtn',function () {
+        var id = $(this).data('id');
+        var info = {
+            id:parseInt(id)
+        }
+        $.ajax({
+            url:'https://kuaizan.duodework.com/cash/distribute',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                if(data.statusCode == "02000000"){
+                    alert("提现成功");
                 }
             }
         })
@@ -414,7 +433,9 @@ $(document).ready(function () {
     $("#toSetFuture").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/setFuture.html?id="+id;
     });
-
+    $("#toWithdrawList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/withdrawList.html?id="+id;
+    })
 
     //选择用户
     /**
