@@ -6,7 +6,7 @@
       select * from card_use where user_id=#{card_use.user_id}
     </select>
 
-    <select id="findCardId" resultType="com.duode.model.CardUse">
+    <select id="findCardId" parameterType="com.duode.model.CardUse" resultMap="cashUseList">
       select * from card_use where card_id=#{card_id}
     </select>
 
