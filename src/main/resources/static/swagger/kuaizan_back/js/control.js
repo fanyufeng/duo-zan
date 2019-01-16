@@ -352,7 +352,7 @@ $(document).ready(function () {
             id:parseInt(id)
         }
         $.ajax({
-            url:'https://kuaizan.duodework.com/cash/distribute',
+            url:'https://kuaizan.duodework.com/withdraw/update',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -435,6 +435,9 @@ $(document).ready(function () {
     });
     $("#toWithdrawList").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/withdrawList.html?id="+id;
+    });
+    $("#toQRcodeList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
     })
 
     //选择用户

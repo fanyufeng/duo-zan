@@ -266,10 +266,9 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-left" style="width: 200px">姓名</th>
-                                        <th>账号</th>
-                                        <th>提现金额</th>
-                                        <th>操作</th>
+                                        <th class="text-left" style="width: 200px">项目名</th>
+                                        <th>唯一码</th>
+                                        <th>积分价值</th>
                                     </tr>
                                     </thead>
                                     <tbody id="table_list">
@@ -326,7 +325,7 @@
             id:parseInt(userId)
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/withdraw/getWithdrawList',
+            url:'https://kuaizan.duodework.com/card/findCardIdList',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -334,29 +333,15 @@
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     for (var i=0,j=data.data.length;i<j;i++){
-                        if(data.data[i].alipay){
-                            var str =
-                                '<tr>' +
-                                '  <td class="text-left">'+ data.data[i].comment +'</td>' +
-                                '  <td>'+ data.data[i].alipay +'</td>' +
-                                '  <td>'+ data.data[i].pay +'</td>' +
-                                '  <td>' +
-                                '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
-                                '  </td>' +
-                                '</tr>';
-                            $("#table_list").append(str)
-                        }else{
-                            var str =
-                                '<tr>' +
-                                '  <td class="text-left">'+ data.data[i].comment +'</td>' +
-                                '  <td>'+ data.data[i].bank_card +'</td>' +
-                                '  <td>'+ data.data[i].pay +'</td>' +
-                                '  <td>' +
-                                '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
-                                '  </td>' +
-                                '</tr>';
-                            $("#table_list").append(str)
-                        }
+                        var str =
+                            '<tr>' +
+                            '  <td class="text-left">'+ data.data[i].nick_name +'</td>' +
+                            '  <td>'+ data.data[i].cash +'</td>' +
+                            '  <td>' +
+                            '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
+                            '  </td>' +
+                            '</tr>';
+                        $("#table_list").append(str)
                     }
                 }
             }

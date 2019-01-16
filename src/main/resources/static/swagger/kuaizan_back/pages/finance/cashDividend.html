@@ -143,6 +143,11 @@
                                         提现申请列表
                                     </a>
                                 </div>
+                                <div id="toQRcodeList" class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        分红记录
+                                    </a>
+                                </div>
                             </nav>
                         </div>
                     </div>
@@ -362,11 +367,13 @@
                 console.log(data);
                 if(data.statusCode == "02000000"){
                     for(var i=0,j=data.data.length;i<j;i++){
-                        var str =
-                            '<li class="mdc-list-item cash_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
-                            data.data[i].comment +
-                            '</li>';
-                        $("#section_info").append(str);
+                        if(data.data[i].status == 0){
+                            var str =
+                                '<li class="mdc-list-item cash_selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
+                                data.data[i].comment +
+                                '</li>';
+                            $("#cash_info").append(str);
+                        }
                     }
                 }
             }
