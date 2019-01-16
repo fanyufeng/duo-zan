@@ -33,7 +33,7 @@
     )
     </insert>
 
-    <resultMap type="com.duode.model.Cash" id="cashUseList">
+    <resultMap type="com.duode.model.CashUse" id="cashUseList">
         <result column="id" property="id"/>
         <result column="card_id"  property="card_id"/>
         <result column="integration_num"  property="integration_num"/>
