@@ -352,7 +352,7 @@ $(document).ready(function () {
             id:parseInt(id)
         }
         $.ajax({
-            url:'https://kuaizan.duodework.com/cash/distribute',
+            url:'https://kuaizan.duodework.com/withdraw/update',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
