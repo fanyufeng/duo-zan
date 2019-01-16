@@ -36,8 +36,8 @@ public class CardUseService {
     }
 
 
-    public List<CardUse> findCardUser(int userId){
-        List<CardUse> cardUseList = cardUseMapper.findCardUser(userId);
+    public List<CardUse> findCardUser(CardUse cardUse){
+        List<CardUse> cardUseList = cardUseMapper.findCardUser(cardUse);
         if (cardUseList.size()!=0) {
             return cardUseList;
         } else {

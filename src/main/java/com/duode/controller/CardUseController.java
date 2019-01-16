@@ -30,7 +30,7 @@ public class CardUseController {
     @ResponseBody
     public ResponseDataModel getCardUseList(@RequestBody CardUse cardUse){
         ResponseDataModel response = new ResponseDataModel();
-        List<CardUse> cardUseList = cardUseService.findCardUser(cardUse.getUser_id());
+        List<CardUse> cardUseList = cardUseService.findCardUser(cardUse);
         if (cardUseList !=null) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
             response.setData(cardUseList);

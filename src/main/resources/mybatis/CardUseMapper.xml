@@ -3,7 +3,7 @@
 <mapper namespace="com.duode.mapper.CardUseMapper">
  
     <select id="findCardUser" parameterType="com.duode.model.CardUse" resultMap="cashUseList">
-      select * from card_use where user_id=#{userId}
+      select * from card_use where user_id=#{card_use.user_id}
     </select>
 
     <select id="findCardId" resultType="com.duode.model.CardUse">
