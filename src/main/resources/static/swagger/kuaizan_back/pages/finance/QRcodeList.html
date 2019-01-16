@@ -266,10 +266,9 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-left" style="width: 200px">用户名</th>
-                                        <th>提现金额</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
+                                        <th class="text-left" style="width: 200px">项目名</th>
+                                        <th>唯一码</th>
+                                        <th>积分价值</th>
                                     </tr>
                                     </thead>
                                     <tbody id="table_list">
@@ -326,7 +325,7 @@
             id:parseInt(userId)
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/withdraw/getWithdrawList',
+            url:'https://kuaizan.duodework.com/card/findCardIdList',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',

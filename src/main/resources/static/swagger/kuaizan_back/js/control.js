@@ -435,6 +435,9 @@ $(document).ready(function () {
     });
     $("#toWithdrawList").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/withdrawList.html?id="+id;
+    });
+    $("#toQRcodeList").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
     })
 
     //选择用户
