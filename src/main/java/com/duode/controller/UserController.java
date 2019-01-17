@@ -1,5 +1,6 @@
 package com.duode.controller;
 
+import com.duode.response.UserInternationalResponse;
 import com.duode.service.CardUseService;
 import net.sf.json.JSONObject;
 
@@ -283,7 +284,7 @@ public class UserController {
     @ResponseBody
     public ResponseDataModel getUserByIntegrationYesterday(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request, HttpServletResponse response) {
         ResponseDataModel resDataModel = new ResponseDataModel();
-        Map userU = cardUseService.getUserListYesterday();
+        List<UserInternationalResponse> userU = cardUseService.getUserListYesterday();
         if (userU !=null) {
             resDataModel.setData(userU);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

@@ -2,6 +2,7 @@ package com.duode.service;
 
 import com.duode.mapper.CardUseMapper;
 import com.duode.model.CardUse;
+import com.duode.response.UserInternationalResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +27,10 @@ public class CardUseService {
     }
 
 
-    public Map getUserListYesterday(){
-        Map result = cardUseMapper.getUserListYesterday(GetNowDate());
-        if (result !=null) {
-            return result;
+    public List<UserInternationalResponse> getUserListYesterday(){
+        List<UserInternationalResponse> userInternationalResponses = cardUseMapper.getUserListYesterday(GetNowDate());
+        if (userInternationalResponses !=null) {
+            return userInternationalResponses;
         } else {
             return null;
         }
