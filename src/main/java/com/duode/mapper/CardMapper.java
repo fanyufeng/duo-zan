@@ -10,9 +10,10 @@ import java.util.List;
  */
 public interface CardMapper {
     public List<Card> findCardAll();
+
     public List<Card> findCard(@Param("unique_id") String unique_id);
     public int addCard(@Param("card") Card card);
     public int updateCard(@Param("card") Card card);
     public List<Card> findCardIdList(@Param("status") int status);
-
+    public List<Card> findCardDetail(@Param("cardId") int cardId);
 }

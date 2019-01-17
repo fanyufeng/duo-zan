@@ -56,5 +56,16 @@ public class CardService {
         }
     }
 
+    public Card findCardDetail(int cardId) {
+        List<Card> cardList = cardMapper.findCardDetail(cardId);
+        if (cardList.size() != 0) {
+            Card cardElem = cardList.get(0);
+            return cardElem;
+        } else {
+            return null;
+        }
+
+    }
+
 
 }

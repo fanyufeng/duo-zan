@@ -6,6 +6,10 @@
       select * from card where unique_id=#{unique_id}
     </select>
 
+    <select id="findCardDetail" parameterType="com.duode.model.Card" resultMap="cardList">
+      select * from card where card.id=#{cardId}
+    </select>
+
     <insert id="addCard">
     insert into card(
         product_id,
