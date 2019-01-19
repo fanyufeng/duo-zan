@@ -57,13 +57,33 @@ $(document).ready(function () {
             }
         })
     });
-    //上传文件
+    //上传视频文件
     var vedio_url = "";
     $("#upload").click(function () {
         $.ajaxFileUpload({
             url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+    //上传图片文件
+    var img_url = "";
+    $("#upload_img_btn").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
             type:'POST',
             dataType: 'JSON',   //json
             success: function (data) {
@@ -175,6 +195,82 @@ $(document).ready(function () {
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/factory/update',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
+    //添加Banner广告
+    $("#commit_addBanner").click(function () {
+       var BannerAd_name = $("#tf-box-name").val();
+       var playTimes = $("#tf-box-times").val();
+       var ad_imgUrl = img_url;
+       var ad_videoUrl = vedio_url;
+       var client_id = selected_id;
+       var comment = $("#tf-box-address").val();
+       var info = {
+
+       }
+       $.ajax({
+            url:'https://kuaizan.duodework.com/',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
+    //添加index广告
+    $("#commit_addIndex").click(function () {
+        var indexAd_name = $("#tf-box-name").val();
+        var playTimes = $("#tf-box-times").val();
+        var ad_videoUrl = vedio_url;
+        var client_id = selected_id;
+        var comment = $("#tf-box-address").val();
+        var info = {
+
+        }
+        $.ajax({
+            url:'https://kuaizan.duodework.com/',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+    });
+    //添加Launch广告
+    $("#commit_addLaunch").click(function () {
+        var launchAd_name = $("#tf-box-name").val();
+        var playTimes = $("#tf-box-times").val();
+        var ad_imgUrl = img_url;
+        var client_id = selected_id;
+        var comment = $("#tf-box-address").val();
+        var info = {
+
+        }
+        $.ajax({
+            url:'https://kuaizan.duodework.com/',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -438,7 +534,25 @@ $(document).ready(function () {
     });
     $("#toQRcodeList").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
-    })
+    });
+    $("#toAddLaunchAd").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/launchAdList.html?id="+id;
+    });
+    $("#toAddBannerAds").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/bannerAdsList.html?id="+id;
+    });
+    $("#toAddIndexAd").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/indexAdList.html?id="+id;
+    });
+    $("#toAddBannerAdDetail").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addBannerAds.html?id="+id;
+    });
+    $("#toAddIndexAdDetail").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addIndexAd.html?id="+id;
+    });
+    $("#toAddLaunchAdDetail").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/addLaunchAd.html?id="+id;
+    });
 
     //选择用户
     /**
