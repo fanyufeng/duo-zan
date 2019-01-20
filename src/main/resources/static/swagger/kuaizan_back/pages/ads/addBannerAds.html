@@ -120,16 +120,6 @@
                         </a>
                         <div class="mdc-expansion-panel" id="ui-finance-menu">
                             <nav class="mdc-list mdc-drawer-submenu">
-                                <div id="toSetTokenCount" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分总数
-                                    </a>
-                                </div>
-                                <div id="toSetTokenCoefficient" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分系数
-                                    </a>
-                                </div>
                                 <div id="toSetCashDividend" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         设置现金分红
@@ -143,6 +133,11 @@
                                 <div id="toCashReview" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         分红记录
+                                    </a>
+                                </div>
+                                <div id="toWithdrawList" class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        提现申请记录
                                     </a>
                                 </div>
                             </nav>
@@ -346,6 +341,18 @@
                                                     <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
                                                     <input type="file" id="upload_img" name="upload_video" class="mdc-text-field__input">
                                                     <input type="button" id="upload_img_btn" data-mdc-auto-init="MDCRipple" value="上传图片" style="margin: auto;width: 80px">
+                                                    <div class="mdc-text-field__bottom-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
+                                        <div class="template-demo">
+                                            <div id="demo-tf-box-link-wrapper">
+                                                <div id="tf-box-link-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
+                                                    <input type="text" id="tf-box-link" class="mdc-text-field__input">
+                                                    <label for="tf-box-address" class="mdc-text-field__label">外部链接</label>
                                                     <div class="mdc-text-field__bottom-line"></div>
                                                 </div>
                                             </div>
