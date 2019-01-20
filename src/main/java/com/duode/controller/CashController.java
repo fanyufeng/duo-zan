@@ -1,16 +1,10 @@
 package com.duode.controller;
 
 import com.duode.constant.ApiStatusCode;
-import com.duode.model.Card;
-import com.duode.model.Cash;
-import com.duode.model.Cashtotal;
-import com.duode.model.User;
+import com.duode.model.*;
 import com.duode.request.CashRequest;
 import com.duode.response.ResponseDataModel;
-import com.duode.service.CardService;
-import com.duode.service.CashService;
-import com.duode.service.CashtotalService;
-import com.duode.service.UserService;
+import com.duode.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +27,9 @@ public class CashController {
 
     @Autowired
     public CardService cardService;
+
+    @Autowired
+    public CashUseService cashUseService;
 
 
 
@@ -105,6 +102,11 @@ public class CashController {
                 double cash_elem = userL.getIntegration() * proprotion;
                 userL.setCash(cash_elem + userL.getCash());
                 userService.updateUser(userL);
+                CashUse cashUse = new CashUse();
+                cashUse.setCash_num(cash_elem);
+                cashUse.setCash_total_id(cashtotal1.getId());
+                cashUse.setUser_id(userL.getId());
+                cashUseService.addCashUse(cashUse);
             }
 
             response.setStatusCode(ApiStatusCode.SUCCESS.value());

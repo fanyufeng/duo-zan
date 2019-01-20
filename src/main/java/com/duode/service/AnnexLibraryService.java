@@ -38,4 +38,23 @@ public class AnnexLibraryService {
 
         }
     }
+
+    public List<AnnexLibrary>  findAnnexLibraryCategory (AnnexLibrary annexLibrary) {
+        List<AnnexLibrary>  annexLibraryList = annexLibraryMapper.findAnnexLibraryCategory(annexLibrary);
+        if (annexLibraryList.size() !=0) {
+            return annexLibraryList;
+        } else {
+            return null;
+        }
+    }
+
+    public AnnexLibrary findAnnexLibraryDetail(AnnexLibrary annexLibrary) {
+        List<AnnexLibrary> annexLibraryList = annexLibraryMapper.findAnnexLibraryDetail(annexLibrary);
+        if ( annexLibraryList.size() !=0) {
+            AnnexLibrary annexLibrary1= annexLibraryList.get(0);
+            return annexLibrary1;
+        } else {
+            return null;
+        }
+    }
 }

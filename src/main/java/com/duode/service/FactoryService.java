@@ -17,6 +17,15 @@ public class FactoryService {
     @Autowired
     public FactoryMapper factoryMapper;
 
+    public List<Factory> findFactoryDetail(int factoryId) {
+        List<Factory> factoryList = factoryMapper.findFactoryDetail(factoryId);
+        if (factoryList.size() !=0) {
+            return factoryList;
+        } else {
+            return null;
+        }
+    }
+
     public int  addFactory(Factory factory){
         int  factoryReponse = factoryMapper.addFactory(factory);
         return factoryReponse;

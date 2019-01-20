@@ -8,6 +8,8 @@ public class AnnexLibrary {
     public int manager_id;
     public int manager_name;
     public String file_name;
+    public int category;
+    public int choose_status;
     public String file_path;
     public int status;
     public int card_id;
@@ -95,6 +97,22 @@ public class AnnexLibrary {
         this.modify_time = modify_time;
     }
 
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public int getChoose_status() {
+        return choose_status;
+    }
+
+    public void setChoose_status(int choose_status) {
+        this.choose_status = choose_status;
+    }
+
     @Override
     public String toString() {
         return "AnnexLibrary{" +
@@ -102,6 +120,8 @@ public class AnnexLibrary {
                 ", manager_id=" + manager_id +
                 ", manager_name=" + manager_name +
                 ", file_name='" + file_name + '\'' +
+                ", category=" + category +
+                ", choose_status=" + choose_status +
                 ", file_path='" + file_path + '\'' +
                 ", status=" + status +
                 ", card_id=" + card_id +

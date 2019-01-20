@@ -1,18 +1,14 @@
 package com.duode.model;
 
-import java.sql.Timestamp;
-
 /**
  * Created by fanyufeng in 18/12/28
  */
-public class Cashtotal {
+public class Checkin {
     public int id;
-    public double cash_total;
-    public String name;
-    public String comment;
-    public Timestamp deadline;
-    public int user_id;
+    public int integration_num;
     public int status;
+    public String comment;
+    public int user_id;
     private String create_time;
     private String modify_time;
 
@@ -24,12 +20,20 @@ public class Cashtotal {
         this.id = id;
     }
 
-    public double getCash_total() {
-        return cash_total;
+    public int getIntegration_num() {
+        return integration_num;
     }
 
-    public void setCash_total(double cash_total) {
-        this.cash_total = cash_total;
+    public void setIntegration_num(int integration_num) {
+        this.integration_num = integration_num;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getComment() {
@@ -64,40 +68,14 @@ public class Cashtotal {
         this.modify_time = modify_time;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public Timestamp getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Timestamp deadline) {
-        this.deadline = deadline;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
-        return "Cashtotal{" +
+        return "Checkin{" +
                 "id=" + id +
-                ", cash_total=" + cash_total +
-                ", name='" + name + '\'' +
-                ", comment='" + comment + '\'' +
-                ", deadline=" + deadline +
-                ", user_id=" + user_id +
+                ", integration_num='" + integration_num + '\'' +
                 ", status=" + status +
+                ", comment='" + comment + '\'' +
+                ", user_id=" + user_id +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +
                 '}';

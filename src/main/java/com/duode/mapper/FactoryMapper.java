@@ -14,5 +14,6 @@ public interface FactoryMapper {
     public int addFactory(@Param("factory") Factory factory);
     public int updateFactory(@Param("factory") Factory factory);
     public List<Factory> findFactory();
+    public List<Factory> findFactoryDetail(@Param("id") int factory_id);
 
 }

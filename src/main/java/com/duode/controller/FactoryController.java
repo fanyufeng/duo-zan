@@ -19,6 +19,20 @@ public class FactoryController {
     @Autowired
     public FactoryService factoryService;
 
+    @RequestMapping(value="/getFactoryDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getFactoryDetail(@RequestBody Factory factory) {
+        ResponseDataModel response = new ResponseDataModel();
+        List<Factory> code = factoryService.findFactoryDetail(factory.getId());
+        if (code !=null){
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setData(code);
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
+
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addFactory(@RequestBody Factory factory) {

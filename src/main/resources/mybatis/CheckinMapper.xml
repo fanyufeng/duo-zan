@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.CheckinMapper">
+
+    <select id="findCheckinInfo" parameterType="com.duode.model.Checkin" resultMap="checkinList">
+      select * from checkin where id=#{id}
+    </select>
+
+    <insert id="addCheckin" parameterType="com.duode.model.Checkin" useGeneratedKeys="true" keyProperty="id">
+    insert into checkin(
+        integration_num,
+        status,
+        comment,
+        user_id,
+        create_time,
+        modify_time
+    )
+    values (
+        #{checkin.integration_num},
+        #{checkin.status},
+        #{checkin.comment},
+        #{checkin.user_id},
+        now(),
+        now()
+    )
+    </insert>
+
+
+
+    <select id="findCheckin" parameterType="com.duode.model.Checkin" resultMap="checkinList">
+      select * from checkin
+    </select>
+
+    <resultMap type="com.duode.model.Checkin" id="checkinList">
+        <result column="id" property="id"/>
+        <result column="integration_num"  property="integration_num"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="user_id" property="user_id"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>

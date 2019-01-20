@@ -22,6 +22,20 @@ public class AdvertiseController {
     @Autowired
     public AdvertiseService advertiseService;
 
+    @RequestMapping(value="/getAdvertiseDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getAdvertiseDetail(@RequestBody Advertise advertise) {
+        ResponseDataModel response = new ResponseDataModel();
+        Advertise code = advertiseService.findAdvertise(advertise.getId());
+        if (code!=null){
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setData(code);
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
+
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addCard(@RequestBody Advertise advertise) {

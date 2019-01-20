@@ -154,6 +154,7 @@ public class CardController {
             cardUse.setCard_id(re.getId());
             cardUse.setUser_id(cardRequest.getUser_id());
             cardUse.setNum(re.getTimes());
+            cardUse.setIntegration_num(re.getIntegration_num());
             cardUse.setComment(re.getComment());
             cardUse.setIntegration_num(re.getIntegration_num());
             cardUseService.addCardUse(cardUse);

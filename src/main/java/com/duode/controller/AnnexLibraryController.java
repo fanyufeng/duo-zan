@@ -114,6 +114,7 @@ public class AnnexLibraryController {
 
                             annexLibrary.setFile_path(path);
                             annexLibrary.setFile_name(changefileName);
+                            annexLibrary.setCategory(0);
 
                             annexLibraryService.addAnnexLibrary(annexLibrary);
 
@@ -126,6 +127,209 @@ public class AnnexLibraryController {
                             uploadResponse.setStatus(1);
                             resDataModel.setData(uploadResponse);
                             
+                        }
+
+                    }
+                    //记录上传该文件后的时间
+                    int finaltime = (int) System.currentTimeMillis();
+                    System.out.println("fanyufeng"+(finaltime - pre));
+
+                }
+            }
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+
+        }catch(Exception e){
+            logger.error("文件上传失败,原因{}");
+        }
+        System.out.println(resDataModel.toString());
+        return resDataModel;
+    }
+
+
+    /**
+     *  banner文件上传
+     * @return
+     */
+    @RequestMapping(value="/bannerfileSave",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ResponseDataModel bannerfileSave(HttpServletRequest request) throws Exception{
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        try{
+            CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
+            if(multipartResolver.isMultipart(request)){
+                AnnexLibrary annexLibrary=new AnnexLibrary();
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+                //取得request中的所有文件名
+                Iterator<String> iter = multiRequest.getFileNames();
+                while(iter.hasNext()){
+                    //记录上传过程起始时的时间，用来计算上传时间
+                    int pre = (int) System.currentTimeMillis();
+                    //取得上传文件
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    if(file != null){
+                        //取得当前上传文件的文件名称
+                        String myFileName = file.getOriginalFilename();
+                        //如果名称不为“”,说明该文件存在，否则说明该文件不存在
+                        if(myFileName.trim()!=""){
+                            System.out.println(myFileName);
+                            //重命名上传后的文件名
+                            String fileName = file.getOriginalFilename();
+                            UUID uuid = UUID.randomUUID();
+                            String fileEnd = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
+                            String changefileName=uuid.toString()+"."+fileEnd;
+                            //定义上传路径
+                            String path = "/duode/dituo/bannerImages/" + changefileName;
+                            String xpath="/bannerImages/" + changefileName;
+
+                            annexLibrary.setFile_path(path);
+                            annexLibrary.setFile_name(changefileName);
+                            annexLibrary.setCategory(1);
+                            annexLibraryService.addAnnexLibrary(annexLibrary);
+
+                            File localFile = new File(path);
+
+                            file.transferTo(localFile);
+                            UploadResponse uploadResponse=new UploadResponse();
+                            uploadResponse.setFileName(xpath);
+                            uploadResponse.setFilePath(path);
+                            uploadResponse.setStatus(1);
+                            resDataModel.setData(uploadResponse);
+
+                        }
+
+                    }
+                    //记录上传该文件后的时间
+                    int finaltime = (int) System.currentTimeMillis();
+                    System.out.println("fanyufeng"+(finaltime - pre));
+
+                }
+            }
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+
+        }catch(Exception e){
+            logger.error("文件上传失败,原因{}");
+        }
+        System.out.println(resDataModel.toString());
+        return resDataModel;
+    }
+
+    /**
+     *  launch文件上传
+     * @return
+     */
+    @RequestMapping(value="/launchfileSave",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ResponseDataModel launchfileSave(HttpServletRequest request) throws Exception{
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        try{
+            CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
+            if(multipartResolver.isMultipart(request)){
+                AnnexLibrary annexLibrary=new AnnexLibrary();
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+                //取得request中的所有文件名
+                Iterator<String> iter = multiRequest.getFileNames();
+                while(iter.hasNext()){
+                    //记录上传过程起始时的时间，用来计算上传时间
+                    int pre = (int) System.currentTimeMillis();
+                    //取得上传文件
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    if(file != null){
+                        //取得当前上传文件的文件名称
+                        String myFileName = file.getOriginalFilename();
+                        //如果名称不为“”,说明该文件存在，否则说明该文件不存在
+                        if(myFileName.trim()!=""){
+                            System.out.println(myFileName);
+                            //重命名上传后的文件名
+                            String fileName = file.getOriginalFilename();
+                            UUID uuid = UUID.randomUUID();
+                            String fileEnd = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
+                            String changefileName=uuid.toString()+"."+fileEnd;
+                            //定义上传路径
+                            String path = "/duode/dituo/launchImages/" + changefileName;
+                            String xpath="/launchImages/" + changefileName;
+
+                            annexLibrary.setFile_path(path);
+                            annexLibrary.setFile_name(changefileName);
+                            annexLibrary.setCategory(2);
+                            annexLibraryService.addAnnexLibrary(annexLibrary);
+
+                            File localFile = new File(path);
+
+                            file.transferTo(localFile);
+                            UploadResponse uploadResponse=new UploadResponse();
+                            uploadResponse.setFileName(xpath);
+                            uploadResponse.setFilePath(path);
+                            uploadResponse.setStatus(1);
+                            resDataModel.setData(uploadResponse);
+
+                        }
+
+                    }
+                    //记录上传该文件后的时间
+                    int finaltime = (int) System.currentTimeMillis();
+                    System.out.println("fanyufeng"+(finaltime - pre));
+
+                }
+            }
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+
+        }catch(Exception e){
+            logger.error("文件上传失败,原因{}");
+        }
+        System.out.println(resDataModel.toString());
+        return resDataModel;
+    }
+
+
+    /**
+     *  launch文件上传
+     * @return
+     */
+    @RequestMapping(value="/checkinfileSave",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ResponseDataModel checkinfileSave(HttpServletRequest request) throws Exception{
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        try{
+            CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
+            if(multipartResolver.isMultipart(request)){
+                AnnexLibrary annexLibrary=new AnnexLibrary();
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+                //取得request中的所有文件名
+                Iterator<String> iter = multiRequest.getFileNames();
+                while(iter.hasNext()){
+                    //记录上传过程起始时的时间，用来计算上传时间
+                    int pre = (int) System.currentTimeMillis();
+                    //取得上传文件
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    if(file != null){
+                        //取得当前上传文件的文件名称
+                        String myFileName = file.getOriginalFilename();
+                        //如果名称不为“”,说明该文件存在，否则说明该文件不存在
+                        if(myFileName.trim()!=""){
+                            System.out.println(myFileName);
+                            //重命名上传后的文件名
+                            String fileName = file.getOriginalFilename();
+                            UUID uuid = UUID.randomUUID();
+                            String fileEnd = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
+                            String changefileName=uuid.toString()+"."+fileEnd;
+                            //定义上传路径
+                            String path = "/duode/dituo/checkinImages/" + changefileName;
+                            String xpath="/checkinImages/" + changefileName;
+
+                            annexLibrary.setFile_path(path);
+                            annexLibrary.setFile_name(changefileName);
+                            annexLibrary.setCategory(3);
+                            annexLibraryService.addAnnexLibrary(annexLibrary);
+
+                            File localFile = new File(path);
+
+                            file.transferTo(localFile);
+                            UploadResponse uploadResponse=new UploadResponse();
+                            uploadResponse.setFileName(xpath);
+                            uploadResponse.setFilePath(path);
+                            uploadResponse.setStatus(1);
+                            resDataModel.setData(uploadResponse);
+
                         }
 
                     }

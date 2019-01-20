@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duode.mapper.FactoryMapper">
+    <select id="findFactoryDetail" parameterType="com.duode.model.Factory" resultMap="factoryList">
+      select * from factory where id=#{id}
+    </select>
     <insert id="addFactory">
     insert into factory(
         `name`,

@@ -1,7 +1,9 @@
 package com.duode.controller;
 
+import com.duode.model.Checkin;
 import com.duode.response.UserInternationalResponse;
 import com.duode.service.CardUseService;
+import com.duode.service.CheckinService;
 import net.sf.json.JSONObject;
 
 import com.duode.config.AESUtil;
@@ -48,6 +50,9 @@ public class UserController {
 
     @Autowired
     private CardUseService cardUseService;
+
+    @Autowired
+    private CheckinService checkinService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     @ResponseBody
@@ -287,6 +292,27 @@ public class UserController {
         List<UserInternationalResponse> userU = cardUseService.getUserListYesterday();
         if (userU !=null) {
             resDataModel.setData(userU);
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        }
+        return resDataModel;
+    }
+
+    @RequestMapping(value = "/addCheckin", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel addCheckin(@RequestBody Checkin checkin, HttpServletRequest request, HttpServletResponse response) {
+        ResponseDataModel resDataModel = new ResponseDataModel();
+        checkin.setIntegration_num(5);
+
+        Checkin code = checkinService.addCheckin(checkin);
+        User user = userService.getUserInfo(checkin.getUser_id());
+        if (user!=null) {
+            user.setIntegration(user.getIntegration()+5);
+            userService.updateUser(user);
+        }
+        if (code !=null) {
+            resDataModel.setData(code);
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {
             resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());

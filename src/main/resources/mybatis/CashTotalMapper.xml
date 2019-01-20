@@ -7,6 +7,7 @@
     <insert id="addCashtotal">
     insert into cash_total(
         cash_total,
+        `name`,
         comment,
         user_id,
         deadline,
@@ -15,6 +16,7 @@
     )
     values (
         #{cashTotal.cash_total},
+        #{cashTotal.name},
         #{cashTotal.comment},
         #{cashTotal.user_id},
         #{cashTotal.deadline},
@@ -34,7 +36,7 @@
     </update>
 
     <select id="getCashtotalStatus" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
-      select * from cash_total where cash_total.status=#{status}
+      select * from cash_total where cash_total.status=#{status} order by id desc
     </select>
 
     <select id="findCashtotal" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">

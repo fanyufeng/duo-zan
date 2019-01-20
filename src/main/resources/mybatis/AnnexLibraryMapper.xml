@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duode.mapper.AnnexLibraryMapper">
+
+    <select id="findAnnexLibraryDetail" parameterType="com.duode.model.AnnexLibrary" resultMap="annexLibraryList">
+      select * from annexLibrary where id=#{annexLibrary.id}
+    </select>
+
     <insert id="addAnnexLibrary">
     insert into annexLibrary(
         manager_id,
         manager_name,
+        category,
         file_name,
         file_path,
         card_id,
@@ -15,6 +21,7 @@
     values (
         #{annexLibrary.manager_id},
         #{annexLibrary.manager_name},
+        #{annexLibrary.category},
         #{annexLibrary.file_name},
         #{annexLibrary.file_path},
         #{annexLibrary.card_id},
@@ -36,10 +43,16 @@
       select * from annexLibrary
     </select>
 
+    <select id="findAnnexLibraryCategory" parameterType="com.duode.model.AnnexLibrary" resultMap="annexLibraryList">
+      select * from annexLibrary where category=#{annexLibrary.category} and status=1
+    </select>
+
+
     <resultMap type="com.duode.model.AnnexLibrary" id="annexLibraryList">
         <result column="id" property="id"/>
         <result column="manager_id"  property="manager_id"/>
         <result column="manager_name"  property="manager_name"/>
+        <result column="category"  property="category"/>
         <result column="file_name" property="file_name"/>
         <result column="file_path" property="file_path"/>
         <result column="status" property="status"/>

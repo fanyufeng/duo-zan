@@ -38,42 +38,50 @@ public class CardUseController {
     @ResponseBody
     public ResponseDataModel getCardUseList(@RequestBody CardUse cardUse){
         ResponseDataModel response = new ResponseDataModel();
-        List<CardUse> cardUseList = cardUseService.findCardUser(cardUse);
 
-        List<CardUseResponse> cardUseResponseList = new ArrayList<>();
+        try {
+            List<CardUse> cardUseList = cardUseService.findCardUser(cardUse);
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            List<CardUseResponse> cardUseResponseList = new ArrayList<>();
 
-        if (cardUseList !=null) {
-            for (CardUse elem : cardUseList) {
-                CardUseResponse cardUseResponse = new CardUseResponse();
-                cardUseResponse.setId(elem.getId());
-                cardUseResponse.setCard_id(elem.getCard_id());
-                cardUseResponse.setComment(elem.getComment());
-                cardUseResponse.setIntegration_num(elem.getIntegration_num());
-                cardUseResponse.setNum(elem.getNum());
-                cardUseResponse.setSatus(elem.getSatus());
-                cardUseResponse.setUser_id(elem.getUser_id());
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-                Card cardResponse = cardService.findCardDetail(elem.getCard_id());
-                if (cardResponse != null) {
-                    List<Product> productList = productService.getProduct(cardResponse.getProduct_id());
-                    if (productList != null) {
-                        Product product = productList.get(0);
-                        cardUseResponse.setProductName(product.getName());
-                        String dateStr=df.format(product.getModify_time());
-                        cardUseResponse.setProductTime(dateStr);
+            if (cardUseList !=null) {
+                for (CardUse elem : cardUseList) {
+                    CardUseResponse cardUseResponse = new CardUseResponse();
+                    cardUseResponse.setId(elem.getId());
+                    cardUseResponse.setCard_id(elem.getCard_id());
+                    cardUseResponse.setComment(elem.getComment());
+                    cardUseResponse.setIntegration_num(elem.getIntegration_num());
+                    cardUseResponse.setNum(elem.getNum());
+                    cardUseResponse.setSatus(elem.getSatus());
+                    cardUseResponse.setUser_id(elem.getUser_id());
+
+                    Card cardResponse = cardService.findCardDetail(elem.getCard_id());
+                    if (cardResponse != null) {
+                        List<Product> productList = productService.getProduct(cardResponse.getProduct_id());
+                        if (productList != null) {
+                            Product product = productList.get(0);
+                            cardUseResponse.setProductName(product.getName());
+                            Date date1 = df.parse(product.getModify_time());
+                            String dateStr=df.format(date1);
+                            cardUseResponse.setProductTime(dateStr);
+                        }
                     }
+
+                    cardUseResponseList.add(cardUseResponse);
+
                 }
-
-                cardUseResponseList.add(cardUseResponse);
-
+                response.setStatusCode(ApiStatusCode.SUCCESS.value());
+                response.setData(cardUseResponseList);
+            } else {
+                response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
             }
-            response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(cardUseResponseList);
-        } else {
-            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+
+        } catch(Exception e) {
+
         }
+
         return response;
     }
 

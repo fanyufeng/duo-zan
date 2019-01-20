@@ -24,6 +24,24 @@ public class ProductController {
     @Autowired
     public CardService cardService;
 
+
+
+
+
+    @RequestMapping(value="/getProductDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getProduct(@RequestBody Product product) {
+        ResponseDataModel response = new ResponseDataModel();
+        List<Product> code = productService.getProduct(product.getId());
+        if (code!=null){
+            response.setData(code);
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
     @RequestMapping(value="/add",method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addProduct(@RequestBody Product product) {
