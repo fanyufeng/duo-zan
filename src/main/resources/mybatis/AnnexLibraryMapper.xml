@@ -34,7 +34,8 @@
     <update id="updateAnnexLibrary">
         UPDATE annexLibrary
         SET file_name=${annexLibrary.file_name},
-        file_path=#{annexLibrary.status},
+        choose_status=${annexLibrary.choose_status}
+        status=#{annexLibrary.status},
         modify_time = now()
         WHERE id = #{annexLibrary.id}
     </update>
@@ -44,7 +45,7 @@
     </select>
 
     <select id="findAnnexLibraryCategory" parameterType="com.duode.model.AnnexLibrary" resultMap="annexLibraryList">
-      select * from annexLibrary where category=#{annexLibrary.category} and status=1
+      select * from annexLibrary where category=#{annexLibrary.category} and choose_status=1
     </select>
 
 

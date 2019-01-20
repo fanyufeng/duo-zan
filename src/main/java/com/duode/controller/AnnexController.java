@@ -29,13 +29,23 @@ public class AnnexController {
 
         List<AnnexLibrary> annexLibraryList = new ArrayList<>();
 
+        AnnexLibrary annexLibrary2= new AnnexLibrary();
+        annexLibrary2.setCategory(1);
+        List<AnnexLibrary> annexLibraryList1=annexLibraryService.findAnnexLibraryCategory(annexLibrary2);
+        if (annexLibraryList1!=null) {
+            for (AnnexLibrary et: annexLibraryList1) {
+                et.setChoose_status(0);
+                annexLibraryService.updateAnnexLibrary(et);
+            }
+        }
+
         if (categoryRequest.getCategoryList() != null) {
             if (categoryRequest.getCategoryList().size()==3) {
                 for (Integer elem : categoryRequest.getCategoryList()) {
                     AnnexLibrary annexLibrary = new AnnexLibrary();
                     annexLibrary.setId(elem);
-                    annexLibrary.setChoose_status(1);
                     AnnexLibrary annexLibrary1=annexLibraryService.findAnnexLibraryDetail(annexLibrary);
+                    annexLibrary.setChoose_status(1);
                     annexLibraryList.add(annexLibrary1);
                 }
 
@@ -77,8 +87,8 @@ public class AnnexController {
                 for (Integer elem : categoryRequest.getCategoryList()) {
                     AnnexLibrary annexLibrary = new AnnexLibrary();
                     annexLibrary.setId(elem);
-                    annexLibrary.setChoose_status(1);
                     AnnexLibrary annexLibrary1=annexLibraryService.findAnnexLibraryDetail(annexLibrary);
+                    annexLibrary.setChoose_status(1);
                     annexLibraryList.add(annexLibrary1);
                 }
 
@@ -103,8 +113,8 @@ public class AnnexController {
                 for (Integer elem : categoryRequest.getCategoryList()) {
                     AnnexLibrary annexLibrary = new AnnexLibrary();
                     annexLibrary.setId(elem);
-                    annexLibrary.setChoose_status(1);
                     AnnexLibrary annexLibrary1=annexLibraryService.findAnnexLibraryDetail(annexLibrary);
+                    annexLibrary.setChoose_status(1);
                     annexLibraryList.add(annexLibrary1);
                 }
 
