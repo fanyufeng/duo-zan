@@ -29,11 +29,7 @@
 
     <update id="updateWithdraw">
         UPDATE withdraw
-        SET bank_card=#{withdraw.bank_card},
-        alipay=#{withdraw.alipay},
-        status=#{withdraw.status},
-        comment=#{withdraw.comment},
-        user_id=#{withdraw.user_id},
+        SET status=#{withdraw.status},
         modify_time = now()
         WHERE id = #{withdraw.id}
     </update>
@@ -47,6 +43,7 @@
         <result column="bank_card"  property="bank_card"/>
         <result column="alipay"  property="alipay"/>
         <result column="comment" property="comment"/>
+        <result column="status" property="status"/>
         <result column="user_id" property="user_id"/>
         <result column="create_time"  property="create_time"/>
         <result column="modify_time"  property="modify_time"/>
