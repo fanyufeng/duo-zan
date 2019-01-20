@@ -9,6 +9,7 @@ public class Withdraw {
     public String alipay;
     public double pay;
     public String comment;
+    public int status;
     public int user_id;
     private String create_time;
     private String modify_time;
@@ -77,6 +78,14 @@ public class Withdraw {
         this.pay = pay;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Withdraw{" +
@@ -85,6 +94,7 @@ public class Withdraw {
                 ", alipay='" + alipay + '\'' +
                 ", pay=" + pay +
                 ", comment='" + comment + '\'' +
+                ", status=" + status +
                 ", user_id=" + user_id +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +
