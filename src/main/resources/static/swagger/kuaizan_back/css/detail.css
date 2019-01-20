@@ -17,3 +17,9 @@
 .item_val{
     margin-left: 40px;
 }
+.addAds{
+    margin: auto 40px;
+    font-size: 12px;
+    color: #F71B3E;
+    cursor: pointer;
+}

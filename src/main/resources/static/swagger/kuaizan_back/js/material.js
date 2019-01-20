@@ -21,10 +21,10 @@
       var heroSelect = document.getElementById('hero-js-select');
       var heroSelectComponent = new mdc.select.MDCSelect(heroSelect);
     }
-      if ($('#adProject-js-select').length) {
-          var heroSelect = document.getElementById('adProject-js-select');
-          var heroSelectComponent = new mdc.select.MDCSelect(heroSelect);
-      }
+    if ($('#adProject-js-select').length) {
+      var heroSelect = document.getElementById('adProject-js-select');
+      var heroSelectComponent = new mdc.select.MDCSelect(heroSelect);
+    }
 
     /* text field */
     if ($('#tf-box-example').length) {
@@ -41,6 +41,41 @@
     if ($('#demo-tf-box-address-wrapper').length) {
       var wrapperBoxLeading = document.getElementById('demo-tf-box-address-wrapper');
     }
+      if ($('#tf-box-total-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-total-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
+      if ($('#demo-tf-box-total-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-total-wrapper');
+      }
+      if ($('#tf-box-time-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-time-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
+      if ($('#demo-tf-box-time-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-time-wrapper');
+      }
+      if ($('#tf-box-times-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-times-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
+      if ($('#demo-tf-box-times-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-times-wrapper');
+      }
+      if ($('#tf-box-uploadImg-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-uploadImg-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
+      if ($('#demo-tf-box-uploadImg-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-uploadImg-wrapper');
+      }
+      if ($('#tf-box-comment-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-comment-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
+      if ($('#demo-tf-box-comment-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-comment-wrapper');
+      }
     if ($('#tf-box-name-example').length) {
       var tfBoxLeadingEl = document.getElementById('tf-box-name-example');
       var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
