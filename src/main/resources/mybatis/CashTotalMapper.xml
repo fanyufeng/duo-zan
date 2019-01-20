@@ -9,6 +9,7 @@
         cash_total,
         comment,
         user_id,
+        deadline,
         create_time,
         modify_time
     )
@@ -16,6 +17,7 @@
         #{cashTotal.cash_total},
         #{cashTotal.comment},
         #{cashTotal.user_id},
+        #{cashTotal.deadline},
         now(),
         now()
     )

@@ -12,7 +12,10 @@ import com.duode.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +42,8 @@ public class CardUseController {
 
         List<CardUseResponse> cardUseResponseList = new ArrayList<>();
 
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         if (cardUseList !=null) {
             for (CardUse elem : cardUseList) {
                 CardUseResponse cardUseResponse = new CardUseResponse();
@@ -56,7 +61,8 @@ public class CardUseController {
                     if (productList != null) {
                         Product product = productList.get(0);
                         cardUseResponse.setProductName(product.getName());
-                        cardUseResponse.setProductTime(product.getModify_time());
+                        String dateStr=df.format(product.getModify_time());
+                        cardUseResponse.setProductTime(dateStr);
                     }
                 }
 
@@ -69,5 +75,16 @@ public class CardUseController {
             response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
         }
         return response;
+    }
+
+    public static void main(String[] argv) {
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+        Date date = new Date();
+        System.out.println(date.toString());
+        String dateStr=df.format(date);
+        System.out.println(dateStr);
     }
 }

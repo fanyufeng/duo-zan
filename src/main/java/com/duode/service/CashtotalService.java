@@ -31,6 +31,7 @@ public class CashtotalService {
     }
 
     public int  addCashtotal(Cashtotal withdraw){
+
         int  withdrawReponse = cashtotalMapper.addCashtotal(withdraw);
         return withdrawReponse;
     }

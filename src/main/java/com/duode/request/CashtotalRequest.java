@@ -1,27 +1,19 @@
-package com.duode.model;
+package com.duode.request;
 
 import java.sql.Timestamp;
 
 /**
- * Created by fanyufeng in 18/12/28
+ * Created by fanyufeng in 19/1/20
  */
-public class Cashtotal {
+public class CashtotalRequest {
     public int id;
     public double cash_total;
     public String comment;
-    public Timestamp deadline;
+    public String deadline;
     public int user_id;
     public int status;
     private String create_time;
     private String modify_time;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public double getCash_total() {
         return cash_total;
@@ -39,12 +31,28 @@ public class Cashtotal {
         this.comment = comment;
     }
 
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
     public int getUser_id() {
         return user_id;
     }
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getCreate_time() {
@@ -63,33 +71,12 @@ public class Cashtotal {
         this.modify_time = modify_time;
     }
 
-    public int getStatus() {
-        return status;
+    public int getId() {
+
+        return id;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public Timestamp getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Timestamp deadline) {
-        this.deadline = deadline;
-    }
-
-    @Override
-    public String toString() {
-        return "Cashtotal{" +
-                "id=" + id +
-                ", cash_total=" + cash_total +
-                ", comment='" + comment + '\'' +
-                ", deadline='" + deadline + '\'' +
-                ", user_id=" + user_id +
-                ", status=" + status +
-                ", create_time='" + create_time + '\'' +
-                ", modify_time='" + modify_time + '\'' +
-                '}';
+    public void setId(int id) {
+        this.id = id;
     }
 }

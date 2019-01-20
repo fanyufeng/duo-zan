@@ -78,7 +78,7 @@ public class AnnexLibraryController {
     }
 
     /**
-     *  文件上传
+     *  扫码文件上传
      * @return
      */
     @RequestMapping(value="/fileSave",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
