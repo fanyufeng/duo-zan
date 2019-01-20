@@ -77,14 +77,14 @@ public class CardUseController {
         return response;
     }
 
-    public static void main(String[] argv) {
-
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-
-        Date date = new Date();
-        System.out.println(date.toString());
-        String dateStr=df.format(date);
-        System.out.println(dateStr);
-    }
+//    public static void main(String[] argv) {
+//
+//        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//
+//        Date date = new Date();
+//        System.out.println(date.toString());
+//        String dateStr=df.format(date);
+//        System.out.println(dateStr);
+//    }
 }
