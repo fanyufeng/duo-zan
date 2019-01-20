@@ -29,8 +29,8 @@
 
     <update id="updateWithdraw">
         UPDATE withdraw
-        SET bank_card=${withdraw.bank_card},
-        alipay=${withdraw.alipay},
+        SET bank_card=#{withdraw.bank_card},
+        alipay=#{withdraw.alipay},
         status=#{withdraw.status},
         comment=#{withdraw.comment},
         user_id=#{withdraw.user_id},
