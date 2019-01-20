@@ -220,7 +220,7 @@ $(document).ready(function () {
 
        }
        $.ajax({
-            url:'https://kuaizan.duodework.com/',
+            url:'https://kuaizan.duodework.com/ ',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -445,8 +445,9 @@ $(document).ready(function () {
     $("#table_list").on('click','.withdrawBtn',function () {
         var id = $(this).data('id');
         var info = {
-            id:parseInt(id)
-        }
+            id:parseInt(id),
+            status:1
+        };
         $.ajax({
             url:'https://kuaizan.duodework.com/withdraw/update',
             type:'POST',

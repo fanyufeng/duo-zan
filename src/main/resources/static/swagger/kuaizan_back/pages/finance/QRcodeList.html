@@ -120,16 +120,6 @@
                         </a>
                         <div class="mdc-expansion-panel" id="ui-finance-menu">
                             <nav class="mdc-list mdc-drawer-submenu">
-                                <div id="toSetTokenCount" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分总数
-                                    </a>
-                                </div>
-                                <div id="toSetTokenCoefficient" class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        设置积分系数
-                                    </a>
-                                </div>
                                 <div id="toSetCashDividend" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         设置现金分红
@@ -143,6 +133,11 @@
                                 <div id="toCashReview" class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
                                         分红记录
+                                    </a>
+                                </div>
+                                <div id="toWithdrawList" class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        提现申请记录
                                     </a>
                                 </div>
                             </nav>
@@ -265,7 +260,6 @@
                                     <tr>
                                         <th class="text-left" style="width: 200px">项目名</th>
                                         <th>唯一码</th>
-                                        <th>积分价值</th>
                                     </tr>
                                     </thead>
                                     <tbody id="table_list">
@@ -332,11 +326,8 @@
                     for (var i=0,j=data.data.length;i<j;i++){
                         var str =
                             '<tr>' +
-                            '  <td class="text-left">'+ data.data[i].nick_name +'</td>' +
-                            '  <td>'+ data.data[i] +'</td>' +
-                            '  <td>' +
-                            '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
-                            '  </td>' +
+                            '  <td class="text-left">'+ data.data[i].productName +'</td>' +
+                            '  <td>'+ data.data[i].uniqueId +'</td>' +
                             '</tr>';
                         $("#table_list").append(str)
                     }
