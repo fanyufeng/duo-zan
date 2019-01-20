@@ -5,6 +5,7 @@ import com.duode.constant.ApiStatusCode;
 import com.duode.model.*;
 import com.duode.request.CardRequest;
 import com.duode.response.CardAdvertiseResponse;
+import com.duode.response.CardIdResponse;
 import com.duode.response.CardScanResponse;
 import com.duode.response.ResponseDataModel;
 import com.duode.service.*;
@@ -74,11 +75,19 @@ public class CardController {
 
         List<Card> cardList=cardService.findCardIdList(0);
 
-        List<String> idList = new ArrayList<>();
+        List<CardIdResponse> idList = new ArrayList<>();
 
         if (cardList !=null) {
             for (Card elem : cardList) {
-                idList.add(elem.getUnique_id());
+                CardIdResponse cardIdResponse = new CardIdResponse();
+
+                List<Product> productList = productService.getProduct(elem.getProduct_id());
+                if (productList!=null) {
+                    Product product = productList.get(0);
+                    cardIdResponse.setProductName(product.getName());
+                }
+                cardIdResponse.setUniqueId(elem.getUnique_id());
+                idList.add(cardIdResponse);
             }
 
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
