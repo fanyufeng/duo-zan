@@ -66,9 +66,16 @@
           var tfBoxLeadingEl = document.getElementById('tf-box-uploadImg-example');
           var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
       }
+      if ($('#demo-tf-box-link-wrapper').length) {
+          var wrapperBoxLeading = document.getElementById('demo-tf-box-link-wrapper');
+      }      if ($('#tf-box-link-example').length) {
+          var tfBoxLeadingEl = document.getElementById('tf-box-link-example');
+          var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
+      }
       if ($('#demo-tf-box-uploadImg-wrapper').length) {
           var wrapperBoxLeading = document.getElementById('demo-tf-box-uploadImg-wrapper');
       }
+
       if ($('#tf-box-comment-example').length) {
           var tfBoxLeadingEl = document.getElementById('tf-box-comment-example');
           var tfBoxLeading = new mdc.textField.MDCTextField(tfBoxLeadingEl);
