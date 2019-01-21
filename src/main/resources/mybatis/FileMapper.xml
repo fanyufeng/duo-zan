@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duode.mapper.FileMapper">
+
+    <select id="findFileInfo" parameterType="com.duode.model.File" resultMap="fileList">
+      select * from file where id=#{id}
+    </select>
+
+    <insert id="addFile" parameterType="com.duode.model.File" useGeneratedKeys="true" keyProperty="id">
+    insert into file(
+        id,
+        `name`,
+        status,
+        comment,
+        advertiser_id,
+        file_url,
+        link,
+        category,
+        frequency,
+        create_time,
+        modify_time
+    )
+    values (
+        #{id},
+        #{name},
+        #{status},
+        #{comment},
+        #{advertiser_id},
+        #{file_url},
+        #{link},
+        #{category},
+        #{frequency},
+        now(),
+        now()
+    )
+    </insert>
+
+    <update id="updateFile">
+        UPDATE file
+        SET `name`=${file.name},
+        status=#{file.status},
+        category=#{file.category},
+        modify_time = now()
+        WHERE id = #{product.id}
+    </update>
+
+    <select id="findFile" parameterType="com.duode.model.File" resultMap="fileList">
+      select * from product
+    </select>
+
+    <select id="findFileByCategory" parameterType="com.duode.model.File" resultMap="fileList">
+      select * from product where category=#{file.category}
+    </select>
+
+    <resultMap type="com.duode.model.File" id="fileList">
+        <result column="id" property="id"/>
+        <result column="name"  property="name"/>
+        <result column="status"  property="status"/>
+        <result column="comment" property="comment"/>
+        <result column="advertiser_id" property="advertiser_id"/>
+        <result column="file_url" property="file_url"/>
+        <result column="link" property="link"/>
+        <result column="category" property="category"/>
+        <result column="frequency" property="frequency"/>
+        <result column="create_time"  property="create_time"/>
+        <result column="modify_time"  property="modify_time"/>
+    </resultMap>
+</mapper>
