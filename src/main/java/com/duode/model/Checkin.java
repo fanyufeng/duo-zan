@@ -68,6 +68,8 @@ public class Checkin {
         this.modify_time = modify_time;
     }
 
+    
+
     @Override
     public String toString() {
         return "Checkin{" +

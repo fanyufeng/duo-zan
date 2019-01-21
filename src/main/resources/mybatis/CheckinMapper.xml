@@ -18,10 +18,10 @@
     )
     values (
         #{id},
-        #{checkin.integration_num},
-        #{checkin.status},
-        #{checkin.comment},
-        #{checkin.user_id},
+        #{integration_num},
+        #{status},
+        #{comment},
+        #{user_id},
         now(),
         now()
     )
