@@ -257,133 +257,33 @@
                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                         <div class="mdc-card">
                             <section class="mdc-card__primary">
-                                <h1 class="mdc-card__title mdc-card__title--large">添加Banner轮换广告</h1>
+                                <h1 class="mdc-card__title mdc-card__title--large">现金分配记录</h1>
                             </section>
-                            <section class="mdc-card__supporting-text">
-                                <div class="mdc-layout-grid__inner">
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-name-wrapper">
-                                                <div id="tf-box-name-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-name" class="mdc-text-field__input">
-                                                    <label for="tf-box-name" class="mdc-text-field__label">广告项目名称</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-times-wrapper">
-                                                <div id="tf-box-times-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-times" class="mdc-text-field__input">
-                                                    <label for="tf-box-name" class="mdc-text-field__label">播放次数</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
-                                        <div class="mdc-card">
-                                            <section class="mdc-card__primary">
-                                                <h1 class="mdc-card__title mdc-card__title--large">选择广告客户</h1>
-                                            </section>
-                                            <section class="mdc-card__supporting-text">
-                                                <div class="template-demo">
-                                                    <div id="hero-js-select" class="mdc-select" style="width: 300px" role="listbox">
-                                                        <div id="choose_client" class="mdc-select__surface" tabindex="0">
-                                                            <div data-client="1" id="selected_client" class="mdc-select__label">Pick a Food Group</div>
-                                                            <div class="mdc-select__selected-text"></div>
-                                                            <div class="mdc-select__bottom-line"></div>
-                                                        </div>
-                                                        <div class="mdc-simple-menu mdc-select__menu">
-                                                            <ul id="section_info" class="mdc-list mdc-simple-menu__items" style="width: 60vm">
-                                                                <!--
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Bread, Cereal, Rice, and Pasta
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Vegetables
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Fruit
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Milk, Yogurt, and Cheese
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts
-                                                                </li>
-                                                                <li class="mdc-list-item" role="option" tabindex="0">
-                                                                    Fats, Oils, and Sweets
-                                                                </li>
-                                                                --->
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-upload-wrapper">
-                                                <div id="tf-box-upload-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="file" id="upload_video" name="upload_video" class="mdc-text-field__input">
-                                                    <input type="button" id="upload_videoBanner" data-mdc-auto-init="MDCRipple" value="上传视频" style="margin: auto;width: 80px">
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-uploadImg-wrapper">
-                                                <div id="tf-box-uploadImg-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="file" id="upload_img" name="upload_img" class="mdc-text-field__input">
-                                                    <input type="button" id="upload_imgBanner" data-mdc-auto-init="MDCRipple" value="上传图片" style="margin: auto;width: 80px">
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-link-wrapper">
-                                                <div id="tf-box-link-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-link" class="mdc-text-field__input">
-                                                    <label for="tf-box-address" class="mdc-text-field__label">外部链接</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
-                                        <div class="template-demo">
-                                            <div id="demo-tf-box-address-wrapper">
-                                                <div id="tf-box-address-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
-                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
-                                                    <input type="text" id="tf-box-address" class="mdc-text-field__input">
-                                                    <label for="tf-box-address" class="mdc-text-field__label">备注</label>
-                                                    <div class="mdc-text-field__bottom-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                                        <div class="template-demo">
-                                            <button id="commit_addBanner" class="mdc-button" data-mdc-auto-init="MDCRipple">
-                                                提交
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                            <div class="template-demo">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-left" style="width: 200px">姓名</th>
+                                        <th>账号</th>
+                                        <th>提现金额</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="table_list">
+                                    <!--
+                                    <tr>
+                                        <td class="text-left">Frozen yogurt</td>
+                                        <td>1.59</td>
+                                        <td>
+                                            <div>查看</div>
+                                            <div>修改</div>
+                                            <div>删除</div>
+                                        </td>
+                                    </tr>
+                                    -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -408,10 +308,7 @@
 <!-- body wrapper -->
 <!-- plugins:js -->
 <script src="../../node_modules/material-components-web/dist/material-components-web.min.js"></script>
-<!--
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
--->
-<script src="../../js/jquery-3.3.1.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
 <!-- End plugin js for this page-->
@@ -419,35 +316,38 @@
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
-<script src="../../js/ajaxfileupload.js"></script>
 <script>
     $(document).ready(function () {
-        var id = getUrlParam("id");
+        var userId = getUrlParam("id");
         var info = {
-            id:id
+            user_id:parseInt(userId)
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/advertiser/getAdvertiserList',
+            url:'https://kuaizan.duodework.com/cash/use/findCashUseAll',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                console.log(data);
+                console.log(data)
                 if(data.statusCode == "02000000"){
-                    for(var i=0,j=data.data.length;i<j;i++){
-                        var str =
-                            '<li class="mdc-list-item selected" data-id="'+ data.data[i].id +'" role="option" tabindex="0">' +
-                            data.data[i].name +
-                            '</li>';
-                        $("#section_info").append(str);
-                    }
+                    var str =
+                        '<tr>' +
+                        '  <td class="text-left">'+ data.data[i].comment +'</td>' +
+                        '  <td>'+ data.data[i].alipay +'</td>' +
+                        '  <td>'+ data.data[i].pay +'</td>' +
+                        '  <td>' +
+                        '     <div data-id="'+ data.data[i].id +'" class="check_btn withdrawBtn">提现</div>' +
+                        '  </td>' +
+                        '</tr>';
+                    $("#table_list").append(str)
                 }
             }
         })
-    })
 
-    //获取参数
+    });
+
+    //读取url参数
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数

@@ -57,9 +57,10 @@ $(document).ready(function () {
             }
         })
     });
-    //上传视频文件
+    //上传二维码文件
     var vedio_url = "";
-    $("#upload").click(function () {
+    var img_url = "";
+    $("#upload_QRVideo").click(function () {
         $.ajaxFileUpload({
             url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
@@ -77,11 +78,28 @@ $(document).ready(function () {
             }
         })
     });
-    //上传图片文件
-    var img_url = "";
-    $("#upload_img_btn").click(function () {
+    //上传Banner文件
+    $("#upload_videoBanner").click(function () {
         $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/bannerfileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+    $("#upload_imgBanner").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/bannerfileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_img',//文件选择框的id属性
             type:'POST',
@@ -97,6 +115,47 @@ $(document).ready(function () {
             }
         })
     });
+
+    //上传Launch文件
+    $("#upload_videoLaunch").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/launchfileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+
+    //上传Index文件
+    $("#upload_videoIndex").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/checkinfileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_video',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+    
     //添加广告项目中的获取广告客户列表
     var selected_id = "";
     $("#section_info").on('click','.selected',function () {
@@ -397,10 +456,13 @@ $(document).ready(function () {
         var id = getUrlParam("id");
         var cash_total = $("#tf-box-total").val();
         var comment = $("#tf-box-comment").val();
+        var dead_line = $("#tf-box-time").val() + ' 00:00:00';
+        console.log(dead_line);
         var info = {
             cash_total:cash_total,
             id:id,
-            comment:comment
+            comment:comment,
+            deadline:dead_line
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/cash/total/add',
