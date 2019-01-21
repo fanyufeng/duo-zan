@@ -8,6 +8,7 @@
 
     <insert id="addCheckin" parameterType="com.duode.model.Checkin" useGeneratedKeys="true" keyProperty="id">
     insert into checkin(
+        id,
         integration_num,
         status,
         comment,
@@ -16,6 +17,7 @@
         modify_time
     )
     values (
+        #{id},
         #{checkin.integration_num},
         #{checkin.status},
         #{checkin.comment},
