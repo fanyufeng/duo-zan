@@ -415,7 +415,7 @@ $(document).ready(function () {
         var id = getUrlParam("id");
         var cash_total = $("#tf-box-total").val();
         var comment = $("#tf-box-comment").val();
-        var dead_line = $("#tf-box-time").val() + '00:00:00';
+        var dead_line = $("#tf-box-time").val() + ' 00:00:00';
         console.log(dead_line);
         var info = {
             cash_total:cash_total,
