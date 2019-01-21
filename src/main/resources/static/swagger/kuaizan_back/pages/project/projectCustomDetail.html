@@ -141,6 +141,11 @@
                                         提现申请记录
                                     </a>
                                 </div>
+                                <div id="toCashDividend" class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        现金分配记录
+                                    </a>
+                                </div>
                             </nav>
                         </div>
                     </div>
@@ -301,7 +306,7 @@
             id:userId
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/product/getProductList',
+            url:'https://kuaizan.duodework.com/factory/getFactoryDetail',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
