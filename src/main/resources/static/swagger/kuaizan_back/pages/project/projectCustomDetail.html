@@ -313,7 +313,7 @@
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
+                if(data.statusCode == "02000000"){
                     $("#client_name").text(data.data.name);
                     $("#client_address").text(data.data.address);
                     $("#comment").text(data.data.comment);
