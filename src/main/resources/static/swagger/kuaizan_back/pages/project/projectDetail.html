@@ -318,11 +318,11 @@
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    $("#project_name").text(data.data.name);
-                    $("#project_time").text(data.data.create_time);
-                    $("#comment").text(data.data.comment);
-                    $("#qr_num").text(data.data.card_num);
-                    $("#token_value").text(data.data.integration_num)
+                    $("#project_name").text(data.data[0].name);
+                    $("#project_time").text(data.data[0].create_time);
+                    $("#comment").text(data.data[0].comment);
+                    $("#qr_num").text(data.data[0].card_num);
+                    $("#token_value").text(data.data[0].integration_num)
                 }
             }
         })
