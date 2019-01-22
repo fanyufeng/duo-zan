@@ -313,7 +313,7 @@
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
+                if(data.statusCode == "02000000"){
                     $("#ad_name").text(data.data.name);
                     $("#ad_time").text(data.data.creat_time);
                     $("#ad_url").text(data.data.advertise_url);

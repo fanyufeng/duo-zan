@@ -317,7 +317,7 @@
             dataType:'json',
             success:function (data) {
                 console.log(data);
-                if(data.data.statusCode == "02000000"){
+                if(data.statusCode == "02000000"){
                     $("#project_name").text(data.data.name);
                     $("#project_time").text(data.data.create_time);
                     $("#comment").text(data.data.comment);
