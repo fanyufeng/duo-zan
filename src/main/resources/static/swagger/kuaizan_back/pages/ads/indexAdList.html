@@ -321,12 +321,12 @@
 <script src="../../js/control.js"></script>
 <script>
     $(document).ready(function () {
-        var userId = getUrlParam("id");
+        //var userId = getUrlParam("id");
         var info = {
-            id:userId
+            category:3
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/advertise/getAdvertiseList',
+            url:'https://kuaizan.duodework.com/annex/getCategory',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
