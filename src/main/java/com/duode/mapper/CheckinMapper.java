@@ -12,5 +12,6 @@ public interface CheckinMapper {
     public List<Checkin> findCheckinInfo(@Param("id") int id);
     public int addCheckin(Checkin checkin);
     public List<Checkin> findCheckin();
+    public List<Checkin> findCheckinNow(@Param("checkin") Checkin checkin);
 
 }

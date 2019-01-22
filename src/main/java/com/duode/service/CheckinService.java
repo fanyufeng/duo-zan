@@ -41,4 +41,13 @@ public class CheckinService {
 
         }
     }
+
+    public List<Checkin> findCheckinNow(Checkin checkin) {
+        List<Checkin> checkinList = checkinMapper.findCheckinNow(checkin);
+        if (checkinList.size()!=0) {
+            return checkinList;
+        } else {
+            return null;
+        }
+    }
 }

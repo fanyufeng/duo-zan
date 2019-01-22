@@ -30,6 +30,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -305,18 +307,30 @@ public class UserController {
         ResponseDataModel resDataModel = new ResponseDataModel();
         checkin.setIntegration_num(5);
 
-        Checkin code = checkinService.addCheckin(checkin);
-        User user = userService.getUserInfo(checkin.getUser_id());
-        if (user!=null) {
-            user.setIntegration(user.getIntegration()+5);
-            userService.updateUser(user);
-        }
-        if (code !=null) {
-            resDataModel.setData(code);
-            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDate= df.format(new Date());
+        Checkin compare = new Checkin();
+        compare.setUser_id(checkin.getUser_id());
+        compare.setCreate_time(nowDate);
+        List<Checkin> compareList = checkinService.findCheckinNow(compare);
+
+        if (compareList!=null) {
+            Checkin code = checkinService.addCheckin(checkin);
+            User user = userService.getUserInfo(checkin.getUser_id());
+            if (user!=null) {
+                user.setIntegration(user.getIntegration()+5);
+                userService.updateUser(user);
+            }
+            if (code !=null) {
+                resDataModel.setData(code);
+                resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+            } else {
+                resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+            }
         } else {
-            resDataModel.setStatusCode(ApiStatusCode.SUCCESS.value());
+            resDataModel.setStatusCode(ApiStatusCode.CARD_FORBID.value());
         }
+
         return resDataModel;
     }
 

@@ -12,6 +12,7 @@ public class File {
     public String file_url;
     public String link;
     public int frequency;
+    public int imOrVi;
     public int category;
     public String create_time;
     public String modify_time;
@@ -104,6 +105,14 @@ public class File {
         this.category = category;
     }
 
+    public int getImOrVi() {
+        return imOrVi;
+    }
+
+    public void setImOrVi(int imOrVi) {
+        this.imOrVi = imOrVi;
+    }
+
     @Override
     public String toString() {
         return "File{" +
@@ -115,6 +124,7 @@ public class File {
                 ", file_url='" + file_url + '\'' +
                 ", link='" + link + '\'' +
                 ", frequency=" + frequency +
+                ", imOrVi=" + imOrVi +
                 ", category=" + category +
                 ", create_time='" + create_time + '\'' +
                 ", modify_time='" + modify_time + '\'' +

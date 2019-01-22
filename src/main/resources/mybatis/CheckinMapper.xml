@@ -27,7 +27,9 @@
     )
     </insert>
 
-
+    <select id="findCheckinNow" parameterType="com.duode.model.Checkin" resultMap="checkinList">
+      select * from checkin where user_id=#{checkin.user_id} and substring(create_time,1,10)=#{checkin.create_time}
+    </select>
 
     <select id="findCheckin" parameterType="com.duode.model.Checkin" resultMap="checkinList">
       select * from checkin

@@ -14,6 +14,7 @@
         comment,
         advertiser_id,
         file_url,
+        imOrVi,
         link,
         category,
         frequency,
@@ -27,6 +28,7 @@
         #{comment},
         #{advertiser_id},
         #{file_url},
+        #{imOrVi},
         #{link},
         #{category},
         #{frequency},
@@ -39,9 +41,10 @@
         UPDATE file
         SET `name`=${file.name},
         status=#{file.status},
+        frequency=#{file.frequency},
         category=#{file.category},
         modify_time = now()
-        WHERE id = #{product.id}
+        WHERE id = #{file.id}
     </update>
 
     <select id="findFile" parameterType="com.duode.model.File" resultMap="fileList">
