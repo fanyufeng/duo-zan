@@ -256,19 +256,19 @@
             <div class="detail_frame">
                 <div class="detail_line">
                     <text class="item_name">客户名称</text>
-                    <text class="item_val">111</text>
+                    <text id="clientName" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
                     <text class="item_name">地址</text>
-                    <text class="item_val">111</text>
+                    <text id="clientAddress" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
                     <text class="item_name">联系方式</text>
-                    <text class="item_val">111</text>
+                    <text id="clientContact" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
                     <text class="item_name">备注</text>
-                    <text class="item_val">111</text>
+                    <text id="comment" class="item_val">111</text>
                 </div>
             </div>
         </main>
@@ -312,7 +312,11 @@
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                console.log(data)
+                console.log(data);
+                $("#clientName").text(data.data.name);
+                $("#clientAddress").text(data.data.address);
+                $("#clientContact").text(data.data.telephone);
+                $("#comment").text(data.data.comment);
             }
         })
 

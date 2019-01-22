@@ -81,7 +81,7 @@ $(document).ready(function () {
     //上传Banner文件
     $("#upload_videoBanner").click(function () {
         $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/bannerfileSave',//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
@@ -99,7 +99,7 @@ $(document).ready(function () {
     });
     $("#upload_imgBanner").click(function () {
         $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/bannerfileSave',//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_img',//文件选择框的id属性
             type:'POST',
@@ -119,7 +119,7 @@ $(document).ready(function () {
     //上传Launch文件
     $("#upload_videoLaunch").click(function () {
         $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/launchfileSave',//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
@@ -139,7 +139,7 @@ $(document).ready(function () {
     //上传Index文件
     $("#upload_videoIndex").click(function () {
         $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/checkinfileSave',//需要链接到服务器地址
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
             secureuri:false,
             fileElementId:'upload_video',//文件选择框的id属性
             type:'POST',
@@ -155,7 +155,7 @@ $(document).ready(function () {
             }
         })
     });
-    
+
     //添加广告项目中的获取广告客户列表
     var selected_id = "";
     $("#section_info").on('click','.selected',function () {
@@ -275,11 +275,16 @@ $(document).ready(function () {
        var ad_videoUrl = vedio_url;
        var client_id = selected_id;
        var comment = $("#tf-box-address").val();
+       var link = $("#tf-box-link").val();
        var info = {
-
-       }
+           name:BannerAd_name,
+           comment:comment,
+           advertiser_id:client_id,
+           link:link,
+           category:1
+       };
        $.ajax({
-            url:'https://kuaizan.duodework.com/ ',
+            url:'https://kuaizan.duodework.com/annex/addFile',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -300,11 +305,16 @@ $(document).ready(function () {
         var ad_videoUrl = vedio_url;
         var client_id = selected_id;
         var comment = $("#tf-box-address").val();
+        var link = $("#tf-box-link").val();
         var info = {
-
-        }
+            name:indexAd_name,
+            comment:comment,
+            advertiser_id:client_id,
+            link:link,
+            category:3
+        };
         $.ajax({
-            url:'https://kuaizan.duodework.com/',
+            url:'https://kuaizan.duodework.com/annex/addFile',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -325,11 +335,16 @@ $(document).ready(function () {
         var ad_imgUrl = img_url;
         var client_id = selected_id;
         var comment = $("#tf-box-address").val();
+        var link = $("#tf-box-link").val();
         var info = {
-
-        }
+            name:launchAd_name,
+            comment:comment,
+            advertiser_id:client_id,
+            link:link,
+            category:2
+        };
         $.ajax({
-            url:'https://kuaizan.duodework.com/',
+            url:'https://kuaizan.duodework.com/annex/addFile',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -616,7 +631,9 @@ $(document).ready(function () {
     $("#toAddLaunchAdDetail").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/addLaunchAd.html?id="+id;
     });
-
+    $("#toCashDividend").click(function () {
+        window.location.href = "/static/swagger/kuaizan_back/pages/finance/cashDividendList.html?id="+id;
+    });
     //选择用户
     /**
     $("#hero-js-select").click(function () {
