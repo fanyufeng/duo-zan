@@ -256,19 +256,23 @@
             <div class="detail_frame">
                 <div class="detail_line">
                     <text class="item_name">项目名称</text>
-                    <text class="item_val">111</text>
+                    <text id="project_name" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
-                    <text class="item_name">广告客户</text>
-                    <text class="item_val">111</text>
+                    <text class="item_name">创建时间</text>
+                    <text id="project_time" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
-                    <text class="item_name">视频地址</text>
-                    <text class="item_val">111</text>
+                    <text class="item_name">二维码个数</text>
+                    <text id="qr_num" class="item_val">111</text>
                 </div>
                 <div class="detail_line">
-                    <text class="item_name">备注内容</text>
-                    <text class="item_val">111</text>
+                    <text class="item_name">Token价值</text>
+                    <text id="token_value" class="item_val">111</text>
+                </div>
+                <div class="detail_line">
+                    <text class="item_name">备注</text>
+                    <text id="comment" class="item_val">111</text>
                 </div>
             </div>
         </main>
@@ -312,7 +316,14 @@
             contentType:'application/json',
             dataType:'json',
             success:function (data) {
-                console.log(data)
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    $("#project_name").text(data.data[0].name);
+                    $("#project_time").text(data.data[0].create_time);
+                    $("#comment").text(data.data[0].comment);
+                    $("#qr_num").text(data.data[0].card_num);
+                    $("#token_value").text(data.data[0].integration_num)
+                }
             }
         })
 
