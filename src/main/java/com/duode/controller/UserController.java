@@ -314,7 +314,7 @@ public class UserController {
         compare.setCreate_time(nowDate);
         List<Checkin> compareList = checkinService.findCheckinNow(compare);
 
-        if (compareList!=null) {
+        if (compareList==null) {
             Checkin code = checkinService.addCheckin(checkin);
             User user = userService.getUserInfo(checkin.getUser_id());
             if (user!=null) {

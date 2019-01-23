@@ -52,7 +52,7 @@
         WHERE id = #{user.id}
     </update>
     <select id="findUserList" parameterType="com.duode.model.User" resultMap="userList">
-      select * from user order by integration limit 10 order by integration desc
+      select * from user order by integration  order by integration desc limit 10
     </select>
 
     <select id="getUserList" parameterType="com.duode.model.User" resultMap="userList">
