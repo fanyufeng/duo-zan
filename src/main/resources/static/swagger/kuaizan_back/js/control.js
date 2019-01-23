@@ -296,7 +296,7 @@ $(document).ready(function () {
                     var info_base = {
                         id: parseInt(data.data.id),
                         category:1
-                    }
+                    };
                     $.ajax({
                         url:'https://kuaizan.duodework.com/annex/changeCategory',
                         type:'POST',
@@ -311,8 +311,6 @@ $(document).ready(function () {
                             }
                         }
                     })
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -343,8 +341,24 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
+                    var info_base = {
+                        id: parseInt(data.data.id),
+                        category:3
+                    };
+                    $.ajax({
+                        url:'https://kuaizan.duodework.com/annex/changeCategory',
+                        type:'POST',
+                        data:JSON.stringify(info_base),
+                        contentType:'application/json',
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                            if(data.statusCode == "02000000"){
+                                alert("添加成功");
+                                window.location.href = "../../index.html?id="+id
+                            }
+                        }
+                    })
                 }
             }
         })
@@ -375,8 +389,24 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
+                    var info_base = {
+                        id: parseInt(data.data.id),
+                        category:2
+                    };
+                    $.ajax({
+                        url:'https://kuaizan.duodework.com/annex/changeCategory',
+                        type:'POST',
+                        data:JSON.stringify(info_base),
+                        contentType:'application/json',
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                            if(data.statusCode == "02000000"){
+                                alert("添加成功");
+                                window.location.href = "../../index.html?id="+id
+                            }
+                        }
+                    })
                 }
             }
         })
