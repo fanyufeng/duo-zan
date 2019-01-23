@@ -295,10 +295,10 @@ $(document).ready(function () {
                 if(data.statusCode == "02000000"){
                     var info_base = {
                         id: parseInt(data.data.id),
-                        category:1
+                        frequency:100
                     };
                     $.ajax({
-                        url:'https://kuaizan.duodework.com/annex/changeCategory',
+                        url:'https://kuaizan.duodework.com/annex/addFrequency',
                         type:'POST',
                         data:JSON.stringify(info_base),
                         contentType:'application/json',
