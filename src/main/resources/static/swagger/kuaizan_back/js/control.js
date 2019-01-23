@@ -109,7 +109,7 @@ $(document).ready(function () {
                 alert(data);
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
-                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
@@ -129,7 +129,7 @@ $(document).ready(function () {
                 alert(data);
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
-                    vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
@@ -282,7 +282,6 @@ $(document).ready(function () {
            advertiser_id:client_id,
            link:link,
            file_url:ad_imgUrl,
-           category:1,
            imOrVi:1
        };
        $.ajax({
@@ -294,6 +293,24 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
+                    var info_base = {
+                        id: parseInt(data.data.id),
+                        category:1
+                    }
+                    $.ajax({
+                        url:'https://kuaizan.duodework.com/annex/changeCategory',
+                        type:'POST',
+                        data:JSON.stringify(info_base),
+                        contentType:'application/json',
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                            if(data.statusCode == "02000000"){
+                                alert("添加成功");
+                                window.location.href = "../../index.html?id="+id
+                            }
+                        }
+                    })
                     alert("添加成功");
                     window.location.href = "../../index.html?id="+id
                 }
