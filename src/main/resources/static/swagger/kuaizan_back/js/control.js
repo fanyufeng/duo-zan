@@ -281,7 +281,9 @@ $(document).ready(function () {
            comment:comment,
            advertiser_id:client_id,
            link:link,
-           category:1
+           file_url:ad_imgUrl,
+           category:1,
+           imOrVi:1
        };
        $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
@@ -311,7 +313,9 @@ $(document).ready(function () {
             comment:comment,
             advertiser_id:client_id,
             link:link,
-            category:3
+            category:3,
+            imOrVi:2,
+            file_url:ad_videoUrl
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
@@ -341,7 +345,9 @@ $(document).ready(function () {
             comment:comment,
             advertiser_id:client_id,
             link:link,
-            category:2
+            category:2,
+            file_url:ad_imgUrl,
+            imOrVi:1
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
