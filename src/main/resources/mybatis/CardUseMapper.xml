@@ -11,7 +11,7 @@
     </select>
 
     <select id="getUserListYesterday" parameterType="com.duode.response.UserInternationalResponse" resultMap="userList1">
-      select sum(integration_num) as integration,user_id from card_use where substring(create_time,1,10)=#{date} group by user_id limit 10
+      select sum(integration_num) as integration,user_id from card_use where substring(create_time,1,10)=#{date} group by user_id limit 10 order by integration desc 
     </select>
 
     <insert id="addCardUse">
