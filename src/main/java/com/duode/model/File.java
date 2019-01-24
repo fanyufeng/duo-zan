@@ -9,7 +9,8 @@ public class File {
     public int status;
     public String comment;
     public int advertiser_id;
-    public String file_url;
+    public String file_imgUrl;
+    public String file_videoUrl;
     public String link;
     public int frequency;
     public int imOrVi;
@@ -57,12 +58,20 @@ public class File {
         this.advertiser_id = advertiser_id;
     }
 
-    public String getFile_url() {
-        return file_url;
+    public String getFile_imgUrl() {
+        return file_imgUrl;
     }
 
-    public void setFile_url(String file_url) {
-        this.file_url = file_url;
+    public void setFile_imgUrl(String file_imgUrl) {
+        this.file_imgUrl = file_imgUrl;
+    }
+
+    public String getFile_videoUrl() {
+        return file_videoUrl;
+    }
+
+    public void setFile_videoUrl(String file_videoUrl) {
+        this.file_videoUrl = file_videoUrl;
     }
 
     public String getLink() {
@@ -121,7 +130,8 @@ public class File {
                 ", status=" + status +
                 ", comment='" + comment + '\'' +
                 ", advertiser_id=" + advertiser_id +
-                ", file_url='" + file_url + '\'' +
+                ", file_imgUrl='" + file_imgUrl + '\'' +
+                ", file_videoUrl='" + file_videoUrl + '\'' +
                 ", link='" + link + '\'' +
                 ", frequency=" + frequency +
                 ", imOrVi=" + imOrVi +
