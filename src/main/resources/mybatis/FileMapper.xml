@@ -41,7 +41,7 @@
 
     <update id="updateFile">
         UPDATE file
-        SET `name`=${file.name},
+        SET `name`=#{file.name},
         status=#{file.status},
         frequency=#{file.frequency},
         category=#{file.category},
@@ -50,11 +50,11 @@
     </update>
 
     <select id="findFile" parameterType="com.duode.model.File" resultMap="fileList">
-      select * from product
+      select * from file order by create_time desc
     </select>
 
     <select id="findFileByCategory" parameterType="com.duode.model.File" resultMap="fileList">
-      select * from product where category=#{file.category}
+      select * from file where category=#{file.category}
     </select>
 
     <resultMap type="com.duode.model.File" id="fileList">
