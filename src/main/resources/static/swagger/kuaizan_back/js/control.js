@@ -281,8 +281,11 @@ $(document).ready(function () {
            comment:comment,
            advertiser_id:client_id,
            link:link,
-           file_url:ad_imgUrl,
-           imOrVi:1
+           file_imgUrl:ad_imgUrl,
+           file_videoUrl:ad_videoUrl,
+           imOrVi:1,
+           category:1,
+           frequency:playTimes
        };
        $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
@@ -293,24 +296,8 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    var info_base = {
-                        id: parseInt(data.data.id),
-                        frequency:100
-                    };
-                    $.ajax({
-                        url:'https://kuaizan.duodework.com/annex/addFrequency',
-                        type:'POST',
-                        data:JSON.stringify(info_base),
-                        contentType:'application/json',
-                        dataType:'json',
-                        success:function (data) {
-                            console.log(data);
-                            if(data.statusCode == "02000000"){
-                                alert("添加成功");
-                                window.location.href = "../../index.html?id="+id
-                            }
-                        }
-                    })
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -330,7 +317,8 @@ $(document).ready(function () {
             link:link,
             category:3,
             imOrVi:2,
-            file_url:ad_videoUrl
+            file_videoUrl:ad_videoUrl,
+            frequency:playTimes
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
@@ -341,24 +329,8 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    var info_base = {
-                        id: parseInt(data.data.id),
-                        category:3
-                    };
-                    $.ajax({
-                        url:'https://kuaizan.duodework.com/annex/changeCategory',
-                        type:'POST',
-                        data:JSON.stringify(info_base),
-                        contentType:'application/json',
-                        dataType:'json',
-                        success:function (data) {
-                            console.log(data);
-                            if(data.statusCode == "02000000"){
-                                alert("添加成功");
-                                window.location.href = "../../index.html?id="+id
-                            }
-                        }
-                    })
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
@@ -377,8 +349,9 @@ $(document).ready(function () {
             advertiser_id:client_id,
             link:link,
             category:2,
-            file_url:ad_imgUrl,
-            imOrVi:1
+            file_imgUrl:ad_imgUrl,
+            imOrVi:1,
+            frequency:playTimes
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/annex/addFile',
@@ -389,24 +362,8 @@ $(document).ready(function () {
             success:function (data) {
                 console.log(data);
                 if(data.statusCode == "02000000"){
-                    var info_base = {
-                        id: parseInt(data.data.id),
-                        category:2
-                    };
-                    $.ajax({
-                        url:'https://kuaizan.duodework.com/annex/changeCategory',
-                        type:'POST',
-                        data:JSON.stringify(info_base),
-                        contentType:'application/json',
-                        dataType:'json',
-                        success:function (data) {
-                            console.log(data);
-                            if(data.statusCode == "02000000"){
-                                alert("添加成功");
-                                window.location.href = "../../index.html?id="+id
-                            }
-                        }
-                    })
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
                 }
             }
         })
