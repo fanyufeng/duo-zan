@@ -31,7 +31,7 @@ public class ScheduledService {
 
     SimpleDateFormat sdft = new SimpleDateFormat("yyyy-MM-dd");
 
-    @Scheduled(cron = "0 33 17 * * ?")
+    @Scheduled(cron = "0 43 17 * * ?")
     public void cashDistribute () {
         try {
             List<User> userList = userService.getUserList();
@@ -59,7 +59,10 @@ public class ScheduledService {
 
                 for (User userL : userList) {
                     double cash_elem = userL.getIntegration() * proprotion;
+
+
                     userL.setCash(cash_elem + userL.getCash());
+                    System.out.println("dnghjf"+userL.toString());
                     userService.updateUser(userL);
                     CashUse cashUse = new CashUse();
                     cashUse.setCash_num(cash_elem);
