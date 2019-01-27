@@ -565,6 +565,34 @@ $(document).ready(function () {
             }
         })
     });
+    //Banner广告状态变更
+    $("#table_list").on('click','.change_btn',function () {
+        var id = $(this).data("id");
+        var status = $(this).data('status');
+        let status_num;
+        if(status == '0'){
+            status_num = 1
+        }else{
+            status_num = 0
+        }
+        var info = {
+            id:id,
+            status:status_num
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/file/update',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                if(data.statusCode == "02000000"){
+                    alert("变更成功");
+                    window.location.reload()
+                }
+            }
+        })
+    });
     //页面跳转控制
     $("#toIndex").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/index.html?id="+id;
