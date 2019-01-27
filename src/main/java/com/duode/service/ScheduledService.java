@@ -31,7 +31,7 @@ public class ScheduledService {
 
     SimpleDateFormat sdft = new SimpleDateFormat("yyyy-MM-dd");
 
-    @Scheduled(cron = "0 43 17 * * ?")
+    @Scheduled(cron = "0 48 17 * * ?")
     public void cashDistribute () {
         try {
             List<User> userList = userService.getUserList();

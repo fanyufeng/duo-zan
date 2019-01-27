@@ -9,7 +9,7 @@
 
 
     <insert id="addCashUse" parameterType="com.duode.model.CashUse" useGeneratedKeys="true" keyProperty="id">
-    insert into card_use(
+    insert into cash_use(
         id,
         cash_total_id,
         cash_num,
