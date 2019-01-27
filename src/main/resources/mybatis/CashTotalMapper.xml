@@ -7,7 +7,7 @@
 
 
     <select id="findDistributeInfo" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
-      select * from cash_total where cashTotal.status=1 and substring(cashTotal.deadline,1,10)=deadline
+      select * from cash_total where status=1 and substring(deadline,1,10)=cashTotal.deadline
     </select>
 
     <insert id="addCashtotal">
