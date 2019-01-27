@@ -54,7 +54,7 @@
     </select>
 
     <select id="findFileByCategory" parameterType="com.duode.model.File" resultMap="fileList">
-      select * from file where category=#{file.category}
+      select * from file where category=#{file.category} and status=1
     </select>
 
     <resultMap type="com.duode.model.File" id="fileList">

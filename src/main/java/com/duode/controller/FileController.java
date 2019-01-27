@@ -83,14 +83,14 @@ public class FileController {
         return response;
     }
 
-    @RequestMapping(value="/addFrequency", method = RequestMethod.POST)
+    @RequestMapping(value="/changeFrequency", method = RequestMethod.POST)
     @ResponseBody
     public ResponseDataModel addFrequency(@RequestBody File file){
         ResponseDataModel response = new ResponseDataModel();
         List<File> fileList = fileService.getFile(file.getId());
         if (fileList !=null) {
             File rt = fileList.get(0);
-            rt.setFrequency(rt.getFrequency() + 1);
+            rt.setFrequency(rt.getFrequency() - 1);
             fileService.updateFile(rt);
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
             response.setData(fileList);

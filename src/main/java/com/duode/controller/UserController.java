@@ -318,7 +318,7 @@ public class UserController {
             Checkin code = checkinService.addCheckin(checkin);
             User user = userService.getUserInfo(checkin.getUser_id());
             if (user!=null) {
-                user.setIntegration(user.getIntegration()+5);
+                user.setIntegration(user.getIntegration()+1);
                 userService.updateUser(user);
             }
             if (code !=null) {
