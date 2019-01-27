@@ -59,4 +59,13 @@ public class CashtotalService {
 
         }
     }
+    public List<Cashtotal> findDistributeInfo(Cashtotal cashtotal){
+        List<Cashtotal> withdrawList= cashtotalMapper.findDistributeInfo(cashtotal);
+        if (((List) withdrawList).size() !=0) {
+            return withdrawList;
+        } else {
+            return null;
+
+        }
+    }
 }

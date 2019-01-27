@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,7 +37,7 @@ public class CashTotalController {
         cashtotal.setCash_total(cashtotalRequest.getCash_total());
         cashtotal.setComment(cashtotalRequest.getComment());
         cashtotal.setUser_id(cashtotalRequest.getUser_id());
-        cashtotal.setDeadline(Timestamp.valueOf(cashtotalRequest.getDeadline()));
+        cashtotal.setDeadline(cashtotalRequest.getDeadline());
         int code = cashtotalService.addCashtotal(cashtotal);
         if (code!= 0){
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
@@ -78,13 +81,45 @@ public class CashTotalController {
     @ResponseBody
     public ResponseDataModel getCashtotalStatus(@RequestBody Cashtotal cashtotal){
         ResponseDataModel response = new ResponseDataModel();
-        List<Cashtotal> cashtotalList = cashtotalService.getCashtotalStatus(cashtotal.getStatus());
-        if (cashtotalList !=null) {
-            response.setStatusCode(ApiStatusCode.SUCCESS.value());
-            response.setData(cashtotalList);
-        } else {
-            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        try {
+            List<Cashtotal> cashtotalList = cashtotalService.getCashtotalStatus(cashtotal.getStatus());
+            List<Cashtotal> cashtotalList1 = new ArrayList<>();
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            if (cashtotalList !=null) {
+
+                for (Cashtotal elem : cashtotalList) {
+                    Date ft = simpleDateFormat.parse(elem.getDeadline());
+                    long ts = ft.getTime();
+                    elem.setDeadline(String.valueOf(ts));
+                    cashtotalList1.add(elem);
+                }
+                response.setStatusCode(ApiStatusCode.SUCCESS.value());
+                response.setData(cashtotalList);
+            } else {
+                response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return response;
     }
+
+
+//    public static  void main(String[] argv) {
+//        try {
+//            String date="2019-01-20 19:56:34";
+//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            Date ft = simpleDateFormat.parse(date);
+//            long ts = ft.getTime();
+//            System.out.println(String.valueOf(ts));
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 }

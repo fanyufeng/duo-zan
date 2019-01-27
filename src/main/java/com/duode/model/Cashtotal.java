@@ -10,7 +10,7 @@ public class Cashtotal {
     public double cash_total;
     public String name;
     public String comment;
-    public Timestamp deadline;
+    public String deadline;
     public int user_id;
     public int status;
     private String create_time;
@@ -72,11 +72,11 @@ public class Cashtotal {
         this.status = status;
     }
 
-    public Timestamp getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Timestamp deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
@@ -95,7 +95,7 @@ public class Cashtotal {
                 ", cash_total=" + cash_total +
                 ", name='" + name + '\'' +
                 ", comment='" + comment + '\'' +
-                ", deadline=" + deadline +
+                ", deadline='" + deadline + '\'' +
                 ", user_id=" + user_id +
                 ", status=" + status +
                 ", create_time='" + create_time + '\'' +

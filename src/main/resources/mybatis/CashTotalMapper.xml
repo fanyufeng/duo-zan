@@ -4,6 +4,12 @@
     <select id="findCashTotalInfo" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
       select * from cash_total where cash_total.id=#{id}
     </select>
+
+
+    <select id="findDistributeInfo" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
+      select * from cash_total where cashTotal.status=1 and substring(cashTotal.deadline,1,10)=deadline
+    </select>
+
     <insert id="addCashtotal">
     insert into cash_total(
         cash_total,
