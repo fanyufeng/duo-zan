@@ -31,43 +31,46 @@ public class ScheduledService {
 
     SimpleDateFormat sdft = new SimpleDateFormat("yyyy-MM-dd");
 
-    @Scheduled(cron = "0 10 17 * * ?")
+    @Scheduled(cron = "0 18 17 * * ?")
     public void cashDistribute () {
         try {
             List<User> userList = userService.getUserList();
 
             Cashtotal cashtotal = new Cashtotal();
-            cashtotal.setStatus(1);
+            cashtotal.setStatus(0);
             Date date = new Date();
             String timex=sdft.format(date);
             cashtotal.setDeadline(timex);
-
+            System.out.println("sgsd"+cashtotal.toString());
             List<Cashtotal> cashtotalList =cashtotalService.findDistributeInfo(cashtotal);
 
-            Cashtotal cashtotal1=cashtotalList.get(0);
-            cashtotal1.setStatus(1);
+            if (cashtotalList != null) {
+                Cashtotal cashtotal1=cashtotalList.get(0);
+                cashtotal1.setStatus(1);
+                cashtotalService.updateCashtotal(cashtotal1);
+                List<Card> cardList = cardService.findCardAll();
+                int sum = 0;
+                for (User user : userList) {
+                    sum =sum+user.getIntegration();
+                }
 
-            cashtotalService.updateCashtotal(cashtotal1);
 
-            List<Card> cardList = cardService.findCardAll();
-            int sum = 0;
-            for (User user : userList) {
-                sum =sum+user.getIntegration();
+                double proprotion=cashtotal1.getCash_total()/sum;
+
+                for (User userL : userList) {
+                    double cash_elem = userL.getIntegration() * proprotion;
+                    userL.setCash(cash_elem + userL.getCash());
+                    userService.updateUser(userL);
+                    CashUse cashUse = new CashUse();
+                    cashUse.setCash_num(cash_elem);
+                    cashUse.setCash_total_id(cashtotal1.getId());
+                    cashUse.setUser_id(userL.getId());
+                    cashUseService.addCashUse(cashUse);
+                }
             }
 
 
-            double proprotion=cashtotal1.getCash_total()/sum;
 
-            for (User userL : userList) {
-                double cash_elem = userL.getIntegration() * proprotion;
-                userL.setCash(cash_elem + userL.getCash());
-                userService.updateUser(userL);
-                CashUse cashUse = new CashUse();
-                cashUse.setCash_num(cash_elem);
-                cashUse.setCash_total_id(cashtotal1.getId());
-                cashUse.setUser_id(userL.getId());
-                cashUseService.addCashUse(cashUse);
-            }
 
 
 
