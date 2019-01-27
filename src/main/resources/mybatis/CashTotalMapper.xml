@@ -7,7 +7,7 @@
 
 
     <select id="findDistributeInfo" parameterType="com.duode.model.Cashtotal" resultMap="cashTotalList">
-      select * from cash_total where status=1 and substring(deadline,1,10)=cashTotal.deadline
+      select * from cash_total where status=1 and substring(deadline,1,10)=#{cashTotal.deadline}
     </select>
 
     <insert id="addCashtotal">
@@ -52,7 +52,9 @@
     <resultMap type="com.duode.model.Cashtotal" id="cashTotalList">
         <result column="id" property="id"/>
         <result column="cash_total"  property="cash_total"/>
+        <result column="name"  property="name"/>
         <result column="comment"  property="comment"/>
+        <result column="deadline"  property="deadline"/>
         <result column="status"  property="status"/>
         <result column="user_id" property="user_id"/>
         <result column="create_time"  property="create_time"/>
