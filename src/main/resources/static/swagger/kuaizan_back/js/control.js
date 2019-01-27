@@ -580,7 +580,7 @@ $(document).ready(function () {
             status:status_num
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/file/update',
+            url:'https://kuaizan.duodework.com/file/updateStatus',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
