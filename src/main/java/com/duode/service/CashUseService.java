@@ -22,9 +22,9 @@ public class CashUseService {
     public CashUseMapper cashUseMapper;
 
 
-    public int addCashUse(CashUse cashUse) {
+    public CashUse addCashUse(CashUse cashUse) {
         int cardResponse = cashUseMapper.addCashUse(cashUse);
-        return cardResponse;
+        return cashUse;
     }
 
     public List<CashUse> findCardUser(CashUse cashUse){
