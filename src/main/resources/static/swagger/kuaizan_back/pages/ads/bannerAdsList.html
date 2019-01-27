@@ -266,9 +266,11 @@
                                     <thead>
                                     <tr>
                                         <th class="text-left" style="width: 200px">广告名称</th>
-                                        <th>客户名称</th>
+                                        <th>备注</th>
                                         <th>播放次数</th>
+                                        <!--
                                         <th>点击次数</th>
+                                        -->
                                         <th>状态</th>
                                         <th>操作</th>
                                     </tr>
@@ -335,12 +337,23 @@
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     for(var i=0,j=data.data.length;i<j;i++){
+                        var status_name = '';
+                        switch (data.data.status) {
+                            case 0 :
+                                status_name = '停播';
+                                break;
+                            case 1 :
+                                status_name = '播放中';
+                                break;
+                        }
                         var str =
                             '<tr>' +
                             '  <td class="text-left">'+ data.data[i].name +'</td>' +
                             '  <td>'+ data.data[i].comment +'</td>' +
+                            '  <td>'+ data.data[i].frequency +'</td>' +
+                            '  <td>'+ status_name +'</td>' +
                             '  <td>' +
-                            '    <div data-id="'+ data.data[i].id +'" class="del_btn">删除</div>' +
+                            '    <div data-id="'+ data.data[i].id +'" data-status="'+ data.data[i].status +'" class="change_btn">变更</div>' +
                             '  </td>' +
                             '</tr>';
                         $("#table_list").append(str);
