@@ -91,6 +91,9 @@ public class FileController {
         if (fileList !=null) {
             File rt = fileList.get(0);
             rt.setFrequency(rt.getFrequency() - 1);
+            if ((rt.getFrequency()-1)==0) {
+                rt.setStatus(0);
+            }
             fileService.updateFile(rt);
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
             response.setData(fileList);
