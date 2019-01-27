@@ -57,6 +57,10 @@
       select * from file where category=#{file.category} and status=1
     </select>
 
+    <select id="findFileByCategoryAll" parameterType="com.duode.model.File" resultMap="fileList">
+      select * from file where category=#{file.category}
+    </select>
+
     <resultMap type="com.duode.model.File" id="fileList">
         <result column="id" property="id"/>
         <result column="name"  property="name"/>

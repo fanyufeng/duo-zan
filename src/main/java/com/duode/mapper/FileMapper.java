@@ -15,4 +15,5 @@ public interface FileMapper {
     public int updateFile(@Param("file") File file);
     public List<File> findFile();
     public List<File> findFileByCategory(@Param("file") File file);
+    public List<File> findFileByCategoryAll(@Param("file") File file);
 }

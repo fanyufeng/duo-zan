@@ -57,4 +57,13 @@ public class FileService {
 
         }
     }
+    public List<File> getfileByCategoryAll(File file){
+        List<File> fileList= fileMapper.findFileByCategoryAll(file);
+        if (((List) fileList).size() !=0) {
+            return fileList;
+        } else {
+            return null;
+
+        }
+    }
 }

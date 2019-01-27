@@ -93,6 +93,21 @@ public class AnnexController {
         return response;
     }
 
+    @RequestMapping(value="/getCategoryAll",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel getCategoryAll(@RequestBody File file) {
+        ResponseDataModel response = new ResponseDataModel();
+
+        List<File> code = fileService.getfileByCategoryAll(file);
+
+        if (code !=null) {
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+            response.setData(code);
+        } else {
+            response.setStatusCode(ApiStatusCode.CODE_COMPARE_ERROR.value());
+        }
+        return response;
+    }
 
 
 }
