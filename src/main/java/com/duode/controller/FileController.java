@@ -55,11 +55,11 @@ public class FileController {
         return response;
     }
 
-    @RequestMapping(value="/update", method = RequestMethod.POST)
+    @RequestMapping(value="/updateStatus", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel updateFile(@RequestBody File file){
+    public ResponseDataModel updateFileStatus(@RequestBody File file){
         ResponseDataModel response = new ResponseDataModel();
-        int code = fileService.updateFile(file);
+        int code = fileService.updateFileStatus(file);
         if (code ==1) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());
         } else {

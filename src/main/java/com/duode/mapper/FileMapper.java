@@ -13,6 +13,8 @@ public interface FileMapper {
     public List<File> findFileInfo(@Param("id") int id);
     public int addFile(File file);
     public int updateFile(@Param("file") File file);
+    public int updateFileStatus(@Param("file") File file);
+    public int updateFileCategory(@Param("file") File file);
     public List<File> findFile();
     public List<File> findFileByCategory(@Param("file") File file);
     public List<File> findFileByCategoryAll(@Param("file") File file);

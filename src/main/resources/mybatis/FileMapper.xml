@@ -49,6 +49,20 @@
         WHERE id = #{file.id}
     </update>
 
+    <update id="updateFileStatus">
+        UPDATE file
+        SET status=#{file.status},
+        modify_time = now()
+        WHERE id = #{file.id}
+    </update>
+
+    <update id="updateFileCategory">
+        UPDATE file
+        SET category=#{file.category},
+        modify_time = now()
+        WHERE id = #{file.id}
+    </update>
+
     <select id="findFile" parameterType="com.duode.model.File" resultMap="fileList">
       select * from file order by create_time desc
     </select>

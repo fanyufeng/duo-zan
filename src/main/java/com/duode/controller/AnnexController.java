@@ -66,7 +66,7 @@ public class AnnexController {
     public ResponseDataModel changeCategory(@RequestBody File file) {
         ResponseDataModel response = new ResponseDataModel();
 
-        int code = fileService.updateFile(file);
+        int code = fileService.updateFileCategory(file);
 
         if (code ==1) {
             response.setStatusCode(ApiStatusCode.SUCCESS.value());

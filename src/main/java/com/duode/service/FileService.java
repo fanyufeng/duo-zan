@@ -38,6 +38,15 @@ public class FileService {
         return code;
     }
 
+    public int updateFileStatus(File file){
+        int code = fileMapper.updateFileStatus(file);
+        return code;
+    }
+    public int updateFileCategory(File file){
+        int code = fileMapper.updateFileCategory(file);
+        return code;
+    }
+
     public List<File> getfileList(){
         List<File> fileList= fileMapper.findFile();
         if (((List) fileList).size() !=0) {
