@@ -101,6 +101,7 @@ public class CashController {
             for (User userL : userList) {
                 double cash_elem = userL.getIntegration() * proprotion;
                 userL.setCash(cash_elem + userL.getCash());
+                System.out.println("stgujd" + userL.toString());
                 userService.updateUser(userL);
                 CashUse cashUse = new CashUse();
                 cashUse.setCash_num(cash_elem);
