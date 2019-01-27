@@ -20,10 +20,10 @@
     )
     values (
         #{id},
-        #{cashUse.cash_total_id},
-        #{cashUse.cash_num},
-        #{cashUse.user_id},
-        #{cashUse.comment},
+        #{cash_total_id},
+        #{cash_num},
+        #{user_id},
+        #{comment},
         now(),
         now()
     )
