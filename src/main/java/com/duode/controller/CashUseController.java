@@ -28,6 +28,26 @@ public class CashUseController {
     public CashtotalService cashtotalService;
 
 
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel add(@RequestBody CashUse cashUse){
+        ResponseDataModel response = new ResponseDataModel();
+
+        try {
+            CashUse cashUse1 = new CashUse();
+
+            cashUse1.setUser_id(1);
+            cashUse1.setCash_total_id(2);
+            cashUse1.setCash_num(1.1);
+            CashUse cashUseList = cashUseService.addCashUse(cashUse1);
+
+            response.setData(cashUseList);
+        } catch(Exception e) {
+
+        }
+
+        return response;
+    }
 
     @RequestMapping(value="/findCashUse", method = RequestMethod.POST)
     @ResponseBody

@@ -1,9 +1,8 @@
 package com.duode.mapper;
 
 
-import com.duode.model.CardUse;
+
 import com.duode.model.CashUse;
-import com.duode.response.UserInternationalResponse;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

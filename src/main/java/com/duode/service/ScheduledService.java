@@ -64,6 +64,7 @@ public class ScheduledService {
                     userL.setCash(cash_elem + userL.getCash());
                     System.out.println("dnghjf"+userL.toString());
                     userService.updateUser(userL);
+
                     CashUse cashUse = new CashUse();
                     cashUse.setCash_num(cash_elem);
                     cashUse.setCash_total_id(cashtotal1.getId());
@@ -71,12 +72,6 @@ public class ScheduledService {
                     cashUseService.addCashUse(cashUse);
                 }
             }
-
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
