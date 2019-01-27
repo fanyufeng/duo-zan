@@ -41,6 +41,8 @@ public class CashUseController {
             cashUse1.setCash_num(1.1);
             CashUse cashUseList = cashUseService.addCashUse(cashUse1);
 
+
+            response.setStatusCode("mdfjgndfjg");
             response.setData(cashUseList);
         } catch(Exception e) {
 
