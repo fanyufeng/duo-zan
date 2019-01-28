@@ -653,7 +653,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
     });
     $("#toAddLaunchAd").click(function () {
-        window.location.href = "/static/swagger/kuaizan_back/pages/ads/LaunchAdList.html?id="+id;
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/launchAdsList.html?id="+id;
     });
     $("#toAddBannerAds").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/bannerAdsList.html?id="+id;
