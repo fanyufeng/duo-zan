@@ -498,7 +498,8 @@ $(document).ready(function () {
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     alert("总额设置成功");
-                    window.location.href = "cashDividend.html?id="+id
+                    window.location.href = "../../index.html?id="+id
+                    //window.location.href = "cashDividend.html?id="+id
                 }
             }
         })
@@ -652,7 +653,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
     });
     $("#toAddLaunchAd").click(function () {
-        window.location.href = "/static/swagger/kuaizan_back/pages/ads/launchAdList.html?id="+id;
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/LaunchAdList.html?id="+id;
     });
     $("#toAddBannerAds").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/bannerAdsList.html?id="+id;
