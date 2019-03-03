@@ -481,7 +481,7 @@ $(document).ready(function () {
         var id = getUrlParam("id");
         var cash_total = $("#tf-box-total").val();
         var comment = $("#tf-box-comment").val();
-        var dead_line = $("#tf-box-time").val() + ' 20:00:00';
+        var dead_line = $("#tf-box-time").val() + ' 01:00:00';
         //console.log(dead_line);
         var info = {
             cash_total:cash_total,
@@ -498,7 +498,8 @@ $(document).ready(function () {
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     alert("总额设置成功");
-                    window.location.href = "cashDividend.html?id="+id
+                    window.location.href = "../../index.html?id="+id
+                    //window.location.href = "cashDividend.html?id="+id
                 }
             }
         })
@@ -652,7 +653,7 @@ $(document).ready(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/finance/QRcodeList.html?id="+id;
     });
     $("#toAddLaunchAd").click(function () {
-        window.location.href = "/static/swagger/kuaizan_back/pages/ads/launchAdList.html?id="+id;
+        window.location.href = "/static/swagger/kuaizan_back/pages/ads/launchAdsList.html?id="+id;
     });
     $("#toAddBannerAds").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/pages/ads/bannerAdsList.html?id="+id;

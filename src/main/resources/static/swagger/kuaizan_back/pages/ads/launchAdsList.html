@@ -326,7 +326,7 @@
             category:2
         };
         $.ajax({
-            url:'https://kuaizan.duodework.com/annex/getCategory',
+            url:'https://kuaizan.duodework.com/annex/getCategoryAll',
             type:'POST',
             data:JSON.stringify(info),
             contentType:'application/json',
@@ -334,12 +334,23 @@
             success:function (data) {
                 if(data.statusCode == "02000000"){
                     for(var i=0,j=data.data.length;i<j;i++){
+                        var status_name = '';
+                        switch (data.data[i].status) {
+                            case 0 :
+                                status_name = '停播';
+                                break;
+                            case 1 :
+                                status_name = '播放中';
+                                break;
+                        }
                         var str =
                             '<tr>' +
                             '  <td class="text-left">'+ data.data[i].name +'</td>' +
                             '  <td>'+ data.data[i].comment +'</td>' +
+                            '  <td>'+ data.data[i].frequency +'</td>' +
+                            '  <td>'+ status_name +'</td>' +
                             '  <td>' +
-                            '    <div data-id="'+ data.data[i].id +'" class="del_btn">删除</div>' +
+                            '    <div data-id="'+ data.data[i].id +'" data-status="'+ data.data[i].status +'" class="change_btn">变更</div>' +
                             '  </td>' +
                             '</tr>';
                         $("#table_list").append(str);
