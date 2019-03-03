@@ -7,6 +7,10 @@ public class Advertise {
     public int id;
     public String name;
     public int advertiser_id;
+    public String advertise_detail;
+    public String first_title;
+    public String second_title;
+    public String head_url;
     public String comment;
     public int status;
     public String advertise_url;
@@ -77,12 +81,48 @@ public class Advertise {
         this.modify_time = modify_time;
     }
 
+    public String getAdvertise_detail() {
+        return advertise_detail;
+    }
+
+    public void setAdvertise_detail(String advertise_detail) {
+        this.advertise_detail = advertise_detail;
+    }
+
+    public String getFirst_title() {
+        return first_title;
+    }
+
+    public void setFirst_title(String first_title) {
+        this.first_title = first_title;
+    }
+
+    public String getSecond_title() {
+        return second_title;
+    }
+
+    public void setSecond_title(String second_title) {
+        this.second_title = second_title;
+    }
+
+    public String getHead_url() {
+        return head_url;
+    }
+
+    public void setHead_url(String head_url) {
+        this.head_url = head_url;
+    }
+
     @Override
     public String toString() {
         return "Advertise{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", advertiser_id=" + advertiser_id +
+                ", advertise_detail='" + advertise_detail + '\'' +
+                ", first_title='" + first_title + '\'' +
+                ", second_title='" + second_title + '\'' +
+                ", head_url='" + head_url + '\'' +
                 ", comment='" + comment + '\'' +
                 ", status=" + status +
                 ", advertise_url='" + advertise_url + '\'' +

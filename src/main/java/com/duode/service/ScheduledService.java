@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,10 +72,16 @@ public class ScheduledService {
                     cashUse.setUser_id(userL.getId());
                     cashUseService.addCashUse(cashUse);
                 }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
+
+
+
+
 }

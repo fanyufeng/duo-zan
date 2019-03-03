@@ -63,6 +63,19 @@ public class AdvertiseController {
         return response;
     }
 
+    @RequestMapping(value="/updateDetail", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel updateAdvertiseDetail(@RequestBody Advertise advertise){
+        ResponseDataModel response = new ResponseDataModel();
+        int code = advertiseService.updateAdvertiseDetail(advertise);
+        if (code ==1) {
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
+
 
     @RequestMapping(value="/getAdvertiseList", method = RequestMethod.POST)
     @ResponseBody

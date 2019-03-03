@@ -34,6 +34,12 @@ public class AdvertiseService {
         return code;
     }
 
+    public int updateAdvertiseDetail(Advertise advertise){
+        int code = advertiseMapper.updateAdvertiseDetail(advertise);
+        return code;
+    }
+
+
     public List<Advertise> getAdvertiseList(){
         List<Advertise> advertiseList= advertiseMapper.findAdvertiseList();
         if ( advertiseList.size() !=0) {
