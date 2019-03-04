@@ -2,6 +2,8 @@ CREATE TABLE IF NOT EXISTS `advertiser`(
    `id` INT UNSIGNED AUTO_INCREMENT,
    `name` VARCHAR(100),
    `comment` VARCHAR(100),
+   `lng` varchar(100),
+   `lat` varchar(100),
    `address` varchar (100),
    `status` int not null DEFAULT 0,
    `telephone` VARCHAR(100),

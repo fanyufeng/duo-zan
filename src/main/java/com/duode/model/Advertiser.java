@@ -8,6 +8,8 @@ public class Advertiser {
     public String name;
     public String comment;
     public String address;
+    public String lng;
+    public String lat;
     public int status;
     public String telephone;
     public String create_time;
@@ -43,6 +45,22 @@ public class Advertiser {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
     public int getStatus() {
@@ -84,6 +102,8 @@ public class Advertiser {
                 ", name='" + name + '\'' +
                 ", comment='" + comment + '\'' +
                 ", address='" + address + '\'' +
+                ", lng='" + lng + '\'' +
+                ", lat='" + lat + '\'' +
                 ", status=" + status +
                 ", telephone='" + telephone + '\'' +
                 ", create_time='" + create_time + '\'' +

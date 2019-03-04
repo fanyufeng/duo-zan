@@ -11,6 +11,8 @@
         `name`,
         comment,
         address,
+        lng,
+        lat,
         status,
         telephone,
         create_time,
@@ -20,6 +22,8 @@
         #{advertiser.name},
         #{advertiser.comment},
         #{advertiser.address},
+        #{advertiser.lng},
+        #{advertiser.lat},
         #{advertiser.status},
         #{advertiser.telephone},
         now(),
@@ -47,6 +51,8 @@
         <result column="name"  property="name"/>
         <result column="status"  property="status"/>
         <result column="comment" property="comment"/>
+        <result column="lng" property="lng"/>
+        <result column="lat" property="lat"/>
         <result column="telephone" property="telephone"/>
         <result column="address" property="address"/>
         <result column="create_time"  property="create_time"/>
