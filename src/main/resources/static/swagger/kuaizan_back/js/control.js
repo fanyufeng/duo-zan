@@ -1,35 +1,6 @@
 $(document).ready(function () {
     //获取参数
     var id = getUrlParam("id");
-    //添加广告客户
-    $("#commit_adsCustomer").click(function () {
-        var adClient_name = $("#tf-box-name").val();
-        var adClient_address = $("#tf-box-address").val();
-        var adClientContact_name = $("#tf-box-poc").val();
-        var adClient_contact = $("#tf-box-contact").val();
-        var info = {
-            name:adClient_name,
-            comment:adClientContact_name,
-            address:adClient_address,
-            telephone: adClient_contact,
-            lat:address_lat,
-            lng:address_lng
-        };
-        $.ajax({
-            url:'https://kuaizan.duodework.com/advertiser/add',
-            type:'POST',
-            data:JSON.stringify(info),
-            contentType:'application/json',
-            dataType:'json',
-            success:function (data) {
-                console.log(data);
-                if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
-                }
-            }
-        })
-    });
     //更新广告客户
     $("#update_adsCustomer").click(function () {
         var adClient_name = $("#tf-box-name").val();
@@ -649,45 +620,6 @@ $(document).ready(function () {
         geocoder.getLocation(address);
     });
 
-    //编辑广告内容
-    var E = window.wangEditor;
-    var editor = new E('#editor');
-    // 或者 var editor = new E( document.getElementById('editor') )
-    editor.create();
-    //上传更新内容
-    $("#addDetail").click(function () {
-        var richText_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
-        var jsonStr = JSON.stringify(richText_json);
-        console.log(text_json);
-        console.log(jsonStr) ;
-        var ad_id = getUrlParam("id");
-        var advertise_detail = richText_json;
-        var first_title = $("#tf-box-name").val();
-        var second_title = $("#tf-box-times").val();
-        var head_url = img_url;
-        var info = {
-            id:ad_id,
-            advertise_detail:advertise_detail,
-            first_title:first_title,
-            second_title:second_title,
-            head_url:head_url
-        };
-        $.ajax({
-            url:'https://kuaizan.duodework.com/advertise/updateDetail',
-            type:'POST',
-            data:JSON.stringify(info),
-            contentType:'application/json',
-            dataType:'json',
-            success:function (data) {
-                console.log(data);
-                if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
-                }
-            }
-        })
-
-    });
     //页面跳转控制
     $("#toIndex").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/index.html?id="+id;

@@ -350,15 +350,44 @@
 <script>
 
     $(document).ready(function () {
-        var userId = getUrlParam("id");
-        var info = {
-            id:userId
-        };
-        $("#addRichText").click(function () {
-           var text_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
-            var jsonStr = JSON.stringify(text_json);
+        //编辑广告内容
+        var E = window.wangEditor;
+        var editor = new E('#editor');
+        // 或者 var editor = new E( document.getElementById('editor') )
+        editor.create();
+        //上传更新内容
+        $("#addDetail").click(function () {
+            var richText_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+            var jsonStr = JSON.stringify(richText_json);
             console.log(text_json);
             console.log(jsonStr) ;
+            var ad_id = getUrlParam("id");
+            var advertise_detail = richText_json;
+            var first_title = $("#tf-box-name").val();
+            var second_title = $("#tf-box-times").val();
+            var head_url = img_url;
+            var info = {
+                id:ad_id,
+                advertise_detail:advertise_detail,
+                first_title:first_title,
+                second_title:second_title,
+                head_url:head_url
+            };
+            $.ajax({
+                url:'https://kuaizan.duodework.com/advertise/updateDetail',
+                type:'POST',
+                data:JSON.stringify(info),
+                contentType:'application/json',
+                dataType:'json',
+                success:function (data) {
+                    console.log(data);
+                    if(data.statusCode == "02000000"){
+                        alert("添加成功");
+                        window.location.href = "../../index.html?id="+id
+                    }
+                }
+            })
+
         });
     });
     //读取url参数
