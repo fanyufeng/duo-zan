@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/detail.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 
 <body>
@@ -257,40 +257,67 @@
                 <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                         <div class="mdc-card">
-                            <section class="mdc-card__primary" style="display: flex;flex-direction: row">
-                                <h1 class="mdc-card__title mdc-card__title--large">开机广告管理</h1>
-                                <div class="addAds" id="toAddLaunchAdDetail">添加开机广告</div>
+                            <section class="mdc-card__primary">
+                                <h1 class="mdc-card__title mdc-card__title--large">编辑广告详情</h1>
                             </section>
-                            <div class="template-demo">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-left" style="width: 200px">广告名称</th>
-                                        <th>客户名称</th>
-                                        <th>播放次数</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="table_list">
-                                    <!--
-                                    <tr>
-                                        <td class="text-left">Frozen yogurt</td>
-                                        <td>1.59</td>
-                                        <td>
-                                            <div>查看</div>
-                                            <div>修改</div>
-                                            <div>删除</div>
-                                        </td>
-                                    </tr>
-                                    -->
-                                    </tbody>
-                                </table>
-                            </div>
+                            <section class="mdc-card__supporting-text">
+                                <div class="mdc-layout-grid__inner">
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
+                                        <div class="template-demo">
+                                            <div id="demo-tf-box-name-wrapper">
+                                                <div id="tf-box-name-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
+                                                    <input type="text" id="tf-box-name" class="mdc-text-field__input">
+                                                    <label for="tf-box-name" class="mdc-text-field__label">主标题</label>
+                                                    <div class="mdc-text-field__bottom-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
+                                        <div class="template-demo">
+                                            <div id="demo-tf-box-times-wrapper">
+                                                <div id="tf-box-times-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
+                                                    <input type="text" id="tf-box-times" class="mdc-text-field__input">
+                                                    <label for="tf-box-name" class="mdc-text-field__label">副标题</label>
+                                                    <div class="mdc-text-field__bottom-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop">
+                                        <div class="template-demo">
+                                            <div id="demo-tf-box-upload-wrapper">
+                                                <div id="tf-box-upload-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                                                    <i class="material-icons mdc-text-field__icon" tabindex="0">event</i>
+                                                    <input type="file" id="upload_img" name="upload_video" class="mdc-text-field__input">
+                                                    <input type="button" id="upload_imgDetail" data-mdc-auto-init="MDCRipple" value="上传" style="margin: auto;width: 60px">
+                                                    <div class="mdc-text-field__bottom-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10-desktop">
+                                        <div id="editor">
+                                            <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                                        </div>
+                                    </div>
+                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                                        <div class="template-demo">
+                                            <button id="addDetail" class="mdc-button" data-mdc-auto-init="MDCRipple">
+                                                提交
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </main>
         <!-- partial:../../partials/_footer.html -->
         <footer>
@@ -319,56 +346,21 @@
 <script src="../../js/misc.js"></script>
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
+<script src="../../js/wangEditor.min.js"></script>
 <script>
+
     $(document).ready(function () {
         var userId = getUrlParam("id");
         var info = {
-            category:2
+            id:userId
         };
-        $.ajax({
-            url:'https://kuaizan.duodework.com/annex/getCategoryAll',
-            type:'POST',
-            data:JSON.stringify(info),
-            contentType:'application/json',
-            dataType:'json',
-            success:function (data) {
-                if(data.statusCode == "02000000"){
-                    for(var i=0,j=data.data.length;i<j;i++){
-                        var status_name = '';
-                        switch (data.data[i].status) {
-                            case 0 :
-                                status_name = '停播';
-                                break;
-                            case 1 :
-                                status_name = '播放中';
-                                break;
-                        }
-                        var str =
-                            '<tr>' +
-                            '  <td class="text-left">'+ data.data[i].name +'</td>' +
-                            '  <td>'+ data.data[i].comment +'</td>' +
-                            '  <td>'+ data.data[i].frequency +'</td>' +
-                            '  <td>'+ status_name +'</td>' +
-                            '  <td>' +
-                            '    <div data-id="'+ data.data[i].id +'" data-status="'+ data.data[i].status +'" class="change_btn">变更</div>' +
-                            '    <div data-id="'+ data.data[i].id +'" class="detail_btn">添加详情</div>' +
-                            '  </td>' +
-                            '</tr>';
-                        $("#table_list").append(str);
-                    }
-                }
-            }
-        });
-        $("#table_list").on('click','.detail_btn',function () {
-            var id = $(this).data('id');
-            window.location.href = 'editAdDetail.html?userid='+id+"&id="+userId
-        });
-        $("#table_list").on('click','.alter_btn',function () {
-            var id = $(this).data('id');
-            window.location.href = 'editAdProject.html?id='+id
+        $("#addRichText").click(function () {
+           var text_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+            var jsonStr = JSON.stringify(text_json);
+            console.log(text_json);
+            console.log(jsonStr) ;
         });
     });
-
     //读取url参数
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象

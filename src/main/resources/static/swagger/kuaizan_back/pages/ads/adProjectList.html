@@ -338,6 +338,7 @@
                             '    <div data-id="'+ data.data[i].id +'" class="check_btn">查看</div>' +
                             '    <div data-id="'+ data.data[i].id +'" class="alter_btn">修改</div>' +
                             '    <div data-id="'+ data.data[i].id +'" class="del_btn">删除</div>' +
+                            '    <div data-id="'+ data.data[i].id +'" class="detail_btn">添加详情</div>' +
                             '  </td>' +
                             '</tr>';
                         $("#table_list").append(str);
@@ -352,6 +353,10 @@
         $("#table_list").on('click','.alter_btn',function () {
             var id = $(this).data('id');
             window.location.href = 'editAdProject.html?id='+id
+        });
+        $("#table_list").on('click','.detail_btn',function () {
+            var id = $(this).data('id');
+            window.location.href = 'editAdDetail.html?userid='+id+"&id="+userId
         });
     });
 
