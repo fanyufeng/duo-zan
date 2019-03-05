@@ -11,7 +11,9 @@ $(document).ready(function () {
             name:adClient_name,
             comment:adClientContact_name,
             address:adClient_address,
-            telephone: adClient_contact
+            telephone: adClient_contact,
+            lat:address_lat,
+            lng:address_lng
         };
         $.ajax({
             url:'https://kuaizan.duodework.com/advertiser/add',
@@ -150,6 +152,25 @@ $(document).ready(function () {
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
                     vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+    //上传广告详情页面首部大图
+    $("#upload_imgDetail").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
@@ -593,6 +614,79 @@ $(document).ready(function () {
                 }
             }
         })
+    });
+    //腾讯地图
+    var address_lat;
+    var address_lng;
+    window.onload = function () {
+        function init() {
+            // 创建地图
+            var map = new qq.maps.Map(document.getElementById("map_container"), {
+                center: new qq.maps.LatLng(39.916527, 116.397128),      // 地图的中心地理坐标
+                zoom: 8,     // 地图缩放级别
+                mapStyleId: 'style1'  // 该key绑定的style1对应于经典地图样式，若未绑定将弹出无权限提示窗
+            });
+            //调用地址解析类
+            geocoder = new qq.maps.Geocoder({
+                complete : function(result){
+                    address_lat = result.detail.location.lat;
+                    address_lng = result.detail.location.lng;
+                    map.setCenter(result.detail.location);
+                    var marker = new qq.maps.Marker({
+                        map:map,
+                        position: result.detail.location
+                    });
+                    console.log(result.detail.location)
+                }
+            });
+        }
+        //调用初始化函数
+        init();
+    };
+    //搜索地址
+    $("#search_address").click(function () {
+        var address = $("#tf-box-address").val();
+        geocoder.getLocation(address);
+    });
+
+    //编辑广告内容
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create();
+    //上传更新内容
+    $("#addDetail").click(function () {
+        var richText_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        var jsonStr = JSON.stringify(richText_json);
+        console.log(text_json);
+        console.log(jsonStr) ;
+        var ad_id = getUrlParam("id");
+        var advertise_detail = richText_json;
+        var first_title = $("#tf-box-name").val();
+        var second_title = $("#tf-box-times").val();
+        var head_url = img_url;
+        var info = {
+            id:ad_id,
+            advertise_detail:advertise_detail,
+            first_title:first_title,
+            second_title:second_title,
+            head_url:head_url
+        };
+        $.ajax({
+            url:'https://kuaizan.duodework.com/advertise/updateDetail',
+            type:'POST',
+            data:JSON.stringify(info),
+            contentType:'application/json',
+            dataType:'json',
+            success:function (data) {
+                console.log(data);
+                if(data.statusCode == "02000000"){
+                    alert("添加成功");
+                    window.location.href = "../../index.html?id="+id
+                }
+            }
+        })
+
     });
     //页面跳转控制
     $("#toIndex").click(function () {
