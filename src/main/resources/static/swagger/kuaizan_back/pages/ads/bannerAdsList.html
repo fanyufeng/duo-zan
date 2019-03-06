@@ -324,7 +324,7 @@
 <script src="../../js/control.js"></script>
 <script>
     $(document).ready(function () {
-        //var userId = getUrlParam("id");
+        var userId = getUrlParam("id");
         var info = {
             category:1
         };
@@ -364,7 +364,7 @@
         });
         $("#table_list").on('click','.detail_btn',function () {
             var id = $(this).data('id');
-            window.location.href = 'editAdDetail.html?userid='+id+"&id="+userId
+            window.location.href = 'editAdDetail.html?adid='+id+"&id="+userId
         });
         $("#table_list").on('click','.alter_btn',function () {
             var id = $(this).data('id');
