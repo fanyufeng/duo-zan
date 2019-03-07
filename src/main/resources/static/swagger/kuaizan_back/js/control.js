@@ -108,6 +108,24 @@ $(document).ready(function () {
             }
         })
     });
+    $("#upload_imgLaunch").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
 
     //上传Index文件
     $("#upload_videoIndex").click(function () {
@@ -128,6 +146,25 @@ $(document).ready(function () {
             }
         })
     });
+    $("#upload_imgIndex").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+
     //上传广告详情页面首部大图
     $("#upload_imgDetail").click(function () {
         $.ajaxFileUpload({
@@ -587,6 +624,7 @@ $(document).ready(function () {
         })
     });
     //腾讯地图
+    /***
     var address_lat;
     var address_lng;
     window.onload = function () {
@@ -619,7 +657,7 @@ $(document).ready(function () {
         var address = $("#tf-box-address").val();
         geocoder.getLocation(address);
     });
-
+     ****/
     //页面跳转控制
     $("#toIndex").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/index.html?id="+id;
