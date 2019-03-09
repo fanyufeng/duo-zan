@@ -43,7 +43,7 @@
         second_title = ${advertise.second_title},
         head_url = ${advertise.head_url},
         modify_time = now()
-        WHERE id = ${id}
+        WHERE id = ${advertise.id}
     </update>
 
     <select id="findAdvertiseList" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
