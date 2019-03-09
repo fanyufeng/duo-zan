@@ -383,14 +383,14 @@
             var jsonStr = JSON.stringify(richText_json);
             console.log(richText_json);
             console.log(jsonStr) ;
-            var ad_id = getUrlParam("id");
-            var advertise_detail = richText_json;
+            var ad_id = getUrlParam("adid");
+            var advertise_detail = jsonStr;
             var first_title = $("#tf-box-name").val();
             var second_title = $("#tf-box-times").val();
             var head_url = img_url;
             var info = {
                 id:ad_id,
-                advertise_detail:jsonStr,
+                advertise_detail:advertise_detail,
                 first_title:first_title,
                 second_title:second_title,
                 head_url:head_url
