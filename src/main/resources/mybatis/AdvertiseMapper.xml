@@ -43,7 +43,7 @@
         second_title = ${advertise.second_title},
         head_url = ${advertise.head_url},
         modify_time = now()
-        WHERE id = #{advertise.id}
+        WHERE id = ${advertise.id}
     </update>
 
     <select id="findAdvertiseList" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
@@ -53,13 +53,13 @@
     <resultMap type="com.duode.model.Advertise" id="advertiseList">
         <result column="id" property="id"/>
         <result column="name"  property="name"/>
+        <result column="advertiser_id" property="advertiser_id"/>
         <result column="advertise_detail"  property="advertise_detail"/>
         <result column="first_title"  property="first_title"/>
         <result column="second_title"  property="second_title"/>
         <result column="head_url"  property="head_url"/>
-        <result column="status"  property="status"/>
         <result column="comment" property="comment"/>
-        <result column="advertiser_id" property="advertiser_id"/>
+        <result column="status"  property="status"/>
         <result column="advertiser_url" property="advertiser_url"/>
         <result column="create_time"  property="create_time"/>
         <result column="modify_time"  property="modify_time"/>
