@@ -347,6 +347,7 @@
 <script src="../../js/material.js"></script>
 <script src="../../js/control.js"></script>
 <script src="../../js/wangEditor.min.js"></script>
+<script src="../../js/ajaxfileupload.js"></script>
 <script>
 
     $(document).ready(function () {
@@ -359,7 +360,7 @@
         $("#addDetail").click(function () {
             var richText_json = editor.txt.getJSON();  // 获取 JSON 格式的内容
             var jsonStr = JSON.stringify(richText_json);
-            console.log(text_json);
+            console.log(richText_json);
             console.log(jsonStr) ;
             var ad_id = getUrlParam("id");
             var advertise_detail = richText_json;
