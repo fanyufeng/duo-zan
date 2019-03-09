@@ -1,33 +1,6 @@
 $(document).ready(function () {
     //获取参数
     var id = getUrlParam("id");
-    //添加广告客户
-    $("#commit_adsCustomer").click(function () {
-        var adClient_name = $("#tf-box-name").val();
-        var adClient_address = $("#tf-box-address").val();
-        var adClientContact_name = $("#tf-box-poc").val();
-        var adClient_contact = $("#tf-box-contact").val();
-        var info = {
-            name:adClient_name,
-            comment:adClientContact_name,
-            address:adClient_address,
-            telephone: adClient_contact
-        };
-        $.ajax({
-            url:'https://kuaizan.duodework.com/advertiser/add',
-            type:'POST',
-            data:JSON.stringify(info),
-            contentType:'application/json',
-            dataType:'json',
-            success:function (data) {
-                console.log(data);
-                if(data.statusCode == "02000000"){
-                    alert("添加成功");
-                    window.location.href = "../../index.html?id="+id
-                }
-            }
-        })
-    });
     //更新广告客户
     $("#update_adsCustomer").click(function () {
         var adClient_name = $("#tf-box-name").val();
@@ -135,6 +108,24 @@ $(document).ready(function () {
             }
         })
     });
+    $("#upload_imgLaunch").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
 
     //上传Index文件
     $("#upload_videoIndex").click(function () {
@@ -150,6 +141,24 @@ $(document).ready(function () {
                 if(data.statusCode == "02000000"){
                     alert("上传成功");
                     vedio_url = "https://kuaizan.duodework.com" + data.data.fileName;
+                }
+
+            }
+        })
+    });
+    $("#upload_imgIndex").click(function () {
+        $.ajaxFileUpload({
+            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
+            secureuri:false,
+            fileElementId:'upload_img',//文件选择框的id属性
+            type:'POST',
+            dataType: 'JSON',   //json
+            success: function (data) {
+                data = $.parseJSON(data.replace(/<.*?>/ig,""));
+                alert(data);
+                if(data.statusCode == "02000000"){
+                    alert("上传成功");
+                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
                 }
 
             }
@@ -594,6 +603,41 @@ $(document).ready(function () {
             }
         })
     });
+    //腾讯地图
+    /***
+    var address_lat;
+    var address_lng;
+    window.onload = function () {
+        function init() {
+            // 创建地图
+            var map = new qq.maps.Map(document.getElementById("map_container"), {
+                center: new qq.maps.LatLng(39.916527, 116.397128),      // 地图的中心地理坐标
+                zoom: 8,     // 地图缩放级别
+                mapStyleId: 'style1'  // 该key绑定的style1对应于经典地图样式，若未绑定将弹出无权限提示窗
+            });
+            //调用地址解析类
+            geocoder = new qq.maps.Geocoder({
+                complete : function(result){
+                    address_lat = result.detail.location.lat;
+                    address_lng = result.detail.location.lng;
+                    map.setCenter(result.detail.location);
+                    var marker = new qq.maps.Marker({
+                        map:map,
+                        position: result.detail.location
+                    });
+                    console.log(result.detail.location)
+                }
+            });
+        }
+        //调用初始化函数
+        init();
+    };
+    //搜索地址
+    $("#search_address").click(function () {
+        var address = $("#tf-box-address").val();
+        geocoder.getLocation(address);
+    });
+     ****/
     //页面跳转控制
     $("#toIndex").click(function () {
         window.location.href = "/static/swagger/kuaizan_back/index.html?id="+id;

@@ -324,7 +324,7 @@
 <script src="../../js/control.js"></script>
 <script>
     $(document).ready(function () {
-        //var userId = getUrlParam("id");
+        var userId = getUrlParam("id");
         var info = {
             category:1
         };
@@ -354,6 +354,7 @@
                             '  <td>'+ status_name +'</td>' +
                             '  <td>' +
                             '    <div data-id="'+ data.data[i].id +'" data-status="'+ data.data[i].status +'" class="change_btn">变更</div>' +
+                            '    <div data-id="'+ data.data[i].id +'" class="detail_btn">添加详情</div>' +
                             '  </td>' +
                             '</tr>';
                         $("#table_list").append(str);
@@ -361,9 +362,9 @@
                 }
             }
         });
-        $("#table_list").on('click','.check_btn',function () {
+        $("#table_list").on('click','.detail_btn',function () {
             var id = $(this).data('id');
-            window.location.href = 'adProjectDetail.html?id='+id
+            window.location.href = 'editAdDetail.html?adid='+id+"&id="+userId
         });
         $("#table_list").on('click','.alter_btn',function () {
             var id = $(this).data('id');
