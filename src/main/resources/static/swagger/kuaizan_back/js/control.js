@@ -165,26 +165,6 @@ $(document).ready(function () {
         })
     });
 
-    //上传广告详情页面首部大图
-    $("#upload_imgDetail").click(function () {
-        $.ajaxFileUpload({
-            url:'https://kuaizan.duodework.com/annexLibrary/fileSave',//需要链接到服务器地址
-            secureuri:false,
-            fileElementId:'upload_img',//文件选择框的id属性
-            type:'POST',
-            dataType: 'JSON',   //json
-            success: function (data) {
-                data = $.parseJSON(data.replace(/<.*?>/ig,""));
-                alert(data);
-                if(data.statusCode == "02000000"){
-                    alert("上传成功");
-                    img_url = "https://kuaizan.duodework.com" + data.data.fileName;
-                }
-
-            }
-        })
-    });
-
     //添加广告项目中的获取广告客户列表
     var selected_id = "";
     $("#section_info").on('click','.selected',function () {
