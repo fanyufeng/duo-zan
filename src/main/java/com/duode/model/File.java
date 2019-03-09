@@ -11,6 +11,7 @@ public class File {
     public int advertiser_id;
     public String file_imgUrl;
     public String file_videoUrl;
+    public String file_detail;
     public String link;
     public int frequency;
     public int imOrVi;
@@ -122,6 +123,14 @@ public class File {
         this.imOrVi = imOrVi;
     }
 
+    public String getFile_detail() {
+        return file_detail;
+    }
+
+    public void setFile_detail(String file_detail) {
+        this.file_detail = file_detail;
+    }
+
     @Override
     public String toString() {
         return "File{" +
@@ -132,6 +141,7 @@ public class File {
                 ", advertiser_id=" + advertiser_id +
                 ", file_imgUrl='" + file_imgUrl + '\'' +
                 ", file_videoUrl='" + file_videoUrl + '\'' +
+                ", file_detail='" + file_detail + '\'' +
                 ", link='" + link + '\'' +
                 ", frequency=" + frequency +
                 ", imOrVi=" + imOrVi +

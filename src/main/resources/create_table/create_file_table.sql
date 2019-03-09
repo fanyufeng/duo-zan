@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `file`(
    `file_imgUrl` varchar(100),
    `file_videoUrl` varchar(100),
    `imOrVi` int not null DEFAULT 0 comment '1表示图片，2表示视频',
+   `file_detail` varchar(100),
    `link` varchar(100),
    `category` int not null default 0 comment '1表示banner，2表示launch，3表示checkin',
    `frequency` int not null default 0 comment '播放次数',
