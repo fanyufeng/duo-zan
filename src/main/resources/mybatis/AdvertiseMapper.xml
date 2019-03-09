@@ -53,6 +53,10 @@
     <resultMap type="com.duode.model.Advertise" id="advertiseList">
         <result column="id" property="id"/>
         <result column="name"  property="name"/>
+        <result column="advertise_detail"  property="advertise_detail"/>
+        <result column="first_title"  property="first_title"/>
+        <result column="second_title"  property="second_title"/>
+        <result column="head_url"  property="head_url"/>
         <result column="status"  property="status"/>
         <result column="comment" property="comment"/>
         <result column="advertiser_id" property="advertiser_id"/>
