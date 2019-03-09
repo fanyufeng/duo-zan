@@ -29,21 +29,21 @@
 
     <update id="updateAdvertise">
         UPDATE advertise
-        SET status = ${advertise.status},
-        `name` = ${advertise.name},
-        advertise_url = ${advertise.advertise_url},
+        SET status = #{advertise.status},
+        `name` = #{advertise.name},
+        advertise_url = #{advertise.advertise_url},
         modify_time = now()
         WHERE id = #{advertise.id}
     </update>
 
     <update id="updateAdvertiseDetail">
         UPDATE advertise
-        SET advertise_detail = ${advertise.advertise_detail},
-        first_title = ${advertise.first_title},
-        second_title = ${advertise.second_title},
-        head_url = ${advertise.head_url},
+        SET advertise_detail = #{advertise.advertise_detail},
+        first_title = #{advertise.first_title},
+        second_title = #{advertise.second_title},
+        head_url = #{advertise.head_url},
         modify_time = now()
-        WHERE id = ${advertise.id}
+        WHERE id = #{advertise.id}
     </update>
 
     <select id="findAdvertiseList" parameterType="com.duode.model.Advertise" resultMap="advertiseList">
