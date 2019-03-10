@@ -12,6 +12,9 @@ public class File {
     public String file_imgUrl;
     public String file_videoUrl;
     public String file_detail;
+    public String first_title;
+    public String second_title;
+    public String head_url;
     public String link;
     public int frequency;
     public int imOrVi;
@@ -131,6 +134,30 @@ public class File {
         this.file_detail = file_detail;
     }
 
+    public String getFirst_title() {
+        return first_title;
+    }
+
+    public void setFirst_title(String first_title) {
+        this.first_title = first_title;
+    }
+
+    public String getSecond_title() {
+        return second_title;
+    }
+
+    public void setSecond_title(String second_title) {
+        this.second_title = second_title;
+    }
+
+    public String getHead_url() {
+        return head_url;
+    }
+
+    public void setHead_url(String head_url) {
+        this.head_url = head_url;
+    }
+
     @Override
     public String toString() {
         return "File{" +
@@ -142,6 +169,9 @@ public class File {
                 ", file_imgUrl='" + file_imgUrl + '\'' +
                 ", file_videoUrl='" + file_videoUrl + '\'' +
                 ", file_detail='" + file_detail + '\'' +
+                ", first_title='" + first_title + '\'' +
+                ", second_title='" + second_title + '\'' +
+                ", head_url='" + head_url + '\'' +
                 ", link='" + link + '\'' +
                 ", frequency=" + frequency +
                 ", imOrVi=" + imOrVi +
