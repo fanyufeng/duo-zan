@@ -58,6 +58,16 @@
         WHERE id = #{file.id}
     </update>
 
+    <update id="updateFileDetail">
+        UPDATE file
+        SET first_title=#{file.first_title},
+        second_title=#{file.second_title},
+        head_url=#{file.head_url},
+        file_detail=#{file.file_detail},
+        modify_time = now()
+        WHERE id = #{file.id}
+    </update>
+
     <update id="updateFileCategory">
         UPDATE file
         SET category=#{file.category},
@@ -84,6 +94,9 @@
         <result column="comment" property="comment"/>
         <result column="advertiser_id" property="advertiser_id"/>
         <result column="file_url" property="file_url"/>
+        <result column="first_title" property="first_title"/>
+        <result column="second_title" property="second_title"/>
+        <result column="head_url" property="head_url"/>
         <result column="file_detail" property="file_detail"/>
         <result column="link" property="link"/>
         <result column="category" property="category"/>

@@ -68,6 +68,19 @@ public class FileController {
         return response;
     }
 
+    @RequestMapping(value="/updateDetail", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseDataModel updateFileDetail(@RequestBody File file){
+        ResponseDataModel response = new ResponseDataModel();
+        int code = fileService.updateFileDetail(file);
+        if (code ==1) {
+            response.setStatusCode(ApiStatusCode.SUCCESS.value());
+        } else {
+            response.setStatusCode(ApiStatusCode.ADD_CARD_FAILURE.value());
+        }
+        return response;
+    }
+
 
     @RequestMapping(value="/getFileList", method = RequestMethod.POST)
     @ResponseBody

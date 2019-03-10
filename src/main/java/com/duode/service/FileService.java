@@ -42,6 +42,11 @@ public class FileService {
         int code = fileMapper.updateFileStatus(file);
         return code;
     }
+
+    public int updateFileDetail(File file){
+        int code = fileMapper.updateFileDetail(file);
+        return code;
+    }
     public int updateFileCategory(File file){
         int code = fileMapper.updateFileCategory(file);
         return code;
